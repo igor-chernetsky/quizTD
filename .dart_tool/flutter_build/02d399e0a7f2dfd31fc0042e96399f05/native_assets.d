@@ -1,0 +1,1 @@
+ /Users/igorch/Development/flutter_igor/quizTD/.dart_tool/flutter_build/02d399e0a7f2dfd31fc0042e96399f05/native_assets.yaml: 
