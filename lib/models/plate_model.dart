@@ -5,7 +5,12 @@ import 'package:quiz_td/models/building_model.dart';
 class PlateModel {
   Point point;
   BuildingModel? building;
-  bool isBuilding;
+  int? buildProgress;
+  int hp;
+
   PlateModel(
-      {this.point = const Point(0, 0), this.isBuilding = false, this.building});
+      {this.point = const Point(0, 0),
+      this.building,
+      this.hp = 0,
+      this.buildProgress});
 }

@@ -13,31 +13,48 @@ class BuilderWidget extends StatelessWidget {
     double widgetHeight = MediaQuery.of(context).size.height / 3;
     double size = MediaQuery.of(context).size.width / 4;
     List<BuildingModel> buildings = [
-      BuildingModel(type: BuildingType.farm, price: 10),
-      BuildingModel(type: BuildingType.warhouse, price: 50),
-      BuildingModel(type: BuildingType.main, price: 200)
+      BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
+      BuildingModel(type: BuildingType.warhouse, price: 50, hp: 200),
+      BuildingModel(type: BuildingType.main, price: 200, hp: 1000)
     ];
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Container(
               height: widgetHeight,
-              child: Row(
-                  children: buildings
-                      .map(
-                        (b) => Column(
-                          children: [
-                            BuildingWidget(
-                              size: size,
-                              building: b,
-                              onTap: () => context.read<GameCubit>().build(b),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                      children: buildings
+                          .map(
+                            (b) => Column(
+                              children: [
+                                BuildingWidget(
+                                  size: size,
+                                  building: b,
+                                  onTap: () =>
+                                      context.read<GameCubit>().build(b),
+                                ),
+                                Center(
+                                  child: Text(
+                                    b.price.toString(),
+                                    style: TextStyle(
+                                        color: gm.score < b.price
+                                            ? Colors.red
+                                            : Colors.green),
+                                  ),
+                                )
+                              ],
                             ),
-                            Center(
-                              child: Text(b.price.toString()),
-                            )
-                          ],
-                        ),
-                      )
-                      .toList()),
+                          )
+                          .toList()),
+                  IconButton.filled(
+                    onPressed: () =>
+                        context.read<GameCubit>().selectPlate(null),
+                    icon: const Icon(Icons.close),
+                  )
+                ],
+              ),
             ));
   }
 }

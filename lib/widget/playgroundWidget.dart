@@ -4,9 +4,28 @@ import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/widget/buildingWidget.dart';
+import 'package:quiz_td/widget/healthBarWidget.dart';
 
 class PlaygroundWidget extends StatelessWidget {
   const PlaygroundWidget({super.key});
+
+  drawBuilding(PlateModel plate, BuildContext context, int index, double size) {
+    List<Widget> res = [
+      BuildingWidget(
+          onTap: () {
+            context.read<GameCubit>().selectPlate(index);
+          },
+          building: plate.building,
+          size: size)
+    ];
+    if (plate.building?.hp != null) {
+      res.add(HealthbarWidget(
+        hp: plate.hp / plate.building!.hp,
+        width: size,
+      ));
+    }
+    return res;
+  }
 
   drawCity(
       BuildContext context, List<PlateModel> plates, int width, double size) {
@@ -15,13 +34,12 @@ class PlaygroundWidget extends StatelessWidget {
     for (int y = 0; y < height; y++) {
       List<Widget> rowItems = [];
       for (int x = 0; x < width; x++) {
+        PlateModel plate = plates[y * width + x];
         int index = y * width + x;
-        rowItems.add(BuildingWidget(
-            onTap: () {
-              context.read<GameCubit>().selectPlate(index);
-            },
-            building: plates[y * width + x].building,
-            size: size));
+        rowItems.add(Stack(
+          alignment: Alignment.bottomCenter,
+          children: drawBuilding(plate, context, index, size),
+        ));
       }
       res.add(Row(
         children: rowItems,

@@ -9,7 +9,7 @@ class GameCubit extends Cubit<GameModel> {
   void addScore(int s) {
     if (state.score + s >= 0) {
       return emit(GameModel(
-          score: state.score + s,
+          score: state.score + s * 10,
           plates: state.plates,
           selectedIndex: state.selectedIndex,
           width: state.width));
@@ -17,21 +17,26 @@ class GameCubit extends Cubit<GameModel> {
   }
 
   void build(BuildingModel building) {
+    if (state.score < building.price) {
+      return;
+    }
     List<PlateModel> plates = [...state.plates];
-    plates[state.selectedIndex!] = PlateModel(building: building);
+    plates[state.selectedIndex!] =
+        PlateModel(building: building, buildProgress: 0);
     GameModel res = GameModel(
-        score: state.score,
+        score: state.score - building.price,
         plates: plates,
         selectedIndex: null,
         width: state.width);
     return emit(res);
   }
 
-  void selectPlate(int index) {
+  void selectPlate(int? index) {
     GameModel res = GameModel(
         score: state.score,
         plates: state.plates,
-        selectedIndex: state.selectedIndex == index ? null : index,
+        selectedIndex:
+            index == null || state.selectedIndex == index ? null : index,
         width: state.width);
     return emit(res);
   }
