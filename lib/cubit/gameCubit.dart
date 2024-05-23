@@ -31,6 +31,28 @@ class GameCubit extends Cubit<GameModel> {
     return emit(res);
   }
 
+  void changeState() {
+    List<PlateModel> plates = [...state.plates];
+    for (var p in plates) {
+      if (p.buildProgress == p.building?.hp) {
+        p.buildProgress = null;
+      } else if (p.buildProgress != null) {
+        p.buildProgress = p.buildProgress! + 1;
+        p.hp++;
+      }
+    }
+    GameModel res = GameModel(
+        score: state.score,
+        plates: plates,
+        selectedIndex: state.selectedIndex,
+        width: state.width);
+    Future.delayed(const Duration(milliseconds: 700), () {
+      changeState();
+    });
+
+    return emit(res);
+  }
+
   void selectPlate(int? index) {
     GameModel res = GameModel(
         score: state.score,

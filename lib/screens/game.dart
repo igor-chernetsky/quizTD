@@ -16,7 +16,7 @@ class GameScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
           child: BlocProvider(
-              create: (_) => GameCubit(),
+              create: (_) => GameCubit()..changeState(),
               child: BlocBuilder<GameCubit, GameModel>(
                 builder: (context, gm) => Column(
                   children: [TopWidget(), ScoreWidget(), PlaygroundWidget()],

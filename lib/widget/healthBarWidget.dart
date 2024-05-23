@@ -11,11 +11,9 @@ class HealthbarWidget extends StatelessWidget {
     int val = (hp * 255).toInt();
     Color color = Color.fromRGBO(255 - val, val, 20, 1);
 
-    if (hp == 0) hp = 0.1;
-
     return Container(
       padding: const EdgeInsets.all(4),
-      height: 14,
+      height: 12,
       width: width,
       child: FractionallySizedBox(
         alignment: Alignment.centerLeft,
