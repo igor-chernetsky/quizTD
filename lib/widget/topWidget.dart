@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
+import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/widget/builderWidget.dart';
-import 'package:quiz_td/widget/quizWidget.dart';
+import 'package:quiz_td/widget/topWidgets/builderWidget.dart';
+import 'package:quiz_td/widget/topWidgets/buildingProcessWidget.dart';
+import 'package:quiz_td/widget/topWidgets/farmWidget.dart';
+import 'package:quiz_td/widget/topWidgets/mainWidget.dart';
+import 'package:quiz_td/widget/topWidgets/quizWidget.dart';
 
 class TopWidget extends StatelessWidget {
   const TopWidget({super.key});
@@ -14,8 +18,23 @@ class TopWidget extends StatelessWidget {
       if (gm.selectedPlate == null) {
         return const QuizWidget();
       }
-      if (gm.selectedPlate.building == null) {
+      if (gm.selectedPlate!.building == null) {
         return const BuilderWidget();
+      }
+      if (gm.selectedPlate!.buildProgress != null) {
+        return BuildingProcessWidget(
+          plate: gm.selectedPlate!,
+        );
+      }
+      if (gm.selectedPlate!.building!.type == BuildingType.farm) {
+        return FarmWidget(
+          plate: gm.selectedPlate!,
+        );
+      }
+      if (gm.selectedPlate!.building!.type == BuildingType.main) {
+        return MainWidget(
+          plate: gm.selectedPlate!,
+        );
       }
       return Placeholder();
     });

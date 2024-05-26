@@ -15,13 +15,17 @@ class PlaygroundWidget extends StatelessWidget {
           onTap: () {
             context.read<GameCubit>().selectPlate(index);
           },
+          level: plate.level,
           building: plate.building,
           size: size)
     ];
     if (plate.building?.hp != null) {
-      res.add(HealthbarWidget(
-        hp: plate.hp / plate.building!.hp,
-        width: size,
+      res.add(Padding(
+        padding: const EdgeInsets.only(bottom: 4),
+        child: HealthbarWidget(
+          hp: plate.hp / plate.topHP!,
+          width: size - 8,
+        ),
       ));
     }
     return res;

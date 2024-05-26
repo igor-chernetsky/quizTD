@@ -4,49 +4,132 @@ import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 
 class GameCubit extends Cubit<GameModel> {
-  GameCubit() : super(GameModel(plates: List.filled(9, PlateModel())));
+  int _counter = 0;
+  final int _mainIndex = 4;
+  GameCubit()
+      : super(GameModel(plates: [
+          PlateModel(),
+          PlateModel(),
+          PlateModel(),
+          PlateModel(),
+          PlateModel(
+            building:
+                BuildingModel(hp: 1000, price: 200, type: BuildingType.main),
+            hp: 1000,
+          ),
+          PlateModel(),
+          PlateModel(),
+          PlateModel(),
+          PlateModel()
+        ]));
+
+  GameModel _cloneModel() {
+    List<PlateModel> plates = [...state.plates];
+    return GameModel(
+        epoch: state.epoch,
+        score: state.score,
+        plates: plates,
+        selectedIndex: state.selectedIndex,
+        width: state.width);
+  }
 
   void addScore(int s) {
-    if (state.score + s >= 0) {
-      return emit(GameModel(
-          score: state.score + s * 10,
-          plates: state.plates,
-          selectedIndex: state.selectedIndex,
-          width: state.width));
+    int delta = s * 10 * state.epoch;
+    if (state.score + delta >= 0) {
+      GameModel res = _cloneModel();
+      res.score = state.score + delta;
+      return emit(res);
+    } else {
+      GameModel res = _cloneModel();
+      PlateModel mainPlate = res.plates[_mainIndex];
+      mainPlate.hp += delta;
+      print(mainPlate.hp);
+      return emit(res);
     }
   }
 
   void build(BuildingModel building) {
-    if (state.score < building.price) {
+    if (state.score < building.price * state.epoch) {
       return;
     }
-    List<PlateModel> plates = [...state.plates];
-    plates[state.selectedIndex!] =
-        PlateModel(building: building, buildProgress: 0);
-    GameModel res = GameModel(
-        score: state.score - building.price,
-        plates: plates,
-        selectedIndex: null,
-        width: state.width);
+    GameModel res = _cloneModel();
+    res.plates[state.selectedIndex!] =
+        PlateModel(building: building, buildProgress: 0, level: state.epoch);
+    res.score = res.score - building.price * res.epoch;
+    res.selectedIndex = null;
+    emit(res);
+  }
+
+  void cancelBuilding() {
+    GameModel res = _cloneModel();
+    PlateModel seletedPlate = res.plates[state.selectedIndex!];
+    int price = seletedPlate.building!.price * seletedPlate.level;
+    seletedPlate.building = null;
+    seletedPlate.buildProgress = null;
+    res.selectedIndex = null;
+    res.score += price;
+    return emit(res);
+  }
+
+  void sellBuilding() {
+    GameModel res = _cloneModel();
+    PlateModel seletedPlate = res.plates[state.selectedIndex!];
+    int price =
+        (seletedPlate.building!.price * seletedPlate.level * 0.7).toInt();
+    seletedPlate.building = null;
+    seletedPlate.buildProgress = null;
+    res.selectedIndex = null;
+    res.score += price;
+    return emit(res);
+  }
+
+  void nextEpoch() {
+    GameModel res = _cloneModel();
+    PlateModel seletedPlate = res.plates[state.selectedIndex!];
+    int price = seletedPlate.building!.price;
+    if (state.epoch == 5 || state.score < price) {
+      return;
+    }
+    seletedPlate.level++;
+    res.epoch++;
+    seletedPlate.hp += seletedPlate.building!.hp;
+    res.score -= price;
+    res.selectedIndex = null;
+    return emit(res);
+  }
+
+  void upgradeBuilding() {
+    GameModel res = _cloneModel();
+    PlateModel seletedPlate = res.plates[state.selectedIndex!];
+    int price = seletedPlate.building!.price;
+    if (seletedPlate.level >= state.epoch || state.score < price) {
+      return;
+    }
+    seletedPlate.level++;
+    seletedPlate.buildProgress = 0;
+    res.score -= price;
+    res.selectedIndex = null;
     return emit(res);
   }
 
   void changeState() {
-    List<PlateModel> plates = [...state.plates];
-    for (var p in plates) {
+    GameModel res = _cloneModel();
+    for (var p in res.plates) {
+      _counter++;
       if (p.buildProgress == p.building?.hp) {
         p.buildProgress = null;
       } else if (p.buildProgress != null) {
         p.buildProgress = p.buildProgress! + 1;
         p.hp++;
       }
+      if (_counter == 32) {
+        _counter = 0;
+        if (p.building?.type == BuildingType.farm && p.buildProgress == null) {
+          res.score += res.epoch * 5;
+        }
+      }
     }
-    GameModel res = GameModel(
-        score: state.score,
-        plates: plates,
-        selectedIndex: state.selectedIndex,
-        width: state.width);
-    Future.delayed(const Duration(milliseconds: 700), () {
+    Future.delayed(const Duration(milliseconds: 500), () {
       changeState();
     });
 
@@ -54,12 +137,9 @@ class GameCubit extends Cubit<GameModel> {
   }
 
   void selectPlate(int? index) {
-    GameModel res = GameModel(
-        score: state.score,
-        plates: state.plates,
-        selectedIndex:
-            index == null || state.selectedIndex == index ? null : index,
-        width: state.width);
+    GameModel res = _cloneModel();
+    res.selectedIndex =
+        index == null || state.selectedIndex == index ? null : index;
     return emit(res);
   }
 }

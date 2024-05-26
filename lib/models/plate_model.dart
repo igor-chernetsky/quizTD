@@ -1,16 +1,17 @@
-import 'dart:math';
-
 import 'package:quiz_td/models/building_model.dart';
 
 class PlateModel {
-  Point point;
   BuildingModel? building;
   int? buildProgress;
   int hp;
+  int level;
 
-  PlateModel(
-      {this.point = const Point(0, 0),
-      this.building,
-      this.hp = 0,
-      this.buildProgress});
+  PlateModel({this.building, this.hp = 0, this.buildProgress, this.level = 1});
+
+  int? get topHP {
+    if (building?.hp == null) {
+      return null;
+    }
+    return level * building!.hp;
+  }
 }

@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:quiz_td/models/building_model.dart';
 
 class BuildingWidget extends StatelessWidget {
-  BuildingModel? building;
-  double size;
-  Function? onTap;
-  BuildingWidget({required this.size, super.key, this.building, this.onTap});
+  final BuildingModel? building;
+  final double size;
+  final Function? onTap;
+  final int? level;
+  const BuildingWidget(
+      {required this.size, super.key, this.building, this.onTap, this.level});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +15,13 @@ class BuildingWidget extends StatelessWidget {
     if (building != null) {
       switch (building!.type) {
         case BuildingType.farm:
-          imgPath = 'assets/img/farm1.png';
+          imgPath = 'assets/img/farm${level ?? 1}.png';
           break;
         case BuildingType.main:
-          imgPath = 'assets/img/main1.png';
+          imgPath = 'assets/img/main${level ?? 1}.png';
           break;
         case BuildingType.warhouse:
-          imgPath = 'assets/img/warhouse1.png';
+          imgPath = 'assets/img/warhouse${level ?? 1}.png';
           break;
         default:
           imgPath = 'assets/img/concrete.png';

@@ -29,3 +29,9 @@ MaterialColor getMaterialColor(Color color) {
 
   return MaterialColor(color.value, shades);
 }
+
+Color getHealthColor(double hp) {
+  if (hp < 0.33) return const Color.fromRGBO(230, 76, 76, 0.8);
+  if (hp < 0.66) return const Color.fromRGBO(230, 150, 46, 0.8);
+  return const Color.fromRGBO(76, 230, 117, 0.8);
+}
