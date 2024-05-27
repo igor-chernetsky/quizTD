@@ -16,8 +16,6 @@ class MainWidget extends StatelessWidget {
     double widgetHeight = MediaQuery.of(context).size.height / 3;
     double size = MediaQuery.of(context).size.width / 3;
 
-    double val = plate.hp / plate.building!.hp;
-
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Container(
               height: widgetHeight,
@@ -38,7 +36,7 @@ class MainWidget extends StatelessWidget {
                             width: size * 2 - 10,
                             child: BarWidget(
                               value: plate.hp,
-                              total: plate.building!.hp,
+                              total: plate.building!.hp * plate.level,
                               icon: Icons.favorite,
                             )),
                         Row(
@@ -49,11 +47,12 @@ class MainWidget extends StatelessWidget {
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),
-                            IconButton(
-                              onPressed: () =>
-                                  context.read<GameCubit>().nextEpoch(),
-                              icon: const Icon(Icons.upgrade),
-                            ),
+                            ElevatedButton.icon(
+                                onPressed: () =>
+                                    context.read<GameCubit>().nextEpoch(),
+                                icon: const Icon(Icons.upgrade),
+                                label:
+                                    Text('Upgrade \$${plate.building!.price}'))
                           ],
                         )
                       ])

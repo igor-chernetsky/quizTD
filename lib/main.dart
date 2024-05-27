@@ -39,6 +39,7 @@ class QuizTDApp extends StatelessWidget {
             style: OutlinedButton.styleFrom(
                 side: BorderSide(color: AppColors.primaryColor))),
         colorScheme: ColorScheme.fromSwatch(
+            brightness: Brightness.dark,
             backgroundColor: AppColors.neutralBackground,
             cardColor: AppColors.secondaryColor,
             primarySwatch: AppColors.primaryColor,

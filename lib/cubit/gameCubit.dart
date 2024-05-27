@@ -43,7 +43,6 @@ class GameCubit extends Cubit<GameModel> {
       GameModel res = _cloneModel();
       PlateModel mainPlate = res.plates[_mainIndex];
       mainPlate.hp += delta;
-      print(mainPlate.hp);
       return emit(res);
     }
   }
@@ -101,12 +100,12 @@ class GameCubit extends Cubit<GameModel> {
   void upgradeBuilding() {
     GameModel res = _cloneModel();
     PlateModel seletedPlate = res.plates[state.selectedIndex!];
-    int price = seletedPlate.building!.price;
+    int price = seletedPlate.building!.price * seletedPlate.level;
     if (seletedPlate.level >= state.epoch || state.score < price) {
       return;
     }
     seletedPlate.level++;
-    seletedPlate.buildProgress = 0;
+    seletedPlate.buildProgress = seletedPlate.hp;
     res.score -= price;
     res.selectedIndex = null;
     return emit(res);
@@ -116,7 +115,7 @@ class GameCubit extends Cubit<GameModel> {
     GameModel res = _cloneModel();
     for (var p in res.plates) {
       _counter++;
-      if (p.buildProgress == p.building?.hp) {
+      if (p.building == null || p.buildProgress == p.building!.hp * p.level) {
         p.buildProgress = null;
       } else if (p.buildProgress != null) {
         p.buildProgress = p.buildProgress! + 1;
@@ -125,7 +124,7 @@ class GameCubit extends Cubit<GameModel> {
       if (_counter == 32) {
         _counter = 0;
         if (p.building?.type == BuildingType.farm && p.buildProgress == null) {
-          res.score += res.epoch * 5;
+          res.score += p.level * 5;
         }
       }
     }

@@ -35,7 +35,7 @@ class BuildingProcessWidget extends StatelessWidget {
                             width: size * 2 - 10,
                             child: BarWidget(
                               value: plate.hp,
-                              total: plate.building!.hp,
+                              total: plate.building!.hp * plate.level,
                               icon: Icons.favorite,
                             )),
                         IconButton.filled(

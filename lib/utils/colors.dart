@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static final primaryColor = getMaterialColor(const Color(0xFF2196F3));
-  static final secondaryColor = getMaterialColor(const Color(0xFFBBDEFB));
-  static final accentColor = getMaterialColor(const Color(0xFF0D47A1));
-  static final neutralBackground = getMaterialColor(const Color(0xFFF5F5F5));
+  static final primaryColor = getMaterialColor(const Color(0xFFFF073A));
+  static final secondaryColor = getMaterialColor(const Color(0xFF333333));
+  static final accentColor = getMaterialColor(const Color(0xFF990000));
+  static final neutralBackground = getMaterialColor(const Color(0xFF111111));
   static final textColor = getMaterialColor(const Color(0xFF333333));
 }
 

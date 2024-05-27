@@ -27,7 +27,7 @@ class GameScreen extends StatelessWidget {
           ],
               child: BlocBuilder<GameCubit, GameModel>(
                 builder: (context, gm) => const Column(
-                  children: [TopWidget(), ScoreWidget(), PlaygroundWidget()],
+                  children: [PlaygroundWidget(), ScoreWidget(), TopWidget()],
                 ),
               ))),
     );

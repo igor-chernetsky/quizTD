@@ -4,7 +4,7 @@ import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/widget/buildingWidget.dart';
-import 'package:quiz_td/widget/healthBarWidget.dart';
+import 'package:quiz_td/widget/infoWidgets/healthBarWidget.dart';
 
 class PlaygroundWidget extends StatelessWidget {
   const PlaygroundWidget({super.key});
@@ -24,7 +24,16 @@ class PlaygroundWidget extends StatelessWidget {
         padding: const EdgeInsets.only(bottom: 4),
         child: HealthbarWidget(
           hp: plate.hp / plate.topHP!,
-          width: size - 8,
+          width: size - 4,
+        ),
+      ));
+    } else {
+      res.add(Padding(
+        padding: const EdgeInsets.only(bottom: 4),
+        child: HealthbarWidget(
+          color: const Color(0xFF990000),
+          hp: 0,
+          width: size - 4,
         ),
       ));
     }
@@ -58,26 +67,30 @@ class PlaygroundWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(builder: (context, gm) {
       double size = MediaQuery.of(context).size.width / (gm.width + 2);
-      return Column(
-        children: [
-          SizedBox(
-            height: size,
-          ),
-          Row(
-            children: [
-              SizedBox(
-                width: size,
-              ),
-              drawCity(context, gm.plates, gm.width, size),
-              SizedBox(
-                width: size,
-              ),
-            ],
-          ),
-          SizedBox(
-            height: size,
-          ),
-        ],
+      return Container(
+        decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage('assets/img/bg1.png'))),
+        child: Column(
+          children: [
+            SizedBox(
+              height: size,
+            ),
+            Row(
+              children: [
+                SizedBox(
+                  width: size,
+                ),
+                drawCity(context, gm.plates, gm.width, size),
+                SizedBox(
+                  width: size,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: size,
+            ),
+          ],
+        ),
       );
     });
   }
