@@ -13,12 +13,11 @@ class MainWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double widgetHeight = MediaQuery.of(context).size.height / 3;
-    double size = MediaQuery.of(context).size.width / 3;
+    double size = MediaQuery.of(context).size.width / 2;
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Container(
-              height: widgetHeight,
+              padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -32,13 +31,6 @@ class MainWidget extends StatelessWidget {
                             context.read<GameCubit>().build(plate.building!),
                       ),
                       Column(children: [
-                        SizedBox(
-                            width: size * 2 - 10,
-                            child: BarWidget(
-                              value: plate.hp,
-                              total: plate.building!.hp * plate.level,
-                              icon: Icons.favorite,
-                            )),
                         Row(
                           children: [
                             Text(
@@ -47,17 +39,24 @@ class MainWidget extends StatelessWidget {
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),
-                            ElevatedButton.icon(
-                                onPressed: () =>
-                                    context.read<GameCubit>().nextEpoch(),
-                                icon: const Icon(Icons.upgrade),
-                                label:
-                                    Text('Upgrade \$${plate.building!.price}'))
                           ],
-                        )
+                        ),
+                        ElevatedButton.icon(
+                            onPressed: () =>
+                                context.read<GameCubit>().nextEpoch(),
+                            icon: const Icon(Icons.upgrade),
+                            label: Text('Upgrade \$${plate.building!.price}'))
                       ])
                     ],
                   ),
+                  Container(
+                      padding: const EdgeInsets.only(top: 10),
+                      width: MediaQuery.of(context).size.width - 10,
+                      child: BarWidget(
+                        value: plate.hp,
+                        total: plate.building!.hp * plate.level,
+                        icon: Icons.favorite,
+                      )),
                   IconButton.filled(
                     onPressed: () =>
                         context.read<GameCubit>().selectPlate(null),

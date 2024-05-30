@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
@@ -13,12 +12,11 @@ class FarmWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double widgetHeight = MediaQuery.of(context).size.height / 3;
-    double size = MediaQuery.of(context).size.width / 3;
+    double size = MediaQuery.of(context).size.width / 2;
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Container(
-              height: widgetHeight,
+              padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -32,13 +30,6 @@ class FarmWidget extends StatelessWidget {
                             context.read<GameCubit>().build(plate.building!),
                       ),
                       Column(children: [
-                        SizedBox(
-                            width: size * 2 - 10,
-                            child: BarWidget(
-                              value: plate.hp,
-                              total: plate.building!.hp * plate.level,
-                              icon: Icons.favorite,
-                            )),
                         Row(
                           children: [
                             Text(
@@ -47,22 +38,25 @@ class FarmWidget extends StatelessWidget {
                                 color: Theme.of(context).primaryColor,
                               ),
                             ),
-                            ElevatedButton.icon(
-                                onPressed: () =>
-                                    context.read<GameCubit>().upgradeBuilding(),
-                                icon: const Icon(Icons.upgrade),
-                                label:
-                                    Text('Upgrade \$${plate.building!.price}'))
                           ],
                         ),
-                        IconButton.filled(
-                          onPressed: () =>
-                              context.read<GameCubit>().sellBuilding(),
-                          icon: const Icon(Icons.attach_money),
-                        )
+                        ElevatedButton.icon(
+                            onPressed: () => plate.level >= gm.epoch
+                                ? null
+                                : context.read<GameCubit>().upgradeBuilding(),
+                            icon: const Icon(Icons.upgrade),
+                            label: Text('Upgrade \$${plate.building!.price}'))
                       ])
                     ],
                   ),
+                  Container(
+                      padding: const EdgeInsets.only(top: 10),
+                      width: MediaQuery.of(context).size.width - 10,
+                      child: BarWidget(
+                        value: plate.hp,
+                        total: plate.building!.hp * plate.level,
+                        icon: Icons.favorite,
+                      )),
                   IconButton.filled(
                     onPressed: () =>
                         context.read<GameCubit>().selectPlate(null),

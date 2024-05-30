@@ -15,7 +15,7 @@ class BarWidget extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         Container(
-          padding: EdgeInsets.fromLTRB(icon == null ? 2 : 28, 2, 2, 2),
+          padding: EdgeInsets.fromLTRB(icon == null ? 2 : 32, 2, 2, 2),
           height: 34,
           width: double.infinity,
           decoration: BoxDecoration(
@@ -28,11 +28,11 @@ class BarWidget extends StatelessWidget {
             child: Container(
                 decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.all(Radius.circular(14)))),
+                    borderRadius: const BorderRadius.all(Radius.circular(14)))),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 6),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [

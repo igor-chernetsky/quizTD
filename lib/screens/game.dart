@@ -4,7 +4,6 @@ import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/cubit/questionCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/widget/playgroundWidget.dart';
-import 'package:quiz_td/widget/scoreWidget.dart';
 import 'package:quiz_td/widget/topWidget.dart';
 
 class GameScreen extends StatelessWidget {
@@ -16,20 +15,22 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: MultiBlocProvider(
-              providers: [
-            BlocProvider<GameCubit>(
-              create: (BuildContext context) => GameCubit()..changeState(),
-            ),
-            BlocProvider<QuestionCubit>(
-              create: (BuildContext context) => QuestionCubit()..setQuestions(),
-            ),
-          ],
-              child: BlocBuilder<GameCubit, GameModel>(
-                builder: (context, gm) => const Column(
-                  children: [PlaygroundWidget(), ScoreWidget(), TopWidget()],
-                ),
-              ))),
+        child: MultiBlocProvider(
+            providers: [
+              BlocProvider<GameCubit>(
+                create: (BuildContext context) => GameCubit()..changeState(),
+              ),
+              BlocProvider<QuestionCubit>(
+                create: (BuildContext context) =>
+                    QuestionCubit()..setQuestions(),
+              ),
+            ],
+            child: BlocBuilder<GameCubit, GameModel>(
+              builder: (context, gm) => const Column(
+                children: [PlaygroundWidget(), TopWidget()],
+              ),
+            )),
+      ),
     );
   }
 }

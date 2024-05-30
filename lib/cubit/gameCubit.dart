@@ -4,7 +4,6 @@ import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 
 class GameCubit extends Cubit<GameModel> {
-  int _counter = 0;
   final int _mainIndex = 4;
   GameCubit()
       : super(GameModel(plates: [
@@ -21,7 +20,7 @@ class GameCubit extends Cubit<GameModel> {
           PlateModel(),
           PlateModel(),
           PlateModel()
-        ]));
+        ], enemies: List.filled(12, null)));
 
   GameModel _cloneModel() {
     List<PlateModel> plates = [...state.plates];
@@ -30,6 +29,8 @@ class GameCubit extends Cubit<GameModel> {
         score: state.score,
         plates: plates,
         selectedIndex: state.selectedIndex,
+        yearNumber: state.yearNumber,
+        counter: state.counter,
         width: state.width);
   }
 
@@ -111,22 +112,28 @@ class GameCubit extends Cubit<GameModel> {
     return emit(res);
   }
 
+  void selectPlate(int? index) {
+    GameModel res = _cloneModel();
+    res.selectedIndex =
+        index == null || state.selectedIndex == index ? null : index;
+    return emit(res);
+  }
+
   void changeState() {
     GameModel res = _cloneModel();
+    res.counter += 0.01;
     for (var p in res.plates) {
-      _counter++;
       if (p.building == null || p.buildProgress == p.building!.hp * p.level) {
         p.buildProgress = null;
       } else if (p.buildProgress != null) {
         p.buildProgress = p.buildProgress! + 1;
         p.hp++;
       }
-      if (_counter == 32) {
-        _counter = 0;
-        if (p.building?.type == BuildingType.farm && p.buildProgress == null) {
-          res.score += p.level * 5;
-        }
-      }
+    }
+    if (res.counter >= 1) {
+      res.counter = 0;
+      res.yearNumber++;
+      res.score += getIncome();
     }
     Future.delayed(const Duration(milliseconds: 500), () {
       changeState();
@@ -135,10 +142,13 @@ class GameCubit extends Cubit<GameModel> {
     return emit(res);
   }
 
-  void selectPlate(int? index) {
-    GameModel res = _cloneModel();
-    res.selectedIndex =
-        index == null || state.selectedIndex == index ? null : index;
-    return emit(res);
+  int getIncome() {
+    int income = 0;
+    for (var p in state.plates) {
+      if (p.building?.type == BuildingType.farm && p.buildProgress == null) {
+        income += p.level * 30;
+      }
+    }
+    return income;
   }
 }
