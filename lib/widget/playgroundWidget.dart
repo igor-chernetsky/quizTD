@@ -106,35 +106,13 @@ class PlaygroundWidget extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    ActionWidget(
-                      size: size,
-                      index: 11,
-                    ),
-                    ActionWidget(
-                      size: size,
-                      index: 10,
-                    ),
-                    ActionWidget(
-                      size: size,
-                      index: 9,
-                    ),
+                    ...getActionWidgets(size, gm.width * 3, gm.width),
                   ],
                 ),
                 drawCity(context, gm.plates, gm.width, size, gm.selectedIndex),
                 Column(
                   children: [
-                    ActionWidget(
-                      size: size,
-                      index: 3,
-                    ),
-                    ActionWidget(
-                      size: size,
-                      index: 4,
-                    ),
-                    ActionWidget(
-                      size: size,
-                      index: 5,
-                    ),
+                    ...getActionWidgets(size, gm.width, gm.width),
                   ],
                 )
               ],

@@ -5,6 +5,7 @@ class PlateModel {
   int? buildProgress;
   int hp;
   int level;
+  int? targetIndex;
 
   PlateModel({this.building, this.hp = 0, this.buildProgress, this.level = 1});
 
@@ -13,5 +14,9 @@ class PlateModel {
       return null;
     }
     return level * building!.hp;
+  }
+
+  int get dps {
+    return level * building!.dps;
   }
 }
