@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/widget/buildingWidget.dart';
+import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 
 class BuilderWidget extends StatelessWidget {
   const BuilderWidget({super.key});
@@ -14,11 +14,14 @@ class BuilderWidget extends StatelessWidget {
     double size = MediaQuery.of(context).size.width / 4;
     List<BuildingModel> buildings = [
       BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
-      BuildingModel(type: BuildingType.warhouse, price: 50, hp: 200)
+      BuildingModel(
+          type: BuildingType.tower, price: 50, hp: 150, dps: 10, buildSpeed: 5),
+      BuildingModel(
+          type: BuildingType.warhouse, price: 50, hp: 200, buildSpeed: 10)
     ];
 
     return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => Container(
+        builder: (context, gm) => SizedBox(
               height: widgetHeight,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

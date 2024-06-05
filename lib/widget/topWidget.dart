@@ -5,9 +5,11 @@ import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/widget/topWidgets/builderWidget.dart';
 import 'package:quiz_td/widget/topWidgets/buildingProcessWidget.dart';
+import 'package:quiz_td/widget/topWidgets/enemyWidget.dart';
 import 'package:quiz_td/widget/topWidgets/farmWidget.dart';
 import 'package:quiz_td/widget/topWidgets/mainWidget.dart';
 import 'package:quiz_td/widget/topWidgets/quizWidget.dart';
+import 'package:quiz_td/widget/topWidgets/towerWidget.dart';
 
 class TopWidget extends StatelessWidget {
   const TopWidget({super.key});
@@ -15,8 +17,11 @@ class TopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(builder: (context, gm) {
-      if (gm.selectedPlate == null) {
+      if (gm.selectedPlate == null && gm.selectedEnemy == null) {
         return const QuizWidget();
+      }
+      if (gm.selectedEnemy != null) {
+        return Enemywidget(enemy: gm.selectedEnemy!);
       }
       if (gm.selectedPlate!.building == null) {
         return const BuilderWidget();
@@ -28,6 +33,11 @@ class TopWidget extends StatelessWidget {
       }
       if (gm.selectedPlate!.building!.type == BuildingType.farm) {
         return FarmWidget(
+          plate: gm.selectedPlate!,
+        );
+      }
+      if (gm.selectedPlate!.building!.type == BuildingType.tower) {
+        return TowerWidget(
           plate: gm.selectedPlate!,
         );
       }

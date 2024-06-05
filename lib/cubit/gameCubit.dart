@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/enemy_model.dart';
@@ -17,7 +15,7 @@ class GameCubit extends Cubit<GameModel> {
           PlateModel(),
           PlateModel(
             building: BuildingModel(
-                hp: 1000, price: 200, type: BuildingType.main, dps: 2),
+                hp: 1000, price: 200, type: BuildingType.main, dps: 1),
             hp: 1000,
           ),
           PlateModel(),
@@ -28,15 +26,15 @@ class GameCubit extends Cubit<GameModel> {
 
   GameModel _cloneModel() {
     List<PlateModel> plates = [...state.plates];
-    List<EnemyModel?> enemies = [...state.enemies];
     GameModel res = GameModel(
         epoch: state.epoch,
         score: state.score,
         plates: plates,
         selectedIndex: state.selectedIndex,
+        selectedEnemyIndex: state.selectedEnemyIndex,
         yearNumber: state.yearNumber,
         counter: state.counter,
-        enemies: enemies,
+        enemies: state.enemies,
         width: state.width);
     return res;
   }
@@ -121,21 +119,30 @@ class GameCubit extends Cubit<GameModel> {
 
   void selectPlate(int? index) {
     GameModel res = _cloneModel();
+    res.selectedEnemyIndex = null;
     res.selectedIndex =
         index == null || state.selectedIndex == index ? null : index;
+    return emit(res);
+  }
+
+  void selectEnemy(int? index) {
+    GameModel res = _cloneModel();
+    res.selectedIndex = null;
+    res.selectedEnemyIndex =
+        index == null || state.selectedEnemyIndex == index ? null : index;
     return emit(res);
   }
 
   void changeState() {
     GameModel res = _cloneModel();
     res.counter += 0.02;
-    for (var p in res.plates) {
-      _changeBuildState(p);
-      _buildingAttack(p, res.enemies);
+    for (int i = 0; i < res.plates.length; i++) {
+      _changeBuildState(res.plates[i]);
+      _buildingAttack(res.plates[i], i, res.enemies);
     }
     _enemyAttack(res);
     if (res.counter >= 1) {
-      var enemies = getEnemies();
+      var enemies = EpochHelper.generateEnemies(res.width, res.yearNumber);
       if (enemies != null) {
         for (int i = 0; i < enemies.length; i++) {
           if (enemies[i] != null) {
@@ -160,8 +167,8 @@ class GameCubit extends Cubit<GameModel> {
     if (p.building == null || p.buildProgress == p.building!.hp * p.level) {
       p.buildProgress = null;
     } else if (p.buildProgress != null) {
-      p.buildProgress = p.buildProgress! + 1;
-      p.hp++;
+      p.buildProgress = p.buildProgress! + p.building!.buildSpeed;
+      p.hp += p.building!.buildSpeed;
     }
   }
 
@@ -193,23 +200,11 @@ class GameCubit extends Cubit<GameModel> {
     }
   }
 
-  void _buildingAttack(PlateModel p, List<EnemyModel?> enemies) {
+  void _buildingAttack(PlateModel p, int index, List<EnemyModel?> enemies) {
     if (p.building?.type == BuildingType.main) {
-      if (p.targetIndex == null) {
-        int enemyIndex = enemies.indexWhere((e) => e != null);
-        if (enemyIndex != -1) {
-          p.targetIndex = enemyIndex;
-        }
-      }
-      if (p.targetIndex != null) {
-        if (enemies[p.targetIndex!] != null) {
-          enemies[p.targetIndex!]!.hp -= p.dps;
-          if (enemies[p.targetIndex!]!.hp <= 0) {
-            enemies[p.targetIndex!] = null;
-            p.targetIndex = null;
-          }
-        }
-      }
+      EpochHelper.setBuildingTarget(p, enemies);
+    } else if (p.building?.type == BuildingType.tower) {
+      EpochHelper.setRangeBuildingTarget(p, enemies, index, state.width, 1);
     }
   }
 
@@ -217,36 +212,9 @@ class GameCubit extends Cubit<GameModel> {
     int income = 0;
     for (var p in state.plates) {
       if (p.building?.type == BuildingType.farm && p.buildProgress == null) {
-        income += p.level * 30;
+        income += p.income;
       }
     }
     return income;
-  }
-
-  List<EnemyType?>? getEnemies() {
-    int min = 0;
-    int max = state.width * 4;
-    if (state.yearNumber < 4) {
-      max = 2;
-    } else if (state.yearNumber < 5) {
-      max = 3;
-    } else if (state.yearNumber < 8) {
-      max = 4;
-    } else if (state.yearNumber < 12) {
-      min = 1;
-      max = 5;
-    } else if (state.yearNumber < 17) {
-      min = 1;
-      max = 6;
-    } else if (state.yearNumber < 24) {
-      min = 2;
-      max = 7;
-    } else {
-      min = 3;
-    }
-    Random rnd = Random();
-    int count = rnd.nextInt(max) + min;
-    var k = EpochHelper.getDayItem(count, state.width * 4);
-    return k?.enemies;
   }
 }

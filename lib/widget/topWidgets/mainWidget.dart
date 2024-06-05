@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
-import 'package:quiz_td/widget/buildingWidget.dart';
+import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
 
 class MainWidget extends StatelessWidget {
@@ -27,8 +27,6 @@ class MainWidget extends StatelessWidget {
                         level: plate.level,
                         size: size,
                         building: plate.building,
-                        onTap: () =>
-                            context.read<GameCubit>().build(plate.building!),
                       ),
                       Column(children: [
                         Row(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/cubit/questionCubit.dart';
+import 'package:quiz_td/cubit/statsCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/widget/playgroundWidget.dart';
 import 'package:quiz_td/widget/topWidget.dart';
@@ -23,6 +24,9 @@ class GameScreen extends StatelessWidget {
               BlocProvider<QuestionCubit>(
                 create: (BuildContext context) =>
                     QuestionCubit()..setQuestions(),
+              ),
+              BlocProvider<StatsCubit>(
+                create: (BuildContext context) => StatsCubit(),
               ),
             ],
             child: BlocBuilder<GameCubit, GameModel>(

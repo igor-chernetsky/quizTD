@@ -19,4 +19,8 @@ class PlateModel {
   int get dps {
     return level * building!.dps;
   }
+
+  int get income {
+    return level * 30;
+  }
 }

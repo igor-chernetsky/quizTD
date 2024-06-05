@@ -6,6 +6,7 @@ class GameModel {
   List<PlateModel> plates;
   int width;
   int? selectedIndex;
+  int? selectedEnemyIndex;
   int epoch;
   int yearNumber;
   double counter;
@@ -18,6 +19,7 @@ class GameModel {
       this.counter = 0,
       this.plates = const [],
       this.enemies = const [],
+      this.selectedEnemyIndex,
       this.selectedIndex}) {
     if (enemies.isEmpty) {
       enemies = List.filled(width * 4, null);
@@ -29,5 +31,16 @@ class GameModel {
       return null;
     }
     return plates[selectedIndex!];
+  }
+
+  EnemyModel? get selectedEnemy {
+    if (selectedEnemyIndex == null) {
+      return null;
+    }
+    if (enemies[selectedEnemyIndex!] == null) {
+      selectedEnemyIndex = null;
+      return null;
+    }
+    return enemies[selectedEnemyIndex!];
   }
 }
