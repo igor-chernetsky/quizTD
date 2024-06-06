@@ -38,8 +38,7 @@ class EpochHelper {
         as List<EnemyType?>;
     enemies.addAll(res);
     _counter = _counter + count;
-    var t = DayMapItem(enemies: enemies, width: width);
-    return t;
+    return DayMapItem(enemies: enemies, width: width);
   }
 
   static int? getTargetByIndex(int index, int width, List<PlateModel> plates) {
@@ -96,8 +95,7 @@ class EpochHelper {
     }
   }
 
-  static setRangeBuildingTarget(PlateModel p, List<EnemyModel?> enemies,
-      int index, int width, int range) {
+  static List<int> getTowerPotential(int index, int width, int range) {
     Map<int, List<int>> targetsMap = {
       0: [0, 9],
       1: [1, 0, 2],
@@ -124,10 +122,16 @@ class EpochHelper {
       };
     }
 
+    return targetsMap[index] ?? [];
+  }
+
+  static setRangeBuildingTarget(PlateModel p, List<EnemyModel?> enemies,
+      int index, int width, int range) {
     if (p.targetIndex == null) {
       int enemyIndex = -1;
       for (int i = 0; i < enemies.length; i++) {
-        if (enemies[i] != null && targetsMap[index]!.contains(i)) {
+        if (enemies[i] != null &&
+            getTowerPotential(index, width, range).contains(i)) {
           enemyIndex = i;
           break;
         }

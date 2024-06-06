@@ -7,6 +7,7 @@ import 'package:quiz_td/utils/enemies.dart';
 
 class GameCubit extends Cubit<GameModel> {
   final int _mainIndex = 4;
+  final int TOWER_RANGE = 1;
   GameCubit()
       : super(GameModel(plates: [
           PlateModel(),
@@ -35,6 +36,7 @@ class GameCubit extends Cubit<GameModel> {
         yearNumber: state.yearNumber,
         counter: state.counter,
         enemies: state.enemies,
+        actionUnderAttack: state.actionUnderAttack,
         width: state.width);
     return res;
   }
@@ -73,6 +75,7 @@ class GameCubit extends Cubit<GameModel> {
     seletedPlate.buildProgress = null;
     res.selectedIndex = null;
     res.score += price;
+    _setUnderAttackActions(res);
     return emit(res);
   }
 
@@ -85,6 +88,7 @@ class GameCubit extends Cubit<GameModel> {
     seletedPlate.buildProgress = null;
     res.selectedIndex = null;
     res.score += price;
+    _setUnderAttackActions(res);
     return emit(res);
   }
 
@@ -137,7 +141,7 @@ class GameCubit extends Cubit<GameModel> {
     GameModel res = _cloneModel();
     res.counter += 0.02;
     for (int i = 0; i < res.plates.length; i++) {
-      _changeBuildState(res.plates[i]);
+      _changeBuildState(res.plates[i], res);
       _buildingAttack(res.plates[i], i, res.enemies);
     }
     _enemyAttack(res);
@@ -163,9 +167,10 @@ class GameCubit extends Cubit<GameModel> {
     return emit(res);
   }
 
-  void _changeBuildState(PlateModel p) {
+  void _changeBuildState(PlateModel p, GameModel res) {
     if (p.building == null || p.buildProgress == p.building!.hp * p.level) {
       p.buildProgress = null;
+      _setUnderAttackActions(res);
     } else if (p.buildProgress != null) {
       p.buildProgress = p.buildProgress! + p.building!.buildSpeed;
       p.hp += p.building!.buildSpeed;
@@ -189,6 +194,7 @@ class GameCubit extends Cubit<GameModel> {
           res.plates[enemy.targetIndex!].hp -= enemy.dps;
           if (res.plates[enemy.targetIndex!].hp <= 0) {
             res.plates[enemy.targetIndex!] = PlateModel();
+            _setUnderAttackActions(res);
             enemy.targetIndex = null;
           }
           // remove enemy if it's a one time use
@@ -204,8 +210,21 @@ class GameCubit extends Cubit<GameModel> {
     if (p.building?.type == BuildingType.main) {
       EpochHelper.setBuildingTarget(p, enemies);
     } else if (p.building?.type == BuildingType.tower) {
-      EpochHelper.setRangeBuildingTarget(p, enemies, index, state.width, 1);
+      EpochHelper.setRangeBuildingTarget(
+          p, enemies, index, state.width, TOWER_RANGE);
     }
+  }
+
+  void _setUnderAttackActions(GameModel res) {
+    List<int> potential = [];
+    for (int i = 0; i < res.plates.length; i++) {
+      if (res.plates[i].building?.type == BuildingType.tower &&
+          res.plates[i].buildProgress == null) {
+        potential
+            .addAll(EpochHelper.getTowerPotential(i, res.width, TOWER_RANGE));
+      }
+    }
+    res.actionUnderAttack = potential.toSet().toList();
   }
 
   int getIncome() {

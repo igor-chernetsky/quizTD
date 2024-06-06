@@ -10,6 +10,7 @@ class GameModel {
   int epoch;
   int yearNumber;
   double counter;
+  List<int> actionUnderAttack;
   late List<EnemyModel?> enemies;
   GameModel(
       {this.score = 0,
@@ -20,6 +21,7 @@ class GameModel {
       this.plates = const [],
       this.enemies = const [],
       this.selectedEnemyIndex,
+      this.actionUnderAttack = const [],
       this.selectedIndex}) {
     if (enemies.isEmpty) {
       enemies = List.filled(width * 4, null);

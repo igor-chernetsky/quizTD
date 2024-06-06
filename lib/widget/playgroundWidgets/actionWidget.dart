@@ -38,25 +38,46 @@ class ActionWidget extends StatelessWidget {
     ];
   }
 
+  getAttackWrapper(GameModel gm, Widget child) {
+    if (gm.actionUnderAttack.contains(index)) {
+      return Stack(
+        children: [
+          child,
+          Container(
+            width: size,
+            height: size,
+            decoration: const BoxDecoration(
+                color: Color(0x22FF073A),
+                borderRadius: BorderRadius.all(Radius.circular(4))),
+          )
+        ],
+      );
+    }
+    return child;
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => GestureDetector(
               onTap: () => onTap != null ? onTap!() : null,
-              child: Transform.scale(
-                scale: gm.selectedEnemyIndex == index ? 1.2 : 1,
-                child: SizedBox(
-                  height: size,
-                  width: size,
-                  child: GestureDetector(
-                    child: Column(
-                      children: [
-                        ...getEnemyImg(gm.enemies[index], size - 20),
-                      ],
+              child: getAttackWrapper(
+                gm,
+                Transform.scale(
+                  scale: gm.selectedEnemyIndex == index ? 1.2 : 1,
+                  child: SizedBox(
+                    height: size,
+                    width: size,
+                    child: GestureDetector(
+                      child: Column(
+                        children: [
+                          ...getEnemyImg(gm.enemies[index], size - 20),
+                        ],
+                      ),
+                      onTap: () => gm.enemies[index] == null
+                          ? null
+                          : context.read<GameCubit>().selectEnemy(index),
                     ),
-                    onTap: () => gm.enemies[index] == null
-                        ? null
-                        : context.read<GameCubit>().selectEnemy(index),
                   ),
                 ),
               ),
