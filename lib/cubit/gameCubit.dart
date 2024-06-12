@@ -75,7 +75,6 @@ class GameCubit extends Cubit<GameModel> {
     seletedPlate.buildProgress = null;
     res.selectedIndex = null;
     res.score += price;
-    _setUnderAttackActions(res);
     return emit(res);
   }
 
@@ -84,11 +83,14 @@ class GameCubit extends Cubit<GameModel> {
     PlateModel seletedPlate = res.plates[state.selectedIndex!];
     int price =
         (seletedPlate.building!.price * seletedPlate.level * 0.7).toInt();
+    BuildingType? sellType = seletedPlate.building?.type;
     seletedPlate.building = null;
     seletedPlate.buildProgress = null;
     res.selectedIndex = null;
     res.score += price;
-    _setUnderAttackActions(res);
+    if (sellType == BuildingType.tower) {
+      _setUnderAttackActions(res);
+    }
     return emit(res);
   }
 
@@ -145,7 +147,8 @@ class GameCubit extends Cubit<GameModel> {
       _buildingAttack(res.plates[i], i, res.enemies);
     }
     _enemyAttack(res);
-    if (res.counter >= 1) {
+    double cnt = double.parse(res.counter.toStringAsFixed(2));
+    if (cnt == 1 || cnt == 0.5 || cnt == 0.26 || cnt == 0.76) {
       var enemies = EpochHelper.generateEnemies(res.width, res.yearNumber);
       if (enemies != null) {
         for (int i = 0; i < enemies.length; i++) {
@@ -156,9 +159,11 @@ class GameCubit extends Cubit<GameModel> {
       } else {
         // TODO: game over
       }
-      res.counter = 0;
-      res.yearNumber++;
-      res.score += getIncome();
+      if (cnt == 1) {
+        res.counter = 0;
+        res.yearNumber++;
+        res.score += getIncome();
+      }
     }
     Future.delayed(const Duration(milliseconds: 500), () {
       changeState();
@@ -167,10 +172,17 @@ class GameCubit extends Cubit<GameModel> {
     return emit(res);
   }
 
+  void removeEnemy(int index) {
+    GameModel res = _cloneModel();
+    res.enemies[index] = null;
+  }
+
   void _changeBuildState(PlateModel p, GameModel res) {
     if (p.building == null || p.buildProgress == p.building!.hp * p.level) {
       p.buildProgress = null;
-      _setUnderAttackActions(res);
+      if (p.building?.type == BuildingType.tower) {
+        _setUnderAttackActions(res);
+      }
     } else if (p.buildProgress != null) {
       p.buildProgress = p.buildProgress! + p.building!.buildSpeed;
       p.hp += p.building!.buildSpeed;
@@ -184,6 +196,7 @@ class GameCubit extends Cubit<GameModel> {
         if (enemy.targetIndex == null) {
           int? targetIndex =
               EpochHelper.getTargetByIndex(i, res.width, res.plates);
+          print(targetIndex);
           // remove enemy if nothing to attack
           if (targetIndex == null) {
             res.enemies[i] = null;
@@ -193,13 +206,13 @@ class GameCubit extends Cubit<GameModel> {
         } else {
           res.plates[enemy.targetIndex!].hp -= enemy.dps;
           if (res.plates[enemy.targetIndex!].hp <= 0) {
+            BuildingType? destroyedType =
+                res.plates[enemy.targetIndex!].building?.type;
             res.plates[enemy.targetIndex!] = PlateModel();
-            _setUnderAttackActions(res);
+            if (destroyedType == BuildingType.tower) {
+              _setUnderAttackActions(res);
+            }
             enemy.targetIndex = null;
-          }
-          // remove enemy if it's a one time use
-          if (enemy.oneTimeUse) {
-            res.enemies[i] = null;
           }
         }
       }

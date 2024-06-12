@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_td/widget/playgroundWidgets/arrowWidget.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/healthBarWidget.dart';
 import 'package:quiz_td/widget/playgroundWidgets/actionWidget.dart';
@@ -13,7 +14,7 @@ class PlaygroundWidget extends StatelessWidget {
   const PlaygroundWidget({super.key});
 
   drawBuilding(PlateModel plate, BuildContext context, int index, double size,
-      bool isSelected) {
+      bool isSelected, int width) {
     List<Widget> res = [
       Transform.scale(
         scale: isSelected ? 1.3 : 1.1,
@@ -44,6 +45,13 @@ class PlaygroundWidget extends StatelessWidget {
         ),
       ));
     }
+    if (plate.targetIndex != null) {
+      res.add(ArrowWidget(
+        width: width,
+        index: plate.targetIndex!,
+        size: size,
+      ));
+    }
     return res;
   }
 
@@ -57,9 +65,10 @@ class PlaygroundWidget extends StatelessWidget {
         PlateModel plate = plates[y * width + x];
         int index = y * width + x;
         rowItems.add(Stack(
+          clipBehavior: Clip.none,
           alignment: Alignment.bottomCenter,
-          children:
-              drawBuilding(plate, context, index, size, index == selectedIndex),
+          children: drawBuilding(
+              plate, context, index, size, index == selectedIndex, width),
         ));
       }
       res.add(Row(
@@ -75,6 +84,7 @@ class PlaygroundWidget extends StatelessWidget {
     List<Widget> res = [];
     for (int i = 0; i < width; i++) {
       res.add(ActionWidget(
+        width: width,
         size: size,
         index: i + start,
       ));

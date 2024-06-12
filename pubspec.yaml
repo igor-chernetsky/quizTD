@@ -75,8 +75,10 @@ flutter:
     - assets/img/tower3.png
     - assets/img/tower4.png
     - assets/img/wolf.png
+    - assets/img/meteor.png
     - assets/img/warhouse1.png
     - assets/img/bg1.png
+    - assets/img/arrow.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

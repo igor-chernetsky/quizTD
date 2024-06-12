@@ -24,6 +24,7 @@ class Enemywidget extends StatelessWidget {
                   Row(
                     children: [
                       ActionWidget(
+                        width: gm.width,
                         index: gm.selectedEnemyIndex!,
                         size: size,
                       ),
