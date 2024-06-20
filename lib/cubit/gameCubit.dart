@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/enemy_model.dart';
@@ -8,6 +10,10 @@ import 'package:quiz_td/utils/enemies.dart';
 class GameCubit extends Cubit<GameModel> {
   final int _mainIndex = 4;
   final int TOWER_RANGE = 1;
+  Function? onWin;
+  Function? onLose;
+  late Timer _dalayed;
+
   GameCubit()
       : super(GameModel(plates: [
           PlateModel(),
@@ -51,18 +57,22 @@ class GameCubit extends Cubit<GameModel> {
       GameModel res = _cloneModel();
       PlateModel mainPlate = res.plates[_mainIndex];
       mainPlate.hp += delta;
+      if (mainPlate.hp <= 0) {
+        _dalayed.cancel();
+        onLose!();
+      }
       return emit(res);
     }
   }
 
-  void build(BuildingModel building) {
-    if (state.score < building.price * state.epoch) {
+  void build(BuildingModel building, int epoch) {
+    if (state.score < building.price * epoch) {
       return;
     }
     GameModel res = _cloneModel();
     res.plates[state.selectedIndex!] =
-        PlateModel(building: building, buildProgress: 0, level: state.epoch);
-    res.score = res.score - building.price * res.epoch;
+        PlateModel(building: building, buildProgress: 0, level: epoch);
+    res.score = res.score - building.price * epoch;
     res.selectedIndex = null;
     emit(res);
   }
@@ -157,7 +167,10 @@ class GameCubit extends Cubit<GameModel> {
           }
         }
       } else {
-        // TODO: game over
+        if (onWin != null) {
+          _dalayed.cancel();
+          onWin!();
+        }
       }
       if (cnt == 1) {
         res.counter = 0;
@@ -165,7 +178,7 @@ class GameCubit extends Cubit<GameModel> {
         res.score += getIncome();
       }
     }
-    Future.delayed(const Duration(milliseconds: 500), () {
+    _dalayed = Timer(const Duration(milliseconds: 500), () {
       changeState();
     });
 
@@ -196,7 +209,6 @@ class GameCubit extends Cubit<GameModel> {
         if (enemy.targetIndex == null) {
           int? targetIndex =
               EpochHelper.getTargetByIndex(i, res.width, res.plates);
-          print(targetIndex);
           // remove enemy if nothing to attack
           if (targetIndex == null) {
             res.enemies[i] = null;
@@ -211,6 +223,10 @@ class GameCubit extends Cubit<GameModel> {
             res.plates[enemy.targetIndex!] = PlateModel();
             if (destroyedType == BuildingType.tower) {
               _setUnderAttackActions(res);
+            }
+            if (destroyedType == BuildingType.main) {
+              _dalayed.cancel();
+              onLose!();
             }
             enemy.targetIndex = null;
           }

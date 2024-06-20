@@ -27,8 +27,6 @@ class BuildingProcessWidget extends StatelessWidget {
                         level: plate.level,
                         size: size,
                         building: plate.building,
-                        onTap: () =>
-                            context.read<GameCubit>().build(plate.building!),
                       ),
                       Column(children: [
                         SizedBox(

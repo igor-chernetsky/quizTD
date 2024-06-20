@@ -28,6 +28,18 @@ class GameModel {
     }
   }
 
+  String get epochName {
+    switch (epoch) {
+      case 4:
+        return 'Future day';
+      case 3:
+        return 'Present';
+      case 2:
+        return 'Middle ages';
+    }
+    return 'Stone age';
+  }
+
   PlateModel? get selectedPlate {
     if (selectedIndex == null) {
       return null;
