@@ -29,7 +29,7 @@ class GameCubit extends Cubit<GameModel> {
           PlateModel(),
           PlateModel(),
           PlateModel()
-        ]));
+        ], score: 1000));
 
   GameModel _cloneModel() {
     List<PlateModel> plates = [...state.plates];
