@@ -7,7 +7,12 @@ class PlateModel {
   int level;
   int? targetIndex;
 
-  PlateModel({this.building, this.hp = 0, this.buildProgress, this.level = 1});
+  PlateModel({
+    this.building,
+    this.hp = 0,
+    this.buildProgress,
+    this.level = 1,
+  });
 
   int? get topHP {
     if (building?.hp == null) {

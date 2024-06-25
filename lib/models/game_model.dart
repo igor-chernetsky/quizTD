@@ -1,5 +1,6 @@
 import 'package:quiz_td/models/enemy_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_td/models/upgrade_model.dart';
 
 class GameModel {
   int score;
@@ -12,6 +13,7 @@ class GameModel {
   double counter;
   List<int> actionUnderAttack;
   late List<EnemyModel?> enemies;
+  late UpgradeModel? upgrades;
   GameModel(
       {this.score = 0,
       this.epoch = 1,
@@ -22,7 +24,9 @@ class GameModel {
       this.enemies = const [],
       this.selectedEnemyIndex,
       this.actionUnderAttack = const [],
-      this.selectedIndex}) {
+      this.selectedIndex,
+      this.upgrades}) {
+    upgrades ??= UpgradeModel();
     if (enemies.isEmpty) {
       enemies = List.filled(width * 4, null);
     }

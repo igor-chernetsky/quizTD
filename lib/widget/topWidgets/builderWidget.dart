@@ -12,7 +12,7 @@ class BuilderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double widgetHeight = MediaQuery.of(context).size.height / 3;
-    double size = MediaQuery.of(context).size.width / 4;
+    double size = MediaQuery.of(context).size.width / 3 - 10;
     List<List<BuildingModel>> buildings = [
       [
         BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
@@ -26,7 +26,7 @@ class BuilderWidget extends StatelessWidget {
             dps: 10,
             buildSpeed: 5),
         BuildingModel(
-            type: BuildingType.warhouse, price: 50, hp: 200, buildSpeed: 10)
+            type: BuildingType.school, price: 100, hp: 100, buildSpeed: 10)
       ],
       [
         BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
@@ -37,7 +37,7 @@ class BuilderWidget extends StatelessWidget {
             dps: 10,
             buildSpeed: 5),
         BuildingModel(
-            type: BuildingType.warhouse, price: 50, hp: 200, buildSpeed: 10)
+            type: BuildingType.school, price: 100, hp: 100, buildSpeed: 10)
       ],
       [
         BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
@@ -48,7 +48,7 @@ class BuilderWidget extends StatelessWidget {
             dps: 10,
             buildSpeed: 5),
         BuildingModel(
-            type: BuildingType.warhouse, price: 50, hp: 200, buildSpeed: 10)
+            type: BuildingType.school, price: 100, hp: 100, buildSpeed: 10)
       ]
     ];
 

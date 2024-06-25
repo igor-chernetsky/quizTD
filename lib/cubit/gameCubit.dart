@@ -43,12 +43,22 @@ class GameCubit extends Cubit<GameModel> {
         counter: state.counter,
         enemies: state.enemies,
         actionUnderAttack: state.actionUnderAttack,
+        upgrades: state.upgrades,
         width: state.width);
     return res;
   }
 
   void addScore(int s) {
-    int delta = s * 10 * state.epoch;
+    int schoolCount = state.plates
+        .where((p) => p.building?.type == BuildingType.school)
+        .length;
+
+    int multiplier = 4;
+    if (schoolCount > 0) {
+      multiplier += (state.upgrades?.education == true ? 1 : 2) * schoolCount;
+    }
+    int delta = s * multiplier * state.epoch;
+
     if (state.score + delta >= 0) {
       GameModel res = _cloneModel();
       res.score = state.score + delta;

@@ -5,7 +5,7 @@ class StatsCubit extends Cubit<StatsModel> {
   StatsCubit() : super(StatsModel());
 
   StatsModel _cloneModel() {
-    StatsModel res = StatsModel(range: state.range, state: state.state);
+    StatsModel res = StatsModel(state: state.state);
     return res;
   }
 

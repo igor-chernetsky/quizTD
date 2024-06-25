@@ -74,6 +74,9 @@ flutter:
     - assets/img/tower2.png
     - assets/img/tower3.png
     - assets/img/tower4.png
+    - assets/img/school2.png
+    - assets/img/school3.png
+    - assets/img/school4.png
     - assets/img/wolf.png
     - assets/img/meteor.png
     - assets/img/warhouse1.png
@@ -91,6 +94,10 @@ flutter:
     - assets/img/loose3.png
     - assets/img/loose4.png
     - assets/img/arrow.png
+    - assets/img/education.png
+    - assets/img/range.png
+    - assets/img/repair.png
+    - assets/img/fence.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

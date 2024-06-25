@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/game_model.dart';
+import 'package:quiz_td/widget/building/schoolWidget.dart';
 import 'package:quiz_td/widget/topWidgets/builderWidget.dart';
 import 'package:quiz_td/widget/topWidgets/buildingProcessWidget.dart';
 import 'package:quiz_td/widget/topWidgets/enemyWidget.dart';
-import 'package:quiz_td/widget/topWidgets/farmWidget.dart';
-import 'package:quiz_td/widget/topWidgets/mainWidget.dart';
+import 'package:quiz_td/widget/building/farmWidget.dart';
+import 'package:quiz_td/widget/building/mainWidget.dart';
 import 'package:quiz_td/widget/topWidgets/quizWidget.dart';
-import 'package:quiz_td/widget/topWidgets/towerWidget.dart';
+import 'package:quiz_td/widget/building/towerWidget.dart';
 
 class TopWidget extends StatelessWidget {
   const TopWidget({super.key});
@@ -43,6 +44,11 @@ class TopWidget extends StatelessWidget {
       }
       if (gm.selectedPlate!.building!.type == BuildingType.main) {
         return MainWidget(
+          plate: gm.selectedPlate!,
+        );
+      }
+      if (gm.selectedPlate!.building!.type == BuildingType.school) {
+        return SchoolWidget(
           plate: gm.selectedPlate!,
         );
       }

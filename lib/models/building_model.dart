@@ -13,4 +13,4 @@ class BuildingModel {
       this.type});
 }
 
-enum BuildingType { farm, warhouse, main, tower }
+enum BuildingType { farm, warhouse, main, tower, school }
