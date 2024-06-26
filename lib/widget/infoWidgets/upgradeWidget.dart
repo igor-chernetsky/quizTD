@@ -43,9 +43,12 @@ class UpgradeWidget extends StatelessWidget {
       if (done) {
         return [
           Container(
+            decoration: BoxDecoration(
+              color: const Color.fromRGBO(50, 150, 23, 0.3),
+              borderRadius: BorderRadius.all(Radius.circular(size / 2)),
+            ),
             width: size,
             height: size,
-            color: const Color.fromRGBO(50, 150, 23, 0.3),
             child: const Center(
               child: Icon(
                 Icons.check,
@@ -62,7 +65,6 @@ class UpgradeWidget extends StatelessWidget {
       children: [
         Stack(
           children: [
-            ...getOverlay(),
             Container(
               padding: const EdgeInsets.all(4),
               width: size,
@@ -76,13 +78,17 @@ class UpgradeWidget extends StatelessWidget {
                 ),
               ),
             ),
+            ...getOverlay(),
           ],
         ),
         Center(
-          child: Text(
-            (price).toString(),
-            style: TextStyle(color: score < price ? Colors.red : Colors.green),
-          ),
+          child: !done
+              ? Text(
+                  (price).toString(),
+                  style: TextStyle(
+                      color: score < price ? Colors.red : Colors.green),
+                )
+              : null,
         )
       ],
     );

@@ -5,11 +5,11 @@ import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/enemy_model.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_td/models/upgrade_model.dart';
 import 'package:quiz_td/utils/enemies.dart';
 
 class GameCubit extends Cubit<GameModel> {
   final int _mainIndex = 4;
-  final int TOWER_RANGE = 1;
   Function? onWin;
   Function? onLose;
   late Timer _dalayed;
@@ -114,6 +114,25 @@ class GameCubit extends Cubit<GameModel> {
     return emit(res);
   }
 
+  void repairBuilding() {
+    GameModel res = _cloneModel();
+    PlateModel seletedPlate = res.plates[state.selectedIndex!];
+    double percent =
+        (seletedPlate.topHP! - seletedPlate.hp) / (seletedPlate.topHP!);
+    int price =
+        (seletedPlate.building!.price * seletedPlate.level * percent).toInt();
+    if (price < res.score) {
+      BuildingType? repairType = seletedPlate.building?.type;
+      seletedPlate.buildProgress = seletedPlate.hp - seletedPlate.topHP!;
+      res.selectedIndex = null;
+      res.score -= price;
+      if (repairType == BuildingType.tower) {
+        _setUnderAttackActions(res);
+      }
+    }
+    return emit(res);
+  }
+
   void nextEpoch() {
     GameModel res = _cloneModel();
     PlateModel seletedPlate = res.plates[state.selectedIndex!];
@@ -156,6 +175,32 @@ class GameCubit extends Cubit<GameModel> {
     res.selectedIndex = null;
     res.selectedEnemyIndex =
         index == null || state.selectedEnemyIndex == index ? null : index;
+    return emit(res);
+  }
+
+  void makeUpgrade(UpgradeType upgrade) {
+    GameModel res = _cloneModel();
+    if (upgradePriceMap[upgrade]! <= res.score) {
+      res.score -= upgradePriceMap[upgrade]!;
+      switch (upgrade) {
+        case UpgradeType.range:
+          res.upgrades!.range = true;
+          _setUnderAttackActions(res);
+          break;
+        case UpgradeType.education:
+          res.upgrades!.education = true;
+          break;
+        case UpgradeType.repair:
+          res.upgrades!.repair = true;
+          break;
+        case UpgradeType.fence:
+          res.upgrades!.fence = true;
+          break;
+        case UpgradeType.dome:
+          res.upgrades!.dome = true;
+          break;
+      }
+    }
     return emit(res);
   }
 
@@ -249,8 +294,8 @@ class GameCubit extends Cubit<GameModel> {
     if (p.building?.type == BuildingType.main) {
       EpochHelper.setBuildingTarget(p, enemies);
     } else if (p.building?.type == BuildingType.tower) {
-      EpochHelper.setRangeBuildingTarget(
-          p, enemies, index, state.width, TOWER_RANGE);
+      EpochHelper.setRangeBuildingTarget(p, enemies, index, state.width,
+          state.upgrades?.range == true ? 2 : 1);
     }
   }
 
@@ -259,8 +304,8 @@ class GameCubit extends Cubit<GameModel> {
     for (int i = 0; i < res.plates.length; i++) {
       if (res.plates[i].building?.type == BuildingType.tower &&
           res.plates[i].buildProgress == null) {
-        potential
-            .addAll(EpochHelper.getTowerPotential(i, res.width, TOWER_RANGE));
+        potential.addAll(EpochHelper.getTowerPotential(
+            i, res.width, state.upgrades?.range == true ? 2 : 1));
       }
     }
     res.actionUnderAttack = potential.toSet().toList();

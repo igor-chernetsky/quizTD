@@ -14,3 +14,11 @@ class UpgradeModel {
 }
 
 enum UpgradeType { range, fence, repair, dome, education }
+
+final upgradePriceMap = {
+  UpgradeType.range: 200,
+  UpgradeType.education: 400,
+  UpgradeType.fence: 300,
+  UpgradeType.repair: 200,
+  UpgradeType.dome: 400
+};

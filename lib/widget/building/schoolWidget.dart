@@ -19,7 +19,7 @@ class SchoolWidget extends StatelessWidget {
     double upgradeSize = MediaQuery.of(context).size.width / 4 - 10;
 
     upgradeClick(UpgradeType upgrade) {
-      print(upgrade);
+      context.read<GameCubit>().makeUpgrade(upgrade);
     }
 
     return BlocBuilder<GameCubit, GameModel>(
@@ -36,25 +36,21 @@ class SchoolWidget extends StatelessWidget {
                         building: plate.building,
                       ),
                       Column(children: [
+                        Text(
+                          'LEVEL - ${(plate.level).toString()}',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'LEVEL - ${(plate.level).toString()}',
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                    '+${gm.upgrades?.education == true ? 25 : 50}% question reward',
-                                    style: TextStyle(
-                                        color: AppColors.primaryColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold)),
-                              ],
-                            ),
+                                '+${gm.upgrades?.education == true ? 25 : 50}% question reward',
+                                style: TextStyle(
+                                    color: AppColors.primaryColor,
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold)),
                           ],
                         ),
                         ElevatedButton.icon(
@@ -66,18 +62,27 @@ class SchoolWidget extends StatelessWidget {
                       ])
                     ],
                   ),
-                  Container(
-                      padding: const EdgeInsets.only(top: 10),
-                      width: MediaQuery.of(context).size.width - 10,
-                      child: BarWidget(
-                        value: plate.hp,
-                        total: plate.building!.hp * plate.level,
-                        icon: Icons.favorite,
-                      )),
-                  IconButton.filled(
-                    onPressed: () =>
-                        context.read<GameCubit>().selectPlate(null),
-                    icon: const Icon(Icons.close),
+                  Row(
+                    children: [
+                      Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          width: MediaQuery.of(context).size.width - 10,
+                          child: BarWidget(
+                            value: plate.hp,
+                            total: plate.building!.hp * plate.level,
+                            icon: Icons.favorite,
+                          )),
+                      gm.upgrades?.repair == true
+                          ? ElevatedButton.icon(
+                              onPressed: () => plate.hp < plate.topHP!
+                                  ? null
+                                  : context.read<GameCubit>().repairBuilding(),
+                              icon: const Icon(Icons.toll_outlined),
+                              label: Text('Upgrade \$${plate.building!.price}'))
+                          : const SizedBox(
+                              width: 40,
+                            )
+                    ],
                   ),
                   Row(
                     children: [
@@ -85,7 +90,7 @@ class SchoolWidget extends StatelessWidget {
                         size: upgradeSize,
                         upgrade: UpgradeType.education,
                         done: gm.upgrades?.education == true,
-                        price: 300,
+                        price: upgradePriceMap[UpgradeType.education] ?? 0,
                         score: gm.score,
                         onTap: () => upgradeClick(UpgradeType.education),
                       ),
@@ -93,7 +98,7 @@ class SchoolWidget extends StatelessWidget {
                         size: upgradeSize,
                         upgrade: UpgradeType.range,
                         done: gm.upgrades?.range == true,
-                        price: 200,
+                        price: upgradePriceMap[UpgradeType.range] ?? 0,
                         score: gm.score,
                         onTap: () => upgradeClick(UpgradeType.range),
                       ),
@@ -102,19 +107,24 @@ class SchoolWidget extends StatelessWidget {
                         upgrade: UpgradeType.repair,
                         done: gm.upgrades?.repair == true,
                         score: gm.score,
-                        price: 200,
+                        price: upgradePriceMap[UpgradeType.repair] ?? 0,
                         onTap: () => upgradeClick(UpgradeType.repair),
                       ),
                       UpgradeWidget(
                         size: upgradeSize,
                         upgrade: UpgradeType.fence,
-                        price: 400,
+                        price: upgradePriceMap[UpgradeType.fence] ?? 0,
                         done: gm.upgrades?.repair == true,
                         score: gm.score,
                         onTap: () => upgradeClick(UpgradeType.fence),
                       )
                     ],
-                  )
+                  ),
+                  IconButton.filled(
+                    onPressed: () =>
+                        context.read<GameCubit>().selectPlate(null),
+                    icon: const Icon(Icons.close),
+                  ),
                 ],
               ),
             ));
