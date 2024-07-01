@@ -4,6 +4,7 @@ import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/utils/colors.dart';
+import 'package:quiz_td/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
 
@@ -63,14 +64,20 @@ class TowerWidget extends StatelessWidget {
                       ])
                     ],
                   ),
-                  Container(
-                      padding: const EdgeInsets.only(top: 10),
-                      width: MediaQuery.of(context).size.width - 10,
-                      child: BarWidget(
-                        value: plate.hp,
-                        total: plate.building!.hp * plate.level,
-                        icon: Icons.favorite,
-                      )),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width - 130,
+                          child: BarWidget(
+                            value: plate.hp,
+                            total: plate.building!.hp * plate.level,
+                            icon: Icons.favorite,
+                          )),
+                      RepairButton(plate: plate)
+                    ],
+                  ),
                   IconButton.filled(
                     onPressed: () =>
                         context.read<GameCubit>().selectPlate(null),

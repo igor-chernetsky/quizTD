@@ -12,7 +12,12 @@ class BuildingProcessWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double widgetHeight = MediaQuery.of(context).size.height / 3;
+    var availableHeight = MediaQuery.of(context).size.height -
+        AppBar().preferredSize.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+
+    double widgetHeight = availableHeight / 3;
     double size = MediaQuery.of(context).size.width / 3;
 
     return BlocBuilder<GameCubit, GameModel>(

@@ -1,5 +1,3 @@
-import 'dart:math';
-
 class EnemyModel {
   late int hp;
   late int max;
@@ -7,6 +5,7 @@ class EnemyModel {
   late bool oneTimeUse = false;
   EnemyType? type;
   int? targetIndex;
+  int damege = 0;
 
   EnemyModel({this.type}) {
     switch (type) {
@@ -17,6 +16,10 @@ class EnemyModel {
       case EnemyType.enemy:
         hp = 100;
         dps = 5;
+        break;
+      case EnemyType.zombie:
+        hp = 200;
+        dps = 7;
         break;
       case EnemyType.meteor:
         hp = 20;
@@ -31,17 +34,4 @@ class EnemyModel {
   }
 }
 
-enum EnemyType { wolf, meteor, enemy }
-
-getEnemiesByEpoch(int epoch, int width) {
-  var rng = Random();
-  List<EnemyModel?> res = List.filled(width * 4, null);
-  switch (epoch) {
-    case 1:
-      res.add(EnemyModel(type: EnemyType.wolf));
-      break;
-    case 2:
-      res[rng.nextInt(width * 4)] = EnemyModel(type: EnemyType.enemy);
-      break;
-  }
-}
+enum EnemyType { wolf, meteor, enemy, zombie }

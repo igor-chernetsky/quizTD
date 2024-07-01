@@ -1,3 +1,4 @@
+import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/enemy_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/models/upgrade_model.dart';
@@ -60,5 +61,17 @@ class GameModel {
       return null;
     }
     return enemies[selectedEnemyIndex!];
+  }
+
+  int get answerBoost {
+    int multiplier = 4;
+    int schoolCount = plates
+        .where((p) =>
+            p.building?.type == BuildingType.school && p.buildProgress == null)
+        .length;
+    if (schoolCount > 0) {
+      multiplier += (upgrades?.education == true ? 1 : 2) * schoolCount;
+    }
+    return multiplier * epoch;
   }
 }

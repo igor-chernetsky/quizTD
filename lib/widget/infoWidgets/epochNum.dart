@@ -10,7 +10,7 @@ class EpochnumWidget extends StatelessWidget {
       required this.epoch,
       this.isSelected = false,
       this.disabled = false,
-      this.size = 48});
+      this.size = 36});
 
   @override
   Widget build(BuildContext context) {

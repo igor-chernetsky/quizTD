@@ -11,8 +11,13 @@ class BuilderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double widgetHeight = MediaQuery.of(context).size.height / 3;
-    double size = MediaQuery.of(context).size.width / 3 - 10;
+    var availableHeight = MediaQuery.of(context).size.height -
+        AppBar().preferredSize.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+
+    double widgetHeight = availableHeight / 3;
+    double size = MediaQuery.of(context).size.width / 3 - 24;
     List<List<BuildingModel>> buildings = [
       [
         BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
@@ -70,7 +75,7 @@ class BuilderWidget extends StatelessWidget {
                         child: Text(
                           (b.price * epoch).toString(),
                           style: TextStyle(
-                              color: gm.score < b.price
+                              color: gm.score < (b.price * epoch)
                                   ? Colors.red
                                   : Colors.green),
                         ),
@@ -83,28 +88,29 @@ class BuilderWidget extends StatelessWidget {
     }
 
     getTabs(int epoch) {
+      const double tabHeight = 50;
       List<Widget> tabs = [
         const Tab(
           child: EpochnumWidget(epoch: 1),
-          height: 60,
+          height: tabHeight,
         ),
       ];
       if (epoch > 1) {
         tabs.add(const Tab(
           child: EpochnumWidget(epoch: 2),
-          height: 60,
+          height: tabHeight,
         ));
       }
       if (epoch > 2) {
         tabs.add(const Tab(
           child: EpochnumWidget(epoch: 3),
-          height: 60,
+          height: tabHeight,
         ));
       }
       if (epoch > 3) {
         tabs.add(const Tab(
           child: EpochnumWidget(epoch: 4),
-          height: 60,
+          height: tabHeight,
         ));
       }
       return TabBar(

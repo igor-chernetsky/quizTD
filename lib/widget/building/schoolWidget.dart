@@ -6,6 +6,7 @@ import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/models/upgrade_model.dart';
 import 'package:quiz_td/utils/colors.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_td/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_td/widget/infoWidgets/upgradeWidget.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 
@@ -20,6 +21,56 @@ class SchoolWidget extends StatelessWidget {
 
     upgradeClick(UpgradeType upgrade) {
       context.read<GameCubit>().makeUpgrade(upgrade);
+    }
+
+    getUpgrades(GameModel gm) {
+      List<Widget> children = [
+        UpgradeWidget(
+          size: upgradeSize,
+          upgrade: UpgradeType.education,
+          done: gm.upgrades?.education == true,
+          price: upgradePriceMap[UpgradeType.education] ?? 0,
+          score: gm.score,
+          onTap: () => upgradeClick(UpgradeType.education),
+        ),
+        UpgradeWidget(
+          size: upgradeSize,
+          upgrade: UpgradeType.range,
+          done: gm.upgrades?.range == true,
+          price: upgradePriceMap[UpgradeType.range] ?? 0,
+          score: gm.score,
+          onTap: () => upgradeClick(UpgradeType.range),
+        ),
+      ];
+      if (gm.epoch > 2) {
+        children.add(UpgradeWidget(
+          size: upgradeSize,
+          upgrade: UpgradeType.repair,
+          done: gm.upgrades?.repair == true,
+          score: gm.score,
+          price: upgradePriceMap[UpgradeType.repair] ?? 0,
+          onTap: () => upgradeClick(UpgradeType.repair),
+        ));
+        children.add(UpgradeWidget(
+          size: upgradeSize,
+          upgrade: UpgradeType.fence,
+          price: upgradePriceMap[UpgradeType.fence] ?? 0,
+          done: gm.upgrades?.repair == true,
+          score: gm.score,
+          onTap: () => upgradeClick(UpgradeType.fence),
+        ));
+        if (gm.epoch > 3) {
+          children.add(UpgradeWidget(
+            size: upgradeSize,
+            upgrade: UpgradeType.dome,
+            price: upgradePriceMap[UpgradeType.dome] ?? 0,
+            done: gm.upgrades?.repair == true,
+            score: gm.score,
+            onTap: () => upgradeClick(UpgradeType.dome),
+          ));
+        }
+      }
+      return Row(children: children);
     }
 
     return BlocBuilder<GameCubit, GameModel>(
@@ -63,63 +114,22 @@ class SchoolWidget extends StatelessWidget {
                     ],
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Container(
-                          padding: const EdgeInsets.only(top: 10),
-                          width: MediaQuery.of(context).size.width - 10,
+                      SizedBox(
+                          width: MediaQuery.of(context).size.width - 130,
                           child: BarWidget(
                             value: plate.hp,
                             total: plate.building!.hp * plate.level,
                             icon: Icons.favorite,
                           )),
-                      gm.upgrades?.repair == true
-                          ? ElevatedButton.icon(
-                              onPressed: () => plate.hp < plate.topHP!
-                                  ? null
-                                  : context.read<GameCubit>().repairBuilding(),
-                              icon: const Icon(Icons.toll_outlined),
-                              label: Text('Upgrade \$${plate.building!.price}'))
-                          : const SizedBox(
-                              width: 40,
-                            )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      UpgradeWidget(
-                        size: upgradeSize,
-                        upgrade: UpgradeType.education,
-                        done: gm.upgrades?.education == true,
-                        price: upgradePriceMap[UpgradeType.education] ?? 0,
-                        score: gm.score,
-                        onTap: () => upgradeClick(UpgradeType.education),
-                      ),
-                      UpgradeWidget(
-                        size: upgradeSize,
-                        upgrade: UpgradeType.range,
-                        done: gm.upgrades?.range == true,
-                        price: upgradePriceMap[UpgradeType.range] ?? 0,
-                        score: gm.score,
-                        onTap: () => upgradeClick(UpgradeType.range),
-                      ),
-                      UpgradeWidget(
-                        size: upgradeSize,
-                        upgrade: UpgradeType.repair,
-                        done: gm.upgrades?.repair == true,
-                        score: gm.score,
-                        price: upgradePriceMap[UpgradeType.repair] ?? 0,
-                        onTap: () => upgradeClick(UpgradeType.repair),
-                      ),
-                      UpgradeWidget(
-                        size: upgradeSize,
-                        upgrade: UpgradeType.fence,
-                        price: upgradePriceMap[UpgradeType.fence] ?? 0,
-                        done: gm.upgrades?.repair == true,
-                        score: gm.score,
-                        onTap: () => upgradeClick(UpgradeType.fence),
+                      RepairButton(
+                        plate: plate,
                       )
                     ],
                   ),
+                  getUpgrades(gm),
                   IconButton.filled(
                     onPressed: () =>
                         context.read<GameCubit>().selectPlate(null),

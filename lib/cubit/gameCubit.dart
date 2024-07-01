@@ -49,15 +49,7 @@ class GameCubit extends Cubit<GameModel> {
   }
 
   void addScore(int s) {
-    int schoolCount = state.plates
-        .where((p) => p.building?.type == BuildingType.school)
-        .length;
-
-    int multiplier = 4;
-    if (schoolCount > 0) {
-      multiplier += (state.upgrades?.education == true ? 1 : 2) * schoolCount;
-    }
-    int delta = s * multiplier * state.epoch;
+    int delta = s * state.answerBoost;
 
     if (state.score + delta >= 0) {
       GameModel res = _cloneModel();
@@ -123,7 +115,7 @@ class GameCubit extends Cubit<GameModel> {
         (seletedPlate.building!.price * seletedPlate.level * percent).toInt();
     if (price < res.score) {
       BuildingType? repairType = seletedPlate.building?.type;
-      seletedPlate.buildProgress = seletedPlate.hp - seletedPlate.topHP!;
+      seletedPlate.buildProgress = seletedPlate.hp;
       res.selectedIndex = null;
       res.score -= price;
       if (repairType == BuildingType.tower) {
@@ -209,9 +201,13 @@ class GameCubit extends Cubit<GameModel> {
     res.counter += 0.02;
     for (int i = 0; i < res.plates.length; i++) {
       _changeBuildState(res.plates[i], res);
-      _buildingAttack(res.plates[i], i, res.enemies);
+      if (res.plates[i].buildProgress == null) {
+        _buildingAttack(res.plates[i], i, res.enemies);
+      }
     }
-    _enemyAttack(res);
+    if (_enemyAttack(res)) {
+      return emit(res);
+    }
     double cnt = double.parse(res.counter.toStringAsFixed(2));
     if (cnt == 1 || cnt == 0.5 || cnt == 0.26 || cnt == 0.76) {
       var enemies = EpochHelper.generateEnemies(res.width, res.yearNumber);
@@ -225,6 +221,7 @@ class GameCubit extends Cubit<GameModel> {
         if (onWin != null) {
           _dalayed.cancel();
           onWin!();
+          return emit(res);
         }
       }
       if (cnt == 1) {
@@ -257,7 +254,7 @@ class GameCubit extends Cubit<GameModel> {
     }
   }
 
-  void _enemyAttack(GameModel res) {
+  bool _enemyAttack(GameModel res) {
     for (int i = 0; i < res.enemies.length; i++) {
       if (res.enemies[i] != null) {
         EnemyModel enemy = res.enemies[i]!;
@@ -272,6 +269,14 @@ class GameCubit extends Cubit<GameModel> {
           }
         } else {
           res.plates[enemy.targetIndex!].hp -= enemy.dps;
+          enemy.damege += enemy.dps;
+          if (enemy.type == EnemyType.zombie && enemy.damege >= 100) {
+            enemy.damege = 0;
+            int? nextIndex = _getNextEnemyIndex(i, res);
+            if (nextIndex != null) {
+              res.enemies[nextIndex] = EnemyModel(type: EnemyType.zombie);
+            }
+          }
           if (res.plates[enemy.targetIndex!].hp <= 0) {
             BuildingType? destroyedType =
                 res.plates[enemy.targetIndex!].building?.type;
@@ -282,12 +287,32 @@ class GameCubit extends Cubit<GameModel> {
             if (destroyedType == BuildingType.main) {
               _dalayed.cancel();
               onLose!();
+              return true;
             }
             enemy.targetIndex = null;
           }
         }
       }
     }
+    return false;
+  }
+
+  int? _getNextEnemyIndex(int index, GameModel res) {
+    int nextIndex = index - 1;
+    if (nextIndex < 0) {
+      nextIndex = state.enemies.length - 1;
+    }
+    if (res.enemies[nextIndex] == null) {
+      return nextIndex;
+    }
+    nextIndex = index + 1;
+    if (nextIndex > res.enemies.length - 1) {
+      nextIndex = 0;
+    }
+    if (res.enemies[nextIndex] == null) {
+      return nextIndex;
+    }
+    return null;
   }
 
   void _buildingAttack(PlateModel p, int index, List<EnemyModel?> enemies) {

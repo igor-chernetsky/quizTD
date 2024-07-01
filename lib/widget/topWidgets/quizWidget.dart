@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/cubit/questionCubit.dart';
+import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/question_model.dart';
 
 class QuizWidget extends StatelessWidget {
@@ -20,10 +21,12 @@ class QuizWidget extends StatelessWidget {
             context.read<GameCubit>().addScore(-1);
           }
         },
-        child: Text(answers[i],
-            style: const TextStyle(
-              fontSize: 22,
-            )),
+        child: SizedBox(
+          child: Text(answers[i],
+              style: const TextStyle(
+                fontSize: 22,
+              )),
+        ),
       ));
     }
     return output;
@@ -35,8 +38,13 @@ class QuizWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double widgetHeight = MediaQuery.of(context).size.height / 3;
-    double blockHeight = widgetHeight / 3;
+    var availableHeight = MediaQuery.of(context).size.height -
+        AppBar().preferredSize.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+
+    double widgetHeight = availableHeight / 2;
+    double blockHeight = (widgetHeight - 38) / 3;
     return SizedBox(
       height: widgetHeight,
       child: BlocBuilder<QuestionCubit, QuestionsModel>(
@@ -44,6 +52,47 @@ class QuizWidget extends StatelessWidget {
               ? getEmptyBlock()
               : Column(
                   children: [
+                    BlocBuilder<GameCubit, GameModel>(
+                        builder: (context1, gm) => Container(
+                              height: 30,
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 4),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.check,
+                                        color: Colors.green,
+                                        size: 28,
+                                      ),
+                                      Text(
+                                        '+${gm.answerBoost}',
+                                        style: const TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Icon(
+                                        Icons.close,
+                                        color: Colors.red,
+                                        size: 28,
+                                      ),
+                                      Text(
+                                        '-${gm.answerBoost}',
+                                        style: const TextStyle(
+                                            color: Colors.white, fontSize: 20),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            )),
                     Container(
                         height: blockHeight,
                         padding:
@@ -56,7 +105,7 @@ class QuizWidget extends StatelessWidget {
                               qm.currentQuestions!.question,
                               style: TextStyle(
                                   color: Theme.of(context).primaryColor,
-                                  fontSize: 30,
+                                  fontSize: 40,
                                   fontWeight: FontWeight.bold),
                             ),
                           ),

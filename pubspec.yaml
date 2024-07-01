@@ -79,7 +79,8 @@ flutter:
     - assets/img/school4.png
     - assets/img/wolf.png
     - assets/img/meteor.png
-    - assets/img/warhouse1.png
+    - assets/img/enemy.png
+    - assets/img/zombie.png
     - assets/img/bg1.png
     - assets/img/e1.png
     - assets/img/e2.png

@@ -23,9 +23,6 @@ class BuildingWidget extends StatelessWidget {
         case BuildingType.main:
           imgPath = 'assets/img/main${level ?? 1}.png';
           break;
-        case BuildingType.warhouse:
-          imgPath = 'assets/img/warhouse${level ?? 1}.png';
-          break;
         case BuildingType.school:
           imgPath = 'assets/img/school${level ?? 1}.png';
           break;

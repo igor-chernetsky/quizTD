@@ -24,6 +24,11 @@ var epochList = [
     ...List.filled(3, EnemyType.wolf),
     ...List.filled(15, EnemyType.enemy),
     ...List.filled(8, EnemyType.meteor),
+  ],
+  ...[
+    ...List.filled(12, EnemyType.zombie),
+    ...List.filled(5, EnemyType.enemy),
+    ...List.filled(8, EnemyType.meteor),
   ]
 ];
 
