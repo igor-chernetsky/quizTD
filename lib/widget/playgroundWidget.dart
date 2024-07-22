@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_td/widget/infoWidgets/epochNum.dart';
 import 'package:quiz_td/widget/playgroundWidgets/arrowWidget.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/healthBarWidget.dart';
@@ -56,7 +57,7 @@ class PlaygroundWidget extends StatelessWidget {
   }
 
   drawCity(BuildContext context, List<PlateModel> plates, int width,
-      double size, int? selectedIndex) {
+      double size, bool fence, int? selectedIndex) {
     List<Widget> res = [];
     int height = plates.length ~/ width;
     for (int y = 0; y < height; y++) {
@@ -75,8 +76,26 @@ class PlaygroundWidget extends StatelessWidget {
         children: rowItems,
       ));
     }
-    return Column(
-      children: res,
+    List<Widget> background = fence
+        ? [
+            Positioned(
+              child: Container(
+                width: size * 3,
+                height: size * 3,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/img/fencemap.png'))),
+              ),
+            ),
+          ]
+        : [];
+    return Stack(
+      children: [
+        ...background,
+        Column(
+          children: res,
+        ),
+      ],
     );
   }
 
@@ -90,6 +109,22 @@ class PlaygroundWidget extends StatelessWidget {
       ));
     }
     return res;
+  }
+
+  getEpoch(int epoch, double size) {
+    return SizedBox(
+      height: size,
+      width: size,
+      child: Card(
+        color: const Color.fromRGBO(0, 0, 0, 0.4),
+        child: Container(
+          padding: const EdgeInsets.all(10),
+          height: double.infinity,
+          width: double.infinity,
+          child: EpochnumWidget(epoch: epoch),
+        ),
+      ),
+    );
   }
 
   @override
@@ -119,7 +154,8 @@ class PlaygroundWidget extends StatelessWidget {
                     ...getActionWidgets(size, gm.width * 3, gm.width),
                   ],
                 ),
-                drawCity(context, gm.plates, gm.width, size, gm.selectedIndex),
+                drawCity(context, gm.plates, gm.width, size,
+                    gm.upgrades?.fence == true, gm.selectedIndex),
                 Column(
                   children: [
                     ...getActionWidgets(size, gm.width, gm.width),
@@ -135,9 +171,7 @@ class PlaygroundWidget extends StatelessWidget {
                     width: size,
                   ),
                   ...getActionWidgets(size, maxSize - gm.width, gm.width),
-                  SizedBox(
-                    width: size,
-                  ),
+                  getEpoch(gm.epoch, size),
                 ],
               ),
             ),

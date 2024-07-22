@@ -38,7 +38,7 @@ class GameModel {
       case 4:
         return 'Future day';
       case 3:
-        return 'Present';
+        return 'Current ages';
       case 2:
         return 'Middle ages';
     }

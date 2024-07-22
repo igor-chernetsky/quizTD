@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
+import 'package:quiz_td/screens/start.dart';
 import 'package:quiz_td/utils/colors.dart';
 
 class LooseWidget extends StatelessWidget {
@@ -33,28 +34,32 @@ class LooseWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'You LOST!',
+                        'DEFEAT!',
                         style: TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
                             color: AppColors.accentColor),
                       ),
                       Text(
-                        'year ${gm.yearNumber}',
+                        'YEAR: ${gm.yearNumber}',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: AppColors.accentColor),
                       ),
                       Text(
-                        'you have reached ${gm.epochName}',
+                        'EPOCH: ${gm.epochName}',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: AppColors.accentColor),
                       ),
                       ElevatedButton(
-                          onPressed: () => {}, child: const Text('MENU'))
+                          onPressed: () => {
+                                Navigator.pushNamed(
+                                    context, StartScreen.routeName),
+                              },
+                          child: const Text('MENU'))
                     ],
                   ),
                 ),

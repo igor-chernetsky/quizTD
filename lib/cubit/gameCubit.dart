@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/enemy_model.dart';
+import 'package:quiz_td/models/fame_model.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/models/upgrade_model.dart';
@@ -116,7 +117,6 @@ class GameCubit extends Cubit<GameModel> {
     if (price < res.score) {
       BuildingType? repairType = seletedPlate.building?.type;
       seletedPlate.buildProgress = seletedPlate.hp;
-      res.selectedIndex = null;
       res.score -= price;
       if (repairType == BuildingType.tower) {
         _setUnderAttackActions(res);
@@ -125,19 +125,22 @@ class GameCubit extends Cubit<GameModel> {
     return emit(res);
   }
 
-  void nextEpoch() {
+  int nextEpoch(bool isFree) {
     GameModel res = _cloneModel();
-    PlateModel seletedPlate = res.plates[state.selectedIndex!];
+    PlateModel seletedPlate = res.plates[state.selectedIndex ?? _mainIndex];
     int price = seletedPlate.building!.price;
-    if (state.epoch == 5 || state.score < price) {
-      return;
+    if (state.epoch == 5 || (!isFree && state.score < price)) {
+      return res.epoch;
     }
     seletedPlate.level++;
     res.epoch++;
     seletedPlate.hp += seletedPlate.building!.hp;
-    res.score -= price;
+    if (!isFree) {
+      res.score -= price;
+    }
     res.selectedIndex = null;
-    return emit(res);
+    emit(res);
+    return res.epoch;
   }
 
   void upgradeBuilding() {
@@ -199,6 +202,7 @@ class GameCubit extends Cubit<GameModel> {
   void changeState() {
     GameModel res = _cloneModel();
     res.counter += 0.02;
+    _setFence(res.enemies);
     for (int i = 0; i < res.plates.length; i++) {
       _changeBuildState(res.plates[i], res);
       if (res.plates[i].buildProgress == null) {
@@ -220,7 +224,7 @@ class GameCubit extends Cubit<GameModel> {
       } else {
         if (onWin != null) {
           _dalayed.cancel();
-          onWin!();
+          onWin!(FameModel(year: res.yearNumber, epoch: res.epoch));
           return emit(res);
         }
       }
@@ -243,14 +247,19 @@ class GameCubit extends Cubit<GameModel> {
   }
 
   void _changeBuildState(PlateModel p, GameModel res) {
-    if (p.building == null || p.buildProgress == p.building!.hp * p.level) {
+    if (p.building == null ||
+        (p.buildProgress != null &&
+            p.buildProgress! >= p.building!.hp * p.level)) {
       p.buildProgress = null;
+      if (p.building != null && p.hp > p.topHP!) {
+        p.hp = p.topHP!;
+      }
       if (p.building?.type == BuildingType.tower) {
         _setUnderAttackActions(res);
       }
     } else if (p.buildProgress != null) {
-      p.buildProgress = p.buildProgress! + p.building!.buildSpeed;
-      p.hp += p.building!.buildSpeed;
+      p.buildProgress = p.buildProgress! + p.building!.buildSpeed * p.level;
+      p.hp += p.building!.buildSpeed * p.level;
     }
   }
 
@@ -286,7 +295,7 @@ class GameCubit extends Cubit<GameModel> {
             }
             if (destroyedType == BuildingType.main) {
               _dalayed.cancel();
-              onLose!();
+              onLose!(FameModel(year: res.yearNumber, epoch: res.epoch));
               return true;
             }
             enemy.targetIndex = null;
@@ -321,6 +330,20 @@ class GameCubit extends Cubit<GameModel> {
     } else if (p.building?.type == BuildingType.tower) {
       EpochHelper.setRangeBuildingTarget(p, enemies, index, state.width,
           state.upgrades?.range == true ? 2 : 1);
+    }
+  }
+
+  void _setFence(List<EnemyModel?> enemies) {
+    if (state.upgrades?.fence == true) {
+      for (int i = 0; i < enemies.length; i++) {
+        if (enemies[i] != null) {
+          EnemyModel enemy = enemies[i]!;
+          enemy.hp -= 10;
+          if (enemy.hp <= 0) {
+            enemies[i] = null;
+          }
+        }
+      }
     }
   }
 

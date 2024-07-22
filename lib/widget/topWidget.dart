@@ -52,7 +52,7 @@ class TopWidget extends StatelessWidget {
           plate: gm.selectedPlate!,
         );
       }
-      return Placeholder();
+      return const Placeholder();
     });
   }
 }

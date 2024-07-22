@@ -12,7 +12,7 @@ class ScoreWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     int income = context.read<GameCubit>().getIncome();
     return BlocBuilder<GameCubit, GameModel>(
-      builder: (context, gm) => Container(
+      builder: (context, gm) => SizedBox(
         height: size,
         width: size,
         child: Card(

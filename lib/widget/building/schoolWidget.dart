@@ -6,7 +6,9 @@ import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/models/upgrade_model.dart';
 import 'package:quiz_td/utils/colors.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_td/widget/infoWidgets/repairButton.dart';
+import 'package:quiz_td/widget/infoWidgets/upgradeButtonWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/upgradeWidget.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 
@@ -55,7 +57,7 @@ class SchoolWidget extends StatelessWidget {
           size: upgradeSize,
           upgrade: UpgradeType.fence,
           price: upgradePriceMap[UpgradeType.fence] ?? 0,
-          done: gm.upgrades?.repair == true,
+          done: gm.upgrades?.fence == true,
           score: gm.score,
           onTap: () => upgradeClick(UpgradeType.fence),
         ));
@@ -104,37 +106,26 @@ class SchoolWidget extends StatelessWidget {
                                     fontWeight: FontWeight.bold)),
                           ],
                         ),
-                        ElevatedButton.icon(
-                            onPressed: () => plate.level >= gm.epoch
-                                ? null
-                                : context.read<GameCubit>().upgradeBuilding(),
-                            icon: const Icon(Icons.upgrade),
-                            label: Text('Upgrade \$${plate.building!.price}'))
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            UpgradeButton(plate: plate),
+                            RepairButton(plate: plate)
+                          ],
+                        ),
                       ])
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width - 130,
-                          child: BarWidget(
-                            value: plate.hp,
-                            total: plate.building!.hp * plate.level,
-                            icon: Icons.favorite,
-                          )),
-                      RepairButton(
-                        plate: plate,
-                      )
-                    ],
-                  ),
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: BarWidget(
+                        value: plate.hp,
+                        total: plate.building!.hp * plate.level,
+                        icon: Icons.favorite,
+                      )),
                   getUpgrades(gm),
-                  IconButton.filled(
-                    onPressed: () =>
-                        context.read<GameCubit>().selectPlate(null),
-                    icon: const Icon(Icons.close),
-                  ),
+                  const ClosePlateButton()
                 ],
               ),
             ));

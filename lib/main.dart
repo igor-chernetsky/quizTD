@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:quiz_td/data/database_helper.dart';
 import 'package:quiz_td/screens/game.dart';
+import 'package:quiz_td/screens/start.dart';
 import 'package:quiz_td/utils/colors.dart';
 
+final dbHelper = DatabaseHelper();
+
 Future<void> main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   WidgetsFlutterBinding.ensureInitialized();
+  await dbHelper.init();
+  FlutterNativeSplash.remove();
   runApp(const QuizTDApp());
 }
 
@@ -43,8 +52,9 @@ class QuizTDApp extends StatelessWidget {
             primarySwatch: AppColors.primaryColor,
             accentColor: AppColors.accentColor),
       ),
-      initialRoute: GameScreen.routeName,
+      initialRoute: StartScreen.routeName,
       routes: {
+        StartScreen.routeName: (context) => const StartScreen(),
         GameScreen.routeName: (context) => const GameScreen(),
       },
     );

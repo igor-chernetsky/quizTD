@@ -5,6 +5,8 @@ import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/cubit/questionCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/question_model.dart';
+import 'package:quiz_td/utils/colors.dart';
+import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
 
 class QuizWidget extends StatelessWidget {
   const QuizWidget({super.key});
@@ -14,7 +16,10 @@ class QuizWidget extends StatelessWidget {
     for (int i = 0; i < answers.length; i++) {
       output.add(OutlinedButton(
         onPressed: () {
-          context.read<QuestionCubit>().answerQuestion(answers[i]);
+          context.read<QuestionCubit>().answerQuestion(answers[i], () {
+            int epoch = context.read<GameCubit>().nextEpoch(true);
+            context.read<QuestionCubit>().setQuestions(epoch, 0);
+          });
           if (answers[i] == answer) {
             context.read<GameCubit>().addScore(1);
           } else {
@@ -42,6 +47,7 @@ class QuizWidget extends StatelessWidget {
         AppBar().preferredSize.height -
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
+    var widgetWidth = MediaQuery.of(context).size.width - 10;
 
     double widgetHeight = availableHeight / 2;
     double blockHeight = (widgetHeight - 38) / 3;
@@ -54,7 +60,7 @@ class QuizWidget extends StatelessWidget {
                   children: [
                     BlocBuilder<GameCubit, GameModel>(
                         builder: (context1, gm) => Container(
-                              height: 30,
+                              height: 32,
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 8, vertical: 4),
                               child: Row(
@@ -76,6 +82,14 @@ class QuizWidget extends StatelessWidget {
                                       ),
                                     ],
                                   ),
+                                  Container(
+                                    padding: const EdgeInsets.only(top: 2),
+                                    width: widgetWidth - 140,
+                                    child: BarWidget(
+                                      value: qm.correct,
+                                      total: 20,
+                                    ),
+                                  ),
                                   Row(
                                     children: [
                                       const Icon(
@@ -95,23 +109,24 @@ class QuizWidget extends StatelessWidget {
                             )),
                     Container(
                         height: blockHeight,
-                        padding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 4),
                         child: Card(
+                            color: AppColors.neutralBackground,
                             child: SizedBox(
-                          width: double.infinity,
-                          child: Center(
-                            child: Text(
-                              qm.currentQuestions!.question,
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 40,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ),
-                        ))),
+                              width: double.infinity,
+                              child: Center(
+                                child: Text(
+                                  qm.currentQuestions!.question,
+                                  style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontSize: 32,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                            ))),
                     Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         height: 2 * blockHeight,
                         child: GridView.count(
                           mainAxisSpacing: 8,

@@ -17,9 +17,10 @@ class RepairButton extends StatelessWidget {
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => ElevatedButton.icon(
             style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 0)),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 0)),
             onPressed: () =>
-                plate.hp < plate.topHP! || gm.upgrades?.repair != true
+                plate.hp == plate.topHP! || gm.upgrades?.repair != true
                     ? null
                     : context.read<GameCubit>().repairBuilding(),
             icon: const Icon(

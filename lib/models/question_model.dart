@@ -4,24 +4,28 @@ class QuestionModel {
   bool isTile;
   List<String> answers;
   String answer;
-  int diff;
 
   QuestionModel(
       {required this.question,
       required this.answer,
       this.isImg = false,
       this.isTile = false,
-      required this.answers,
-      this.diff = 0});
+      required this.answers});
 }
 
 class QuestionsModel {
   List<QuestionModel> questions;
   int index;
   String theme;
+  int correct;
+  int diff;
 
   QuestionsModel(
-      {required this.questions, this.index = 0, this.theme = 'Math'});
+      {required this.questions,
+      this.index = 0,
+      this.theme = 'Math',
+      this.correct = 0,
+      this.diff = 1});
 
   QuestionModel? get currentQuestions {
     if (questions.isEmpty) {

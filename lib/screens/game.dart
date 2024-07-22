@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/cubit/questionCubit.dart';
 import 'package:quiz_td/cubit/statsCubit.dart';
+import 'package:quiz_td/models/fame_model.dart';
 import 'package:quiz_td/models/stats_model.dart';
 import 'package:quiz_td/widget/infoWidgets/looseWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/winWidget.dart';
@@ -36,7 +37,7 @@ class GameScreen extends StatelessWidget {
               ),
               BlocProvider<QuestionCubit>(
                 create: (BuildContext context) =>
-                    QuestionCubit()..setQuestions(),
+                    QuestionCubit()..setQuestions(1, 0),
               ),
               BlocProvider<StatsCubit>(
                 create: (BuildContext context) => StatsCubit(),
@@ -45,9 +46,9 @@ class GameScreen extends StatelessWidget {
             child: BlocBuilder<StatsCubit, StatsModel>(
               builder: (context, sm) {
                 context.read<GameCubit>().onWin =
-                    () => context.read<StatsCubit>().setWin();
-                context.read<GameCubit>().onLose =
-                    () => context.read<StatsCubit>().setLoose();
+                    (FameModel fame) => context.read<StatsCubit>().setWin(fame);
+                context.read<GameCubit>().onLose = (FameModel fame) =>
+                    context.read<StatsCubit>().setLoose(fame);
                 return Stack(
                   children: [
                     const Column(

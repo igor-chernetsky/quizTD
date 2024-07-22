@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
 
@@ -21,7 +22,7 @@ class BuildingProcessWidget extends StatelessWidget {
     double size = MediaQuery.of(context).size.width / 3;
 
     return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => Container(
+        builder: (context, gm) => SizedBox(
               height: widgetHeight,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -49,11 +50,7 @@ class BuildingProcessWidget extends StatelessWidget {
                       ])
                     ],
                   ),
-                  IconButton.filled(
-                    onPressed: () =>
-                        context.read<GameCubit>().selectPlate(null),
-                    icon: const Icon(Icons.close),
-                  )
+                  const ClosePlateButton()
                 ],
               ),
             ));

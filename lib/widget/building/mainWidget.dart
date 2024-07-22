@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
+import 'package:quiz_td/cubit/questionCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
+import 'package:quiz_td/widget/infoWidgets/epochNum.dart';
 import 'package:quiz_td/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
@@ -14,13 +16,20 @@ class MainWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width / 2;
+    var availableHeight = MediaQuery.of(context).size.height -
+        AppBar().preferredSize.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+    double widgetHeight = availableHeight / 2;
+    double size = MediaQuery.of(context).size.width / 3;
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Container(
+              height: widgetHeight,
               padding: const EdgeInsets.all(10),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -32,41 +41,49 @@ class MainWidget extends StatelessWidget {
                       Column(children: [
                         Row(
                           children: [
-                            Text(
-                              'LEVEL - ${(plate.level).toString()}',
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                              ),
+                            Column(
+                              children: [
+                                Text(
+                                  'EPOCH:',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Theme.of(context).primaryColor,
+                                      fontWeight: FontWeight.w600),
+                                ),
+                                Text(
+                                  gm.epochName,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                ),
+                              ],
                             ),
+                            EpochnumWidget(epoch: gm.epoch)
                           ],
                         ),
                         ElevatedButton.icon(
-                            onPressed: () =>
-                                context.read<GameCubit>().nextEpoch(),
+                            onPressed: () {
+                              int epoch =
+                                  context.read<GameCubit>().nextEpoch(false);
+                              context
+                                  .read<QuestionCubit>()
+                                  .setQuestions(epoch, 0);
+                            },
                             icon: const Icon(Icons.upgrade),
-                            label: Text('Upgrade \$${plate.building!.price}'))
+                            label: Text('Upgrade \$${plate.building!.price}')),
+                        RepairButton(plate: plate)
                       ])
                     ],
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      SizedBox(
-                          width: MediaQuery.of(context).size.width - 130,
-                          child: BarWidget(
-                            value: plate.hp,
-                            total: plate.building!.hp * plate.level,
-                            icon: Icons.favorite,
-                          )),
-                      RepairButton(plate: plate)
-                    ],
-                  ),
-                  IconButton.filled(
-                    onPressed: () =>
-                        context.read<GameCubit>().selectPlate(null),
-                    icon: const Icon(Icons.close),
-                  )
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      child: BarWidget(
+                        value: plate.hp,
+                        total: plate.building!.hp * plate.level,
+                        icon: Icons.favorite,
+                      )),
+                  const ClosePlateButton()
                 ],
               ),
             ));

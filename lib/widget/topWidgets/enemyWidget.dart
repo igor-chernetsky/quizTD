@@ -4,6 +4,7 @@ import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/enemy_model.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/utils/colors.dart';
+import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_td/widget/playgroundWidgets/actionWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
 
@@ -59,11 +60,7 @@ class Enemywidget extends StatelessWidget {
                         total: enemy.max,
                         icon: Icons.favorite,
                       )),
-                  IconButton.filled(
-                    onPressed: () =>
-                        context.read<GameCubit>().selectEnemy(null),
-                    icon: const Icon(Icons.close),
-                  )
+                  const ClosePlateButton()
                 ],
               ),
             ));

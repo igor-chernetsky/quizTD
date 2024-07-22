@@ -41,6 +41,5 @@ class SeasonWidget extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

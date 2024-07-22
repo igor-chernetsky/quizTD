@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/game_model.dart';
+import 'package:quiz_td/utils/colors.dart';
+import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_td/widget/infoWidgets/epochNum.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 
@@ -16,7 +18,7 @@ class BuilderWidget extends StatelessWidget {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
 
-    double widgetHeight = availableHeight / 3;
+    double widgetHeight = availableHeight / 2;
     double size = MediaQuery.of(context).size.width / 3 - 24;
     List<List<BuildingModel>> buildings = [
       [
@@ -61,6 +63,7 @@ class BuilderWidget extends StatelessWidget {
       return Padding(
         padding: const EdgeInsets.all(12.0),
         child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: buildings[epoch - 1]
                 .map(
                   (b) => Column(
@@ -73,8 +76,9 @@ class BuilderWidget extends StatelessWidget {
                       ),
                       Center(
                         child: Text(
-                          (b.price * epoch).toString(),
+                          '\$${(b.price * epoch).toString()}',
                           style: TextStyle(
+                              fontWeight: FontWeight.bold,
                               color: gm.score < (b.price * epoch)
                                   ? Colors.red
                                   : Colors.green),
@@ -91,26 +95,26 @@ class BuilderWidget extends StatelessWidget {
       const double tabHeight = 50;
       List<Widget> tabs = [
         const Tab(
-          child: EpochnumWidget(epoch: 1),
           height: tabHeight,
+          child: EpochnumWidget(epoch: 1),
         ),
       ];
       if (epoch > 1) {
         tabs.add(const Tab(
-          child: EpochnumWidget(epoch: 2),
           height: tabHeight,
+          child: EpochnumWidget(epoch: 2),
         ));
       }
       if (epoch > 2) {
         tabs.add(const Tab(
-          child: EpochnumWidget(epoch: 3),
           height: tabHeight,
+          child: EpochnumWidget(epoch: 3),
         ));
       }
       if (epoch > 3) {
         tabs.add(const Tab(
-          child: EpochnumWidget(epoch: 4),
           height: tabHeight,
+          child: EpochnumWidget(epoch: 4),
         ));
       }
       return TabBar(
@@ -147,11 +151,7 @@ class BuilderWidget extends StatelessWidget {
                     Expanded(
                       child: getTabContent(gm),
                     ),
-                    IconButton.filled(
-                      onPressed: () =>
-                          context.read<GameCubit>().selectPlate(null),
-                      icon: const Icon(Icons.close),
-                    )
+                    const ClosePlateButton()
                   ],
                 ),
               ),
