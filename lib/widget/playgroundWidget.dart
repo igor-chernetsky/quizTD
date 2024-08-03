@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_td/screens/start.dart';
+import 'package:quiz_td/utils/colors.dart';
 import 'package:quiz_td/widget/infoWidgets/epochNum.dart';
 import 'package:quiz_td/widget/playgroundWidgets/arrowWidget.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
@@ -40,7 +42,7 @@ class PlaygroundWidget extends StatelessWidget {
       res.add(Padding(
         padding: const EdgeInsets.only(bottom: 4),
         child: HealthbarWidget(
-          color: const Color(0xFF990000),
+          color: AppColors.accentColor,
           hp: 0,
           width: size - 4,
         ),
@@ -127,6 +129,36 @@ class PlaygroundWidget extends StatelessWidget {
     );
   }
 
+  getMenu(BuildContext context, double size) {
+    return SizedBox(
+      height: size,
+      width: size,
+      child: Card(
+          color: const Color.fromRGBO(0, 0, 0, 0.4),
+          child: IconButton(
+              onPressed: () => showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                      alignment: Alignment.center,
+                      color: AppColors.backgroundColor,
+                      padding: const EdgeInsets.all(10),
+                      height: 300,
+                      width: double.infinity,
+                      child: Column(
+                        children: [
+                          ElevatedButton(
+                              onPressed: () => Navigator.pushNamed(
+                                  context, StartScreen.routeName),
+                              child: const Text('Exit'))
+                        ],
+                      ),
+                    );
+                  }),
+              icon: const Icon(Icons.menu, size: 38))),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(builder: (context, gm) {
@@ -167,11 +199,9 @@ class PlaygroundWidget extends StatelessWidget {
               height: size,
               child: Row(
                 children: [
-                  SizedBox(
-                    width: size,
-                  ),
-                  ...getActionWidgets(size, maxSize - gm.width, gm.width),
                   getEpoch(gm.epoch, size),
+                  ...getActionWidgets(size, maxSize - gm.width, gm.width),
+                  getMenu(context, size),
                 ],
               ),
             ),

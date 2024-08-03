@@ -19,10 +19,11 @@ class RepairButton extends StatelessWidget {
             style: ElevatedButton.styleFrom(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 0)),
-            onPressed: () =>
-                plate.hp == plate.topHP! || gm.upgrades?.repair != true
-                    ? null
-                    : context.read<GameCubit>().repairBuilding(),
+            onPressed: price < 1 ||
+                    plate.hp == plate.topHP! ||
+                    gm.upgrades?.repair != true
+                ? null
+                : context.read<GameCubit>().repairBuilding,
             icon: const Icon(
               Icons.gavel,
               size: 20,

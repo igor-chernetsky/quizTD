@@ -18,8 +18,13 @@ class SchoolWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width / 3;
-    double upgradeSize = MediaQuery.of(context).size.width / 4 - 10;
+    var availableHeight = MediaQuery.of(context).size.height -
+        AppBar().preferredSize.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+    double widgetHeight = availableHeight / 2;
+    double size = MediaQuery.of(context).size.width * 0.4;
+    double upgradeSize = MediaQuery.of(context).size.width / 4 - 14;
 
     upgradeClick(UpgradeType upgrade) {
       context.read<GameCubit>().makeUpgrade(upgrade);
@@ -76,58 +81,90 @@ class SchoolWidget extends StatelessWidget {
     }
 
     return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+        builder: (context, gm) => Stack(
+              children: [
+                Container(
+                  height: widgetHeight,
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 20, right: 20, bottom: 30),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      BuildingWidget(
-                        level: plate.level,
-                        size: size,
-                        building: plate.building,
-                      ),
-                      Column(children: [
-                        Text(
-                          'LEVEL - ${(plate.level).toString()}',
-                          style: TextStyle(
-                            color: Theme.of(context).primaryColor,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BuildingWidget(
+                            level: plate.level,
+                            size: size,
+                            building: plate.building,
                           ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                                '+${gm.upgrades?.education == true ? 25 : 50}% question reward',
-                                style: TextStyle(
-                                    color: AppColors.primaryColor,
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            UpgradeButton(plate: plate),
-                            RepairButton(plate: plate)
-                          ],
-                        ),
-                      ])
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'SCHOOL level ${plate.level}',
+                                    style: TextStyle(
+                                        height: 2,
+                                        fontSize: 20,
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                  '+${gm.upgrades?.education == true ? 25 : 50}% question reward',
+                                                  style: TextStyle(
+                                                      color:
+                                                          AppColors.textColor,
+                                                      height: 2,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold)),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      UpgradeButton(plate: plate),
+                                    ],
+                                  ),
+                                ]),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width - 140,
+                              child: BarWidget(
+                                value: plate.hp,
+                                total: plate.building!.hp * plate.level,
+                                icon: Icons.favorite,
+                              )),
+                          RepairButton(plate: plate),
+                        ],
+                      ),
+                      getUpgrades(gm),
                     ],
                   ),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: BarWidget(
-                        value: plate.hp,
-                        total: plate.building!.hp * plate.level,
-                        icon: Icons.favorite,
-                      )),
-                  getUpgrades(gm),
-                  const ClosePlateButton()
-                ],
-              ),
+                ),
+                const Positioned(bottom: 4, right: 4, child: ClosePlateButton())
+              ],
             ));
   }
 }

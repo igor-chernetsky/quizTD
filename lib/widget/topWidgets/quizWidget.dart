@@ -112,14 +112,14 @@ class QuizWidget extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(
                             vertical: 8, horizontal: 4),
                         child: Card(
-                            color: AppColors.neutralBackground,
+                            color: AppColors.cardColor,
                             child: SizedBox(
                               width: double.infinity,
                               child: Center(
                                 child: Text(
                                   qm.currentQuestions!.question,
                                   style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
+                                      color: AppColors.textSecondary,
                                       fontSize: 32,
                                       fontWeight: FontWeight.bold),
                                 ),

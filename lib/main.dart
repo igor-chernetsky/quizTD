@@ -41,15 +41,15 @@ class QuizTDApp extends StatelessWidget {
     return MaterialApp(
       title: 'Quiz Tower Defence',
       theme: ThemeData(
-        primaryColor: AppColors.primaryColor,
+        primaryColor: AppColors.primarySwatch,
         outlinedButtonTheme: OutlinedButtonThemeData(
             style: OutlinedButton.styleFrom(
-                side: BorderSide(color: AppColors.primaryColor))),
+                side: BorderSide(color: AppColors.primarySwatch))),
         colorScheme: ColorScheme.fromSwatch(
             brightness: Brightness.dark,
-            backgroundColor: AppColors.neutralBackground,
-            cardColor: AppColors.secondaryColor,
-            primarySwatch: AppColors.primaryColor,
+            backgroundColor: AppColors.backgroundColor,
+            cardColor: AppColors.cardColor,
+            primarySwatch: AppColors.primarySwatch,
             accentColor: AppColors.accentColor),
       ),
       initialRoute: StartScreen.routeName,

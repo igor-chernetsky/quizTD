@@ -21,69 +21,98 @@ class TowerWidget extends StatelessWidget {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
     double widgetHeight = availableHeight / 2;
-    double size = MediaQuery.of(context).size.width / 2;
+    double size = MediaQuery.of(context).size.width * 0.4;
 
     return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => Container(
-              height: widgetHeight,
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+        builder: (context, gm) => Stack(
+              children: [
+                Container(
+                  height: widgetHeight,
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 20, right: 20, bottom: 80),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      BuildingWidget(
-                        level: plate.level,
-                        size: size,
-                        building: plate.building,
-                      ),
-                      Column(children: [
-                        Row(
-                          children: [
-                            Text(
-                              'LEVEL - ${(plate.level).toString()}',
-                              style: TextStyle(
-                                color: Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('DEMAGE ${plate.dps.toString()}',
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BuildingWidget(
+                            level: plate.level,
+                            size: size,
+                            building: plate.building,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'TOWER level ${plate.level}',
                                     style: TextStyle(
-                                        color: AppColors.primaryColor,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold)),
-                                Icon(
-                                  Icons.gps_fixed,
-                                  color: AppColors.primaryColor,
-                                  size: 16,
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            UpgradeButton(plate: plate),
-                            RepairButton(plate: plate)
-                          ],
-                        ),
-                      ])
+                                        height: 2,
+                                        fontSize: 20,
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Text(
+                                                  'DEMAGE ${plate.dps.toString()}',
+                                                  style: TextStyle(
+                                                      height: 2,
+                                                      color:
+                                                          AppColors.textColor,
+                                                      fontSize: 16,
+                                                      fontWeight:
+                                                          FontWeight.bold)),
+                                              Icon(
+                                                Icons.gps_fixed,
+                                                color: AppColors.textColor,
+                                                size: 16,
+                                              )
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                      UpgradeButton(plate: plate),
+                                    ],
+                                  ),
+                                ]),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width - 140,
+                              child: BarWidget(
+                                value: plate.hp,
+                                total: plate.building!.hp * plate.level,
+                                icon: Icons.favorite,
+                              )),
+                          RepairButton(plate: plate),
+                        ],
+                      ),
                     ],
                   ),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: BarWidget(
-                        value: plate.hp,
-                        total: plate.building!.hp * plate.level,
-                        icon: Icons.favorite,
-                      )),
-                  const ClosePlateButton()
-                ],
-              ),
+                ),
+                const Positioned(
+                    bottom: 10, right: 10, child: ClosePlateButton())
+              ],
             ));
   }
 }

@@ -15,22 +15,7 @@ class GameCubit extends Cubit<GameModel> {
   Function? onLose;
   late Timer _dalayed;
 
-  GameCubit()
-      : super(GameModel(plates: [
-          PlateModel(),
-          PlateModel(),
-          PlateModel(),
-          PlateModel(),
-          PlateModel(
-            building: BuildingModel(
-                hp: 1000, price: 200, type: BuildingType.main, dps: 1),
-            hp: 1000,
-          ),
-          PlateModel(),
-          PlateModel(),
-          PlateModel(),
-          PlateModel()
-        ], score: 1000));
+  GameCubit() : super(getDefaultModel());
 
   GameModel _cloneModel() {
     List<PlateModel> plates = [...state.plates];
@@ -47,6 +32,11 @@ class GameCubit extends Cubit<GameModel> {
         upgrades: state.upgrades,
         width: state.width);
     return res;
+  }
+
+  void resetState() {
+    EpochHelper.resetCounter();
+    return emit(getDefaultModel());
   }
 
   void addScore(int s) {

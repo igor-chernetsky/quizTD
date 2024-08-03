@@ -73,10 +73,7 @@ class StartScreen extends StatelessWidget {
                       Navigator.pushNamed(context, GameScreen.routeName),
                   child: const Text(
                     'START',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        letterSpacing: 2,
-                        fontSize: 18),
+                    style: TextStyle(letterSpacing: 2, fontSize: 18),
                   )),
               const SizedBox(
                 height: 30,
@@ -89,7 +86,7 @@ class StartScreen extends StatelessWidget {
                     color: const Color.fromRGBO(0, 0, 0, 0.8),
                     borderRadius: BorderRadius.circular(8),
                     border:
-                        Border.all(color: AppColors.primaryColor, width: 2)),
+                        Border.all(color: AppColors.primarySwatch, width: 2)),
                 child: Column(
                   children: [
                     const Text('Top 10:',

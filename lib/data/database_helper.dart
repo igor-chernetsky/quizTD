@@ -60,7 +60,8 @@ class DatabaseHelper {
   Future<List<FameModel>> queryAllRows(int limit) async {
     var response = await _db.query(table);
     response.map((item) {});
-    var data = await _db.query(table, orderBy: columnYear, limit: limit);
+    var data =
+        await _db.query(table, orderBy: '$columnYear DESC', limit: limit);
     var result = data.map((element) {
       return FameModel(
           id: 'element[columnId] as String',

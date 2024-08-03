@@ -29,7 +29,7 @@ class LooseWidget extends StatelessWidget {
                   height: 210,
                   decoration: const BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Color.fromRGBO(255, 255, 255, 0.5)),
+                      color: Color.fromRGBO(0, 0, 0, 0.7)),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -38,21 +38,21 @@ class LooseWidget extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.accentColor),
+                            color: AppColors.primarySwatch),
                       ),
                       Text(
                         'YEAR: ${gm.yearNumber}',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.accentColor),
+                            color: AppColors.textColor),
                       ),
                       Text(
                         'EPOCH: ${gm.epochName}',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.accentColor),
+                            color: AppColors.textColor),
                       ),
                       ElevatedButton(
                           onPressed: () => {

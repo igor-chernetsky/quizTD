@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path/path.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/utils/colors.dart';
+import 'package:quiz_td/widget/infoWidgets/buildingInfoWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_td/widget/infoWidgets/epochNum.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
@@ -83,6 +85,36 @@ class BuilderWidget extends StatelessWidget {
                                   ? Colors.red
                                   : Colors.green),
                         ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(buldingNames[b.type]!,
+                              style: TextStyle(
+                                  color: AppColors.textColor, fontSize: 16)),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          IconButton.outlined(
+                              onPressed: () {
+                                showModalBottomSheet<void>(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return Container(
+                                          padding: const EdgeInsets.all(10),
+                                          height: 300,
+                                          width: double.infinity,
+                                          child: BuildingInfo(
+                                            building: b,
+                                            epoch: epoch,
+                                          ));
+                                    });
+                              },
+                              iconSize: 18,
+                              icon: const Icon(
+                                Icons.question_mark,
+                              ))
+                        ],
                       )
                     ],
                   ),

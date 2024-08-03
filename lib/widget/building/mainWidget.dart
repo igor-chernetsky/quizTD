@@ -21,71 +21,98 @@ class MainWidget extends StatelessWidget {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
     double widgetHeight = availableHeight / 2;
-    double size = MediaQuery.of(context).size.width / 3;
+    double size = MediaQuery.of(context).size.width * 0.4;
 
     return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => Container(
-              height: widgetHeight,
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
+        builder: (context, gm) => Stack(
+              children: [
+                Container(
+                  height: widgetHeight,
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 20, right: 20, bottom: 80),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      BuildingWidget(
-                        level: plate.level,
-                        size: size,
-                        building: plate.building,
-                      ),
-                      Column(children: [
-                        Row(
-                          children: [
-                            Column(
-                              children: [
-                                Text(
-                                  'EPOCH:',
-                                  style: TextStyle(
-                                      fontSize: 20,
-                                      color: Theme.of(context).primaryColor,
-                                      fontWeight: FontWeight.w600),
-                                ),
-                                Text(
-                                  gm.epochName,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Theme.of(context).primaryColor,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          BuildingWidget(
+                            level: plate.level,
+                            size: size,
+                            building: plate.building,
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'MAIN level ${plate.level}',
+                                    style: TextStyle(
+                                        height: 2,
+                                        fontSize: 20,
+                                        color: Theme.of(context).primaryColor,
+                                        fontWeight: FontWeight.w600),
                                   ),
-                                ),
-                              ],
-                            ),
-                            EpochnumWidget(epoch: gm.epoch)
-                          ],
-                        ),
-                        ElevatedButton.icon(
-                            onPressed: () {
-                              int epoch =
-                                  context.read<GameCubit>().nextEpoch(false);
-                              context
-                                  .read<QuestionCubit>()
-                                  .setQuestions(epoch, 0);
-                            },
-                            icon: const Icon(Icons.upgrade),
-                            label: Text('Upgrade \$${plate.building!.price}')),
-                        RepairButton(plate: plate)
-                      ])
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'EPOCH: ${gm.epochName}',
+                                            style: TextStyle(
+                                                height: 2,
+                                                fontSize: 16,
+                                                color: Theme.of(context)
+                                                    .primaryColor,
+                                                fontWeight: FontWeight.w600),
+                                          ),
+                                        ],
+                                      ),
+                                      ElevatedButton.icon(
+                                          onPressed: () {
+                                            int epoch = context
+                                                .read<GameCubit>()
+                                                .nextEpoch(false);
+                                            context
+                                                .read<QuestionCubit>()
+                                                .setQuestions(epoch, 0);
+                                          },
+                                          icon: const Icon(Icons.upgrade),
+                                          label: Text(
+                                              '\$${plate.building!.price}')),
+                                    ],
+                                  ),
+                                ]),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(
+                              width: MediaQuery.of(context).size.width - 140,
+                              child: BarWidget(
+                                value: plate.hp,
+                                total: plate.building!.hp * plate.level,
+                                icon: Icons.favorite,
+                              )),
+                          RepairButton(plate: plate),
+                        ],
+                      ),
                     ],
                   ),
-                  SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: BarWidget(
-                        value: plate.hp,
-                        total: plate.building!.hp * plate.level,
-                        icon: Icons.favorite,
-                      )),
-                  const ClosePlateButton()
-                ],
-              ),
+                ),
+                Positioned(
+                    bottom: 10, right: 10, child: const ClosePlateButton())
+              ],
             ));
   }
 }

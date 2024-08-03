@@ -75,3 +75,21 @@ class GameModel {
     return multiplier * epoch;
   }
 }
+
+getDefaultModel() {
+  return GameModel(plates: [
+    PlateModel(),
+    PlateModel(),
+    PlateModel(),
+    PlateModel(),
+    PlateModel(
+      building:
+          BuildingModel(hp: 1000, price: 200, type: BuildingType.main, dps: 1),
+      hp: 1000,
+    ),
+    PlateModel(),
+    PlateModel(),
+    PlateModel(),
+    PlateModel()
+  ], score: 1000);
+}

@@ -25,7 +25,7 @@ class ScoreWidget extends StatelessWidget {
               children: [
                 Text('\$${gm.score}',
                     style: TextStyle(
-                        color: AppColors.primaryColor,
+                        color: AppColors.textColor,
                         fontSize: 16,
                         fontWeight: FontWeight.bold)),
                 Row(
@@ -33,12 +33,12 @@ class ScoreWidget extends StatelessWidget {
                   children: [
                     Text('+$income/',
                         style: TextStyle(
-                            color: AppColors.primaryColor,
+                            color: AppColors.textColor,
                             fontSize: 12,
                             fontWeight: FontWeight.bold)),
                     Icon(
                       Icons.sunny,
-                      color: AppColors.primaryColor,
+                      color: AppColors.textColor,
                       size: 16,
                     )
                   ],

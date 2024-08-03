@@ -46,6 +46,10 @@ class EpochHelper {
     return DayMapItem(enemies: enemies, width: width);
   }
 
+  static void resetCounter() {
+    _counter = 0;
+  }
+
   static int? getTargetByIndex(int index, int width, List<PlateModel> plates) {
     if (index < width) {
       for (int i = index, count = 0; count < width; i += width, count++) {

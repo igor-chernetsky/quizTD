@@ -5,6 +5,7 @@ import 'package:quiz_td/cubit/questionCubit.dart';
 import 'package:quiz_td/cubit/statsCubit.dart';
 import 'package:quiz_td/models/fame_model.dart';
 import 'package:quiz_td/models/stats_model.dart';
+import 'package:quiz_td/utils/colors.dart';
 import 'package:quiz_td/widget/infoWidgets/looseWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/winWidget.dart';
 import 'package:quiz_td/widget/playgroundWidget.dart';
@@ -29,11 +30,14 @@ class GameScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
       body: SafeArea(
         child: MultiBlocProvider(
             providers: [
               BlocProvider<GameCubit>(
-                create: (BuildContext context) => GameCubit()..changeState(),
+                create: (BuildContext context) => GameCubit()
+                  ..resetState()
+                  ..changeState(),
               ),
               BlocProvider<QuestionCubit>(
                 create: (BuildContext context) =>

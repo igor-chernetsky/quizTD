@@ -37,12 +37,12 @@ class Enemywidget extends StatelessWidget {
                               children: [
                                 Text('DEMAGE ${enemy.dps.toString()} ',
                                     style: TextStyle(
-                                        color: AppColors.primaryColor,
+                                        color: AppColors.primarySwatch,
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold)),
                                 Icon(
                                   Icons.gps_fixed,
-                                  color: AppColors.primaryColor,
+                                  color: AppColors.primarySwatch,
                                   size: 16,
                                 )
                               ],
