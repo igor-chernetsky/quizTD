@@ -91,8 +91,8 @@ class MainWidget extends StatelessWidget {
                           )
                         ],
                       ),
-                      SizedBox(
-                        height: 20,
+                      const SizedBox(
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

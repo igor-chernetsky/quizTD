@@ -258,10 +258,17 @@ class GameCubit extends Cubit<GameModel> {
       if (res.enemies[i] != null) {
         EnemyModel enemy = res.enemies[i]!;
         if (enemy.targetIndex == null) {
+          int range = enemy.type == EnemyType.wolf ? 1 : res.width;
           int? targetIndex =
-              EpochHelper.getTargetByIndex(i, res.width, res.plates);
+              EpochHelper.getTargetByIndex(i, res.width, res.plates, range);
           // remove enemy if nothing to attack
           if (targetIndex == null) {
+            if (enemy.type == EnemyType.helicopter) {
+              int? nextIndex = _getNextEnemyIndex(i, res);
+              if (nextIndex != null) {
+                res.enemies[nextIndex] = EnemyModel(type: EnemyType.helicopter);
+              }
+            }
             res.enemies[i] = null;
           } else {
             enemy.targetIndex = targetIndex;

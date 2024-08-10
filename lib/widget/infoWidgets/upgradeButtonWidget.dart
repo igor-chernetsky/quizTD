@@ -12,9 +12,10 @@ class UpgradeButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => ElevatedButton.icon(
-            onPressed: () => plate.level >= gm.epoch
-                ? null
-                : context.read<GameCubit>().upgradeBuilding(),
+            onPressed:
+                plate.level >= gm.epoch || gm.score < plate.building!.price
+                    ? null
+                    : () => context.read<GameCubit>().upgradeBuilding(),
             icon: const Icon(Icons.upgrade),
             label: Text('Upgrade \$${plate.building!.price}')));
   }

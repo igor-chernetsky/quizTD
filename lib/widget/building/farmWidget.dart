@@ -84,6 +84,9 @@ class FarmWidget extends StatelessWidget {
                                           ),
                                         ],
                                       ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
                                       UpgradeButton(plate: plate),
                                     ],
                                   ),
@@ -92,7 +95,7 @@ class FarmWidget extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

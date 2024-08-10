@@ -24,7 +24,7 @@ Map<BuildingType, String> buldingNames = {
 
 Map<BuildingType, String> buldingDescription = {
   BuildingType.farm:
-      'This building brings some amount of gold every season. Amount of gold can be increased in scrool with AGRECULTURE upgrade.',
+      'This building brings some amount of gold every season. Amount of gold can be increased with new level of the building.',
   BuildingType.main:
       'This is the MAIN building, the game overs when it\'s destroyed. It can attack one enemy unit. Upgrade it to reach the next epoch.',
   BuildingType.school:

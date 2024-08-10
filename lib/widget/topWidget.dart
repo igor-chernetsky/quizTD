@@ -22,7 +22,7 @@ class TopWidget extends StatelessWidget {
         return const QuizWidget();
       }
       if (gm.selectedEnemy != null) {
-        return Enemywidget(enemy: gm.selectedEnemy!);
+        return EnemyWidget(enemy: gm.selectedEnemy!);
       }
       if (gm.selectedPlate!.building == null) {
         return const BuilderWidget();

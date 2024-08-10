@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
+import 'package:quiz_td/models/building_model.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
 import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
@@ -43,8 +44,10 @@ class BuildingProcessWidget extends StatelessWidget {
                               icon: Icons.favorite,
                             )),
                         IconButton.filled(
-                          onPressed: () =>
-                              context.read<GameCubit>().cancelBuilding(),
+                          onPressed: plate.building!.type == BuildingType.main
+                              ? null
+                              : () =>
+                                  context.read<GameCubit>().cancelBuilding(),
                           icon: const Icon(Icons.delete),
                         )
                       ])

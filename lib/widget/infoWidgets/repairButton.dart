@@ -21,7 +21,8 @@ class RepairButton extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: 10, vertical: 0)),
             onPressed: price < 1 ||
                     plate.hp == plate.topHP! ||
-                    gm.upgrades?.repair != true
+                    gm.upgrades?.repair != true ||
+                    gm.score < price
                 ? null
                 : context.read<GameCubit>().repairBuilding,
             icon: const Icon(

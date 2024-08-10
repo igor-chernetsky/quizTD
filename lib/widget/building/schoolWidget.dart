@@ -9,6 +9,7 @@ import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_td/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_td/widget/infoWidgets/upgradeButtonWidget.dart';
+import 'package:quiz_td/widget/infoWidgets/upgradeInfoWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/upgradeWidget.dart';
 import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
 
@@ -24,56 +25,107 @@ class SchoolWidget extends StatelessWidget {
         MediaQuery.of(context).padding.bottom;
     double widgetHeight = availableHeight / 2;
     double size = MediaQuery.of(context).size.width * 0.4;
-    double upgradeSize = MediaQuery.of(context).size.width / 4 - 14;
+    double upgradeSize = 70;
 
     upgradeClick(UpgradeType upgrade) {
       context.read<GameCubit>().makeUpgrade(upgrade);
     }
 
+    getInfoWidget(UpgradeType upgrade) {
+      return SizedBox(
+        height: 24,
+        width: 24,
+        child: IconButton.outlined(
+            iconSize: 12,
+            padding: EdgeInsets.all(1),
+            onPressed: () {
+              showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return Container(
+                        padding: const EdgeInsets.all(10),
+                        height: 200,
+                        width: double.infinity,
+                        child: UpgradeInfo(
+                          upgrade: upgrade,
+                        ));
+                  });
+            },
+            icon: const Icon(
+              Icons.question_mark,
+            )),
+      );
+    }
+
     getUpgrades(GameModel gm) {
       List<Widget> children = [
-        UpgradeWidget(
-          size: upgradeSize,
-          upgrade: UpgradeType.education,
-          done: gm.upgrades?.education == true,
-          price: upgradePriceMap[UpgradeType.education] ?? 0,
-          score: gm.score,
-          onTap: () => upgradeClick(UpgradeType.education),
+        Column(
+          children: [
+            UpgradeWidget(
+              size: upgradeSize,
+              upgrade: UpgradeType.education,
+              done: gm.upgrades?.education == true,
+              price: upgradePriceMap[UpgradeType.education] ?? 0,
+              score: gm.score,
+              onTap: () => upgradeClick(UpgradeType.education),
+            ),
+            getInfoWidget(UpgradeType.education)
+          ],
         ),
-        UpgradeWidget(
-          size: upgradeSize,
-          upgrade: UpgradeType.range,
-          done: gm.upgrades?.range == true,
-          price: upgradePriceMap[UpgradeType.range] ?? 0,
-          score: gm.score,
-          onTap: () => upgradeClick(UpgradeType.range),
+        Column(
+          children: [
+            UpgradeWidget(
+              size: upgradeSize,
+              upgrade: UpgradeType.range,
+              done: gm.upgrades?.range == true,
+              price: upgradePriceMap[UpgradeType.range] ?? 0,
+              score: gm.score,
+              onTap: () => upgradeClick(UpgradeType.range),
+            ),
+            getInfoWidget(UpgradeType.range)
+          ],
         ),
       ];
       if (gm.epoch > 2) {
-        children.add(UpgradeWidget(
-          size: upgradeSize,
-          upgrade: UpgradeType.repair,
-          done: gm.upgrades?.repair == true,
-          score: gm.score,
-          price: upgradePriceMap[UpgradeType.repair] ?? 0,
-          onTap: () => upgradeClick(UpgradeType.repair),
+        children.add(Column(
+          children: [
+            UpgradeWidget(
+              size: upgradeSize,
+              upgrade: UpgradeType.repair,
+              done: gm.upgrades?.repair == true,
+              score: gm.score,
+              price: upgradePriceMap[UpgradeType.repair] ?? 0,
+              onTap: () => upgradeClick(UpgradeType.repair),
+            ),
+            getInfoWidget(UpgradeType.repair)
+          ],
         ));
-        children.add(UpgradeWidget(
-          size: upgradeSize,
-          upgrade: UpgradeType.fence,
-          price: upgradePriceMap[UpgradeType.fence] ?? 0,
-          done: gm.upgrades?.fence == true,
-          score: gm.score,
-          onTap: () => upgradeClick(UpgradeType.fence),
+        children.add(Column(
+          children: [
+            UpgradeWidget(
+              size: upgradeSize,
+              upgrade: UpgradeType.fence,
+              price: upgradePriceMap[UpgradeType.fence] ?? 0,
+              done: gm.upgrades?.fence == true,
+              score: gm.score,
+              onTap: () => upgradeClick(UpgradeType.fence),
+            ),
+            getInfoWidget(UpgradeType.fence)
+          ],
         ));
         if (gm.epoch > 3) {
-          children.add(UpgradeWidget(
-            size: upgradeSize,
-            upgrade: UpgradeType.dome,
-            price: upgradePriceMap[UpgradeType.dome] ?? 0,
-            done: gm.upgrades?.repair == true,
-            score: gm.score,
-            onTap: () => upgradeClick(UpgradeType.dome),
+          children.add(Column(
+            children: [
+              UpgradeWidget(
+                size: upgradeSize,
+                upgrade: UpgradeType.dome,
+                price: upgradePriceMap[UpgradeType.dome] ?? 0,
+                done: gm.upgrades?.repair == true,
+                score: gm.score,
+                onTap: () => upgradeClick(UpgradeType.dome),
+              ),
+              getInfoWidget(UpgradeType.dome)
+            ],
           ));
         }
       }
@@ -136,6 +188,9 @@ class SchoolWidget extends StatelessWidget {
                                           ),
                                         ],
                                       ),
+                                      const SizedBox(
+                                        height: 10,
+                                      ),
                                       UpgradeButton(plate: plate),
                                     ],
                                   ),
@@ -144,7 +199,7 @@ class SchoolWidget extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -50,16 +50,17 @@ class EpochHelper {
     _counter = 0;
   }
 
-  static int? getTargetByIndex(int index, int width, List<PlateModel> plates) {
+  static int? getTargetByIndex(
+      int index, int width, List<PlateModel> plates, int range) {
     if (index < width) {
-      for (int i = index, count = 0; count < width; i += width, count++) {
+      for (int i = index, count = 0; count < range; i += width, count++) {
         if (plates[i].building != null) {
           return i;
         }
       }
     } else if (index < 2 * width) {
       int row = index - width + 1;
-      for (int i = width * row - 1, count = 0; count < width; i--, count++) {
+      for (int i = width * row - 1, count = 0; count < range; i--, count++) {
         if (plates[i].building != null) {
           return i;
         }
@@ -67,7 +68,7 @@ class EpochHelper {
     } else if (index < 3 * width) {
       int delta = index - 2 * width;
       for (int i = width * (width - 1) + delta, count = 0;
-          count < width;
+          count < range;
           i -= width, count++) {
         if (plates[i].building != null) {
           return i;
@@ -75,7 +76,7 @@ class EpochHelper {
       }
     } else if (index < 4 * width) {
       int row = index - 3 * width;
-      for (int i = width * row, count = 0; count < width; i++, count++) {
+      for (int i = width * row, count = 0; count < range; i++, count++) {
         if (plates[i].building != null) {
           return i;
         }

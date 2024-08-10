@@ -5,64 +5,108 @@ import 'package:quiz_td/models/enemy_model.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/utils/colors.dart';
 import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_td/widget/playgroundWidgets/actionWidget.dart';
 import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_td/widget/playgroundWidgets/enemyInfo.dart';
 
-class Enemywidget extends StatelessWidget {
+class EnemyWidget extends StatelessWidget {
   final EnemyModel enemy;
-  const Enemywidget({super.key, required this.enemy});
+  const EnemyWidget({super.key, required this.enemy});
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width / 2;
+    var availableHeight = MediaQuery.of(context).size.height -
+        AppBar().preferredSize.height -
+        MediaQuery.of(context).padding.top -
+        MediaQuery.of(context).padding.bottom;
+    double widgetHeight = availableHeight / 2;
+    double size = MediaQuery.of(context).size.width * 0.4;
 
     return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => Container(
-              padding: const EdgeInsets.all(10),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
+        builder: (context, gm) => Stack(
+              children: [
+                Container(
+                  height: widgetHeight,
+                  padding: const EdgeInsets.only(
+                      top: 10, left: 20, right: 20, bottom: 80),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ActionWidget(
-                        width: gm.width,
-                        index: gm.selectedEnemyIndex!,
-                        size: size,
-                      ),
-                      Column(children: [
-                        Row(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('DEMAGE ${enemy.dps.toString()} ',
-                                    style: TextStyle(
-                                        color: AppColors.primarySwatch,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold)),
-                                Icon(
-                                  Icons.gps_fixed,
-                                  color: AppColors.primarySwatch,
-                                  size: 16,
-                                )
-                              ],
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          EnemyInfo(
+                            width: gm.width,
+                            index: gm.selectedEnemyIndex!,
+                            size: size,
+                          ),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      enemyNameMap[enemy.type]!,
+                                      style: TextStyle(
+                                          height: 2,
+                                          fontSize: 20,
+                                          color: Theme.of(context).primaryColor,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                                'DEMAGE ${enemy.dps.toString()} ',
+                                                style: TextStyle(
+                                                    color:
+                                                        AppColors.primarySwatch,
+                                                    fontSize: 12,
+                                                    fontWeight:
+                                                        FontWeight.bold)),
+                                            Icon(
+                                              Icons.gps_fixed,
+                                              color: AppColors.primarySwatch,
+                                              size: 16,
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      enemyDescriptionMap[enemy.type]!,
+                                      style: const TextStyle(
+                                          height: 1.2,
+                                          fontSize: 16,
+                                          color: Colors.white),
+                                    ),
+                                  ]),
                             ),
-                          ],
-                        ),
-                      ])
+                          )
+                        ],
+                      ),
+                      Container(
+                          padding: const EdgeInsets.only(top: 10),
+                          width: MediaQuery.of(context).size.width - 10,
+                          child: BarWidget(
+                            value: enemy.hp,
+                            total: enemy.max,
+                            icon: Icons.favorite,
+                          )),
                     ],
                   ),
-                  Container(
-                      padding: const EdgeInsets.only(top: 10),
-                      width: MediaQuery.of(context).size.width - 10,
-                      child: BarWidget(
-                        value: enemy.hp,
-                        total: enemy.max,
-                        icon: Icons.favorite,
-                      )),
-                  const ClosePlateButton()
-                ],
-              ),
+                ),
+                const Positioned(
+                    bottom: 10, right: 10, child: ClosePlateButton())
+              ],
             ));
   }
 }

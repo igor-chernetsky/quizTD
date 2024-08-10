@@ -62,7 +62,7 @@ class StartScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Image(
-                image: AssetImage('assets/img/repair.png'),
+                image: AssetImage('assets/img/splash.gif'),
                 width: 100,
               ),
               const SizedBox(

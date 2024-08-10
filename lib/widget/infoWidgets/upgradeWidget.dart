@@ -4,15 +4,15 @@ import 'package:quiz_td/models/upgrade_model.dart';
 class UpgradeWidget extends StatelessWidget {
   final UpgradeType upgrade;
   final double size;
-  final int price;
-  final int score;
+  final int? price;
+  final int? score;
   final Function? onTap;
   final int? level;
   final bool done;
   const UpgradeWidget(
       {required this.size,
-      required this.price,
-      required this.score,
+      this.price,
+      this.score,
       super.key,
       required this.upgrade,
       this.onTap,
@@ -58,7 +58,30 @@ class UpgradeWidget extends StatelessWidget {
           )
         ];
       }
-      return [];
+      if (price == null || score == null) {
+        return [];
+      }
+      return [
+        Container(
+          width: size,
+          height: size,
+          alignment: Alignment.bottomCenter,
+          child: !done
+              ? Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(0, 0, 0, 0.7),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: Text(
+                    (price).toString(),
+                    style: TextStyle(
+                        color: score! < price! ? Colors.red : Colors.green),
+                  ),
+                )
+              : null,
+        )
+      ];
     }
 
     return Column(
@@ -81,15 +104,6 @@ class UpgradeWidget extends StatelessWidget {
             ...getOverlay(),
           ],
         ),
-        Center(
-          child: !done
-              ? Text(
-                  (price).toString(),
-                  style: TextStyle(
-                      color: score < price ? Colors.red : Colors.green),
-                )
-              : null,
-        )
       ],
     );
   }

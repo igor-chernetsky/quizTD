@@ -72,7 +72,7 @@ class GameModel {
     if (schoolCount > 0) {
       multiplier += (upgrades?.education == true ? 1 : 2) * schoolCount;
     }
-    return multiplier * epoch;
+    return multiplier * 5 * epoch;
   }
 }
 

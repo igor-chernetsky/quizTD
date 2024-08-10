@@ -93,6 +93,10 @@ flutter:
     - assets/img/e2.png
     - assets/img/e3.png
     - assets/img/e4.png
+    - assets/img/ep1.png
+    - assets/img/ep2.png
+    - assets/img/ep3.png
+    - assets/img/ep4.png
     - assets/img/win1.png
     - assets/img/win2.png
     - assets/img/win3.png
@@ -107,6 +111,8 @@ flutter:
     - assets/img/repair.png
     - assets/img/fence.png
     - assets/img/fencemap.png
+    - assets/img/splash.gif
+    - assets/img/meteor.gif
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
