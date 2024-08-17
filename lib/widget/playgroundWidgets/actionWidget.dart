@@ -36,19 +36,19 @@ class ActionWidget extends StatelessWidget {
       Future.delayed(const Duration(milliseconds: 1020),
           () => context.read<GameCubit>().removeEnemy(index));
     }
-    String enemyImg = 'assets/img/wolf.png';
+    String enemyImg = 'assets/img/wolf.gif';
     switch (enemy?.type) {
       case EnemyType.wolf:
-        enemyImg = 'assets/img/wolf.png';
+        enemyImg = 'assets/img/wolf.gif';
         break;
       case EnemyType.enemy:
-        enemyImg = 'assets/img/enemy.png';
+        enemyImg = 'assets/img/enemy.gif';
         break;
       case EnemyType.zombie:
         enemyImg = 'assets/img/zombie.png';
         break;
       case EnemyType.meteor:
-        enemyImg = 'assets/img/meteor.png';
+        enemyImg = 'assets/img/meteor.gif';
         break;
       default:
         return [];

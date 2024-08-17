@@ -16,13 +16,13 @@ class EnemyInfo extends StatelessWidget {
       required this.width});
 
   getEnemyImg(BuildContext context, EnemyModel? enemy, double size) {
-    String enemyImg = 'assets/img/wolf.png';
+    String enemyImg = 'assets/img/w1.png';
     switch (enemy?.type) {
       case EnemyType.wolf:
-        enemyImg = 'assets/img/wolf.png';
+        enemyImg = 'assets/img/w1.png';
         break;
       case EnemyType.enemy:
-        enemyImg = 'assets/img/enemy.png';
+        enemyImg = 'assets/img/archer1.png';
         break;
       case EnemyType.zombie:
         enemyImg = 'assets/img/zombie.png';

@@ -29,12 +29,16 @@ class QuestionCubit extends Cubit<QuestionsModel> {
         }
     }
     emit(QuestionsModel(
-        questions: questions, index: 0, correct: c, diff: epoch));
+        questions: questions,
+        index: 0,
+        correct: c,
+        diff: epoch,
+        state: QuestionState.none));
   }
 
   void answerQuestion(String answer, Function nextEpoch) {
-    int c1 =
-        state.correct + (answer == state.questions[state.index].answer ? 1 : 0);
+    bool isCorrect = answer == state.questions[state.index].answer;
+    int c1 = state.correct + (isCorrect ? 1 : 0);
     if (c1 < 0) {
       c1 = 0;
     }
@@ -46,10 +50,20 @@ class QuestionCubit extends Cubit<QuestionsModel> {
       } else {
         emit(QuestionsModel(
             questions: state.questions,
-            index: state.index + 1,
+            index: state.index,
+            state: isCorrect ? QuestionState.correct : QuestionState.wrong,
             correct: c1,
             diff: state.diff));
       }
     }
+  }
+
+  void nextQuestion() {
+    return emit(QuestionsModel(
+        questions: state.questions,
+        index: state.index + 1,
+        state: QuestionState.none,
+        correct: state.correct,
+        diff: state.diff));
   }
 }

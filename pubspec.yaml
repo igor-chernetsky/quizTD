@@ -41,6 +41,7 @@ dependencies:
   path_provider: ^2.0.11
   path: ^1.8.2
   uuid: ^3.0.6
+  image_fade: ^0.6.2
 
 dev_dependencies:
   flutter_test:
@@ -84,9 +85,12 @@ flutter:
     - assets/img/school2.png
     - assets/img/school3.png
     - assets/img/school4.png
-    - assets/img/wolf.png
+    - assets/img/wolf.gif
+    - assets/img/w1.png
     - assets/img/meteor.png
-    - assets/img/enemy.png
+    - assets/img/archer1.png
+    - assets/img/enemy.gif
+    - assets/img/zombie.gif
     - assets/img/zombie.png
     - assets/img/bg1.png
     - assets/img/e1.png

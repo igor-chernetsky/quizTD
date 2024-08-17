@@ -11,21 +11,28 @@ import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
 class QuizWidget extends StatelessWidget {
   const QuizWidget({super.key});
 
-  getAnswerTiles(BuildContext context, List<String> answers, String answer) {
+  getAnswerTiles(BuildContext context, List<String> answers, String answer,
+      QuestionState state) {
     List<Widget> output = [];
     for (int i = 0; i < answers.length; i++) {
       output.add(OutlinedButton(
-        onPressed: () {
-          context.read<QuestionCubit>().answerQuestion(answers[i], () {
-            int epoch = context.read<GameCubit>().nextEpoch(true);
-            context.read<QuestionCubit>().setQuestions(epoch, 0);
-          });
-          if (answers[i] == answer) {
-            context.read<GameCubit>().addScore(1);
-          } else {
-            context.read<GameCubit>().addScore(-1);
-          }
-        },
+        onPressed: state == QuestionState.none
+            ? () {
+                if (answers[i] == answer) {
+                  context.read<GameCubit>().addScore(1);
+                } else {
+                  context.read<GameCubit>().addScore(-1);
+                }
+
+                context.read<QuestionCubit>().answerQuestion(answers[i], () {
+                  int epoch = context.read<GameCubit>().nextEpoch(true);
+                  context.read<QuestionCubit>().setQuestions(epoch, 0);
+                });
+                Future.delayed(const Duration(milliseconds: 500), () {
+                  context.read<QuestionCubit>().nextQuestion();
+                });
+              }
+            : null,
         child: SizedBox(
           child: Text(answers[i],
               style: const TextStyle(
@@ -39,6 +46,17 @@ class QuizWidget extends StatelessWidget {
 
   getEmptyBlock() {
     return const Center(child: Text('No question found'));
+  }
+
+  getStatusColor(QuestionState status) {
+    switch (status) {
+      case QuestionState.correct:
+        return Colors.green;
+      case QuestionState.wrong:
+        return Colors.red;
+      default:
+        return Colors.white60;
+    }
   }
 
   @override
@@ -119,7 +137,7 @@ class QuizWidget extends StatelessWidget {
                                 child: Text(
                                   qm.currentQuestions!.question,
                                   style: TextStyle(
-                                      color: AppColors.textSecondary,
+                                      color: getStatusColor(qm.state),
                                       fontSize: 32,
                                       fontWeight: FontWeight.bold),
                                 ),
@@ -136,7 +154,8 @@ class QuizWidget extends StatelessWidget {
                           children: getAnswerTiles(
                               context,
                               qm.currentQuestions!.answers,
-                              qm.currentQuestions!.answer),
+                              qm.currentQuestions!.answer,
+                              qm.state),
                         )),
                   ],
                 )),
