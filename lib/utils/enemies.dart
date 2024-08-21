@@ -17,8 +17,8 @@ class DayMapItem {
 
 var epochList = [
   ...[
-    ...List.filled(12, EnemyType.wolf),
-    ...List.filled(5, EnemyType.meteor),
+    ...List.filled(1, EnemyType.helicopter),
+    ...List.filled(15, EnemyType.zombie),
   ],
   ...[
     ...List.filled(3, EnemyType.wolf),

@@ -90,6 +90,8 @@ flutter:
     - assets/img/meteor.png
     - assets/img/archer1.png
     - assets/img/enemy.gif
+    - assets/img/helicopter.png
+    - assets/img/helicopter.gif
     - assets/img/zombie.gif
     - assets/img/zombie.png
     - assets/img/bg1.png
@@ -109,7 +111,7 @@ flutter:
     - assets/img/loose2.png
     - assets/img/loose3.png
     - assets/img/loose4.png
-    - assets/img/arrow.png
+    - assets/img/arrows.gif
     - assets/img/education.png
     - assets/img/range.png
     - assets/img/repair.png

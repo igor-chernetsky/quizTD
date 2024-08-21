@@ -45,7 +45,10 @@ class ActionWidget extends StatelessWidget {
         enemyImg = 'assets/img/enemy.gif';
         break;
       case EnemyType.zombie:
-        enemyImg = 'assets/img/zombie.png';
+        enemyImg = 'assets/img/zombie.gif';
+        break;
+      case EnemyType.helicopter:
+        enemyImg = 'assets/img/helicopter.gif';
         break;
       case EnemyType.meteor:
         enemyImg = 'assets/img/meteor.gif';

@@ -27,6 +27,9 @@ class EnemyInfo extends StatelessWidget {
       case EnemyType.zombie:
         enemyImg = 'assets/img/zombie.png';
         break;
+      case EnemyType.helicopter:
+        enemyImg = 'assets/img/helicopter.png';
+        break;
       case EnemyType.meteor:
         enemyImg = 'assets/img/meteor.png';
         break;

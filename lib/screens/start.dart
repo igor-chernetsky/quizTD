@@ -72,7 +72,6 @@ class _StartScreenState extends State<StartScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(_img);
     var availableHeight = MediaQuery.of(context).size.height;
     return BlocProvider<StatsCubit>(
       create: (BuildContext context) =>

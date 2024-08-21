@@ -42,7 +42,7 @@ class ArrowWidget extends StatelessWidget {
                 height: size / 2,
                 decoration: const BoxDecoration(
                     image: DecorationImage(
-                        image: AssetImage('assets/img/arrow.png')))),
+                        image: AssetImage('assets/img/arrows.gif')))),
           ),
         ),
       ),
