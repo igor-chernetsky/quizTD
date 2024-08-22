@@ -117,6 +117,10 @@ flutter:
     - assets/img/repair.png
     - assets/img/fence.png
     - assets/img/fencemap.png
+    - assets/img/seasons/winter.png
+    - assets/img/seasons/spring.png
+    - assets/img/seasons/summer.png
+    - assets/img/seasons/autumn.png
     - assets/img/splash.gif
     - assets/img/meteor.gif
 

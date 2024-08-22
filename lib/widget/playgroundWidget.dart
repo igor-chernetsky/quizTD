@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_fade/image_fade.dart';
 import 'package:quiz_td/cubit/gameCubit.dart';
 import 'package:quiz_td/models/game_model.dart';
 import 'package:quiz_td/models/plate_model.dart';
@@ -159,54 +160,82 @@ class PlaygroundWidget extends StatelessWidget {
     );
   }
 
+  getSeasonName(double counter) {
+    if (counter < 0.25) {
+      return 'summer';
+    } else if (counter < 0.5) {
+      return 'autumn';
+    } else if (counter < 0.75) {
+      return 'winter';
+    }
+    return 'spring';
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(builder: (context, gm) {
       double size = MediaQuery.of(context).size.width / (gm.width + 2);
       int maxSize = gm.width * gm.width;
-      return Container(
-        decoration: const BoxDecoration(
-            image: DecorationImage(image: AssetImage('assets/img/bg1.png'))),
-        child: Column(
-          children: [
-            SizedBox(
-              height: size,
-              child: Row(
-                children: [
-                  ScoreWidget(size: size),
-                  ...getActionWidgets(size, 0, gm.width),
-                  SeasonWidget(size: size)
-                ],
-              ),
-            ),
-            Row(
-              children: [
-                Column(
+      return Stack(
+        children: [
+          Opacity(
+            opacity: 0.7,
+            child: Positioned.fill(
+                child: ImageFade(
+              // whenever the image changes, it will be loaded, and then faded in:
+              image: AssetImage(
+                  'assets/img/seasons/${getSeasonName(gm.counter)}.png'),
+
+              // slow-ish fade for loaded images:
+              duration: const Duration(milliseconds: 1000),
+
+              // supports most properties of Image:
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+              scale: 1,
+            )),
+          ),
+          Column(
+            children: [
+              SizedBox(
+                height: size,
+                child: Row(
                   children: [
-                    ...getActionWidgets(size, gm.width * 3, gm.width),
+                    ScoreWidget(size: size),
+                    ...getActionWidgets(size, 0, gm.width),
+                    SeasonWidget(size: size)
                   ],
                 ),
-                drawCity(context, gm.plates, gm.width, size,
-                    gm.upgrades?.fence == true, gm.selectedIndex),
-                Column(
-                  children: [
-                    ...getActionWidgets(size, gm.width, gm.width),
-                  ],
-                )
-              ],
-            ),
-            SizedBox(
-              height: size,
-              child: Row(
+              ),
+              Row(
                 children: [
-                  getEpoch(gm.epoch, size),
-                  ...getActionWidgets(size, maxSize - gm.width, gm.width),
-                  getMenu(context, size),
+                  Column(
+                    children: [
+                      ...getActionWidgets(size, gm.width * 3, gm.width),
+                    ],
+                  ),
+                  drawCity(context, gm.plates, gm.width, size,
+                      gm.upgrades?.fence == true, gm.selectedIndex),
+                  Column(
+                    children: [
+                      ...getActionWidgets(size, gm.width, gm.width),
+                    ],
+                  )
                 ],
               ),
-            ),
-          ],
-        ),
+              SizedBox(
+                height: size,
+                child: Row(
+                  children: [
+                    getEpoch(gm.epoch, size),
+                    ...getActionWidgets(size, maxSize - gm.width, gm.width),
+                    getMenu(context, size),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
       );
     });
   }
