@@ -1,8 +1,10 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
-import 'package:quiz_td/models/building_model.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/closeDialogButton.dart';
-import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:quiz_defence/models/building_model.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/closeDialogButton.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
 
 class BuildingInfo extends StatelessWidget {
   final BuildingModel building;
@@ -11,7 +13,9 @@ class BuildingInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double size = MediaQuery.of(context).size.width / 3 - 24;
+    double mainSize = min<double>(MediaQuery.of(context).size.width,
+        MediaQuery.of(context).size.height / 2);
+    double size = mainSize / 3 - 24;
     return Stack(
       children: [
         Center(

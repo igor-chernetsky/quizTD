@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/main.dart';
-import 'package:quiz_td/models/fame_model.dart';
-import 'package:quiz_td/models/stats_model.dart';
+import 'package:quiz_defence/main.dart';
+import 'package:quiz_defence/models/fame_model.dart';
+import 'package:quiz_defence/models/stats_model.dart';
 
 class StatsCubit extends Cubit<StatsModel> {
   StatsCubit() : super(StatsModel());

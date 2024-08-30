@@ -1,4 +1,4 @@
-import 'package:quiz_td/models/building_model.dart';
+import 'package:quiz_defence/models/building_model.dart';
 
 class PlateModel {
   BuildingModel? building;
@@ -26,6 +26,6 @@ class PlateModel {
   }
 
   int get income {
-    return level * 30;
+    return level * 50;
   }
 }

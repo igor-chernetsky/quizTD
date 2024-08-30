@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/building_model.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/widget/building/schoolWidget.dart';
-import 'package:quiz_td/widget/topWidgets/builderWidget.dart';
-import 'package:quiz_td/widget/topWidgets/buildingProcessWidget.dart';
-import 'package:quiz_td/widget/topWidgets/enemyWidget.dart';
-import 'package:quiz_td/widget/building/farmWidget.dart';
-import 'package:quiz_td/widget/building/mainWidget.dart';
-import 'package:quiz_td/widget/topWidgets/quizWidget.dart';
-import 'package:quiz_td/widget/building/towerWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/building_model.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/widget/building/schoolWidget.dart';
+import 'package:quiz_defence/widget/topWidgets/builderWidget.dart';
+import 'package:quiz_defence/widget/topWidgets/buildingProcessWidget.dart';
+import 'package:quiz_defence/widget/topWidgets/enemyWidget.dart';
+import 'package:quiz_defence/widget/building/farmWidget.dart';
+import 'package:quiz_defence/widget/building/mainWidget.dart';
+import 'package:quiz_defence/widget/topWidgets/quizWidget.dart';
+import 'package:quiz_defence/widget/building/towerWidget.dart';
 
 class TopWidget extends StatelessWidget {
   const TopWidget({super.key});

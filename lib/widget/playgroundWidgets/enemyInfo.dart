@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/enemy_model.dart';
-import 'package:quiz_td/models/game_model.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/enemy_model.dart';
+import 'package:quiz_defence/models/game_model.dart';
 
 class EnemyInfo extends StatelessWidget {
   final double size;

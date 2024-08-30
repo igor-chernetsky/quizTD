@@ -1,12 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/cubit/questionCubit.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/models/question_model.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/cubit/questionCubit.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/models/question_model.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
 
 class QuizWidget extends StatelessWidget {
   const QuizWidget({super.key});
@@ -65,12 +67,16 @@ class QuizWidget extends StatelessWidget {
         AppBar().preferredSize.height -
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
-    var widgetWidth = MediaQuery.of(context).size.width - 10;
+    var widgetWidth = min<double>(MediaQuery.of(context).size.width,
+            MediaQuery.of(context).size.height / 2) -
+        10;
 
     double widgetHeight = availableHeight / 2;
     double blockHeight = (widgetHeight - 38) / 3;
     return SizedBox(
       height: widgetHeight,
+      width: min<double>(MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height / 2),
       child: BlocBuilder<QuestionCubit, QuestionsModel>(
           builder: (context, qm) => qm.currentQuestions == null
               ? getEmptyBlock()
@@ -102,7 +108,7 @@ class QuizWidget extends StatelessWidget {
                                   ),
                                   Container(
                                     padding: const EdgeInsets.only(top: 2),
-                                    width: widgetWidth - 140,
+                                    width: widgetWidth - 160,
                                     child: BarWidget(
                                       value: qm.correct,
                                       total: 20,

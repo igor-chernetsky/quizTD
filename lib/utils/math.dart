@@ -1,17 +1,18 @@
 import 'dart:math';
 
-import 'package:quiz_td/models/question_model.dart';
+import 'package:quiz_defence/models/question_model.dart';
 
 List<String> mathOperators = ['+', '-', '*'];
 
-getArifmetick(int count) {
+getArifmetick(int count, bool simple) {
   Random rnd = Random();
   String result = '';
   int answer = 0;
   for (int i = 0; i < count; i++) {
-    int operand = rnd.nextInt(100);
+    int operand = rnd.nextInt(simple ? 10 : 100);
     if (i != 0) {
-      String operator = mathOperators[rnd.nextInt(2)];
+      String operator =
+          mathOperators[rnd.nextInt(simple && count == 2 ? 1 : 2)];
       result += ' $operator $operand';
       switch (operator) {
         case '+':
@@ -59,8 +60,24 @@ getMultiplyQuestion() {
   return res;
 }
 
+getMathEasyQuestion1() {
+  return getArifmetick(2, true);
+}
+
+getMathEasyQuestion2() {
+  return getArifmetick(3, true);
+}
+
+getMathEasyQuestion3() {
+  return getArifmetick(3, false);
+}
+
+getMathEasyQuestion4() {
+  return getArifmetick(4, false);
+}
+
 getMathQuestion1() {
-  return getArifmetick(2);
+  return getArifmetick(2, false);
 }
 
 getMathQuestion2() {
@@ -68,7 +85,7 @@ getMathQuestion2() {
   if (rnd.nextBool()) {
     return getMultiplyQuestion();
   }
-  return getArifmetick(3);
+  return getArifmetick(3, false);
 }
 
 getMathQuestion3() {
@@ -79,7 +96,7 @@ getMathQuestion3() {
   if (isMultiply) {
     res1 = getMultiplyQuestion();
   } else {
-    res1 = getArifmetick(2);
+    res1 = getArifmetick(2, false);
   }
   String operator = mathOperators[rnd.nextInt(3)];
   int ans = int.tryParse(res.answer)!;

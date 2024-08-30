@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/models/question_model.dart';
-import 'package:quiz_td/utils/math.dart';
+import 'package:quiz_defence/models/question_model.dart';
+import 'package:quiz_defence/utils/math.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class QuestionCubit extends Cubit<QuestionsModel> {
   QuestionCubit() : super(QuestionsModel(questions: []));
@@ -10,22 +11,22 @@ class QuestionCubit extends Cubit<QuestionsModel> {
     switch (epoch) {
       case 4:
         for (int i = 0; i < 20; i++) {
-          questions.add(getMathQuestion4());
+          questions.add(getMathEasyQuestion4());
         }
         break;
       case 3:
         for (int i = 0; i < 20; i++) {
-          questions.add(getMathQuestion3());
+          questions.add(getMathEasyQuestion3());
         }
         break;
       case 2:
         for (int i = 0; i < 20; i++) {
-          questions.add(getMathQuestion2());
+          questions.add(getMathEasyQuestion2());
         }
         break;
       default:
         for (int i = 0; i < 20; i++) {
-          questions.add(getMathQuestion1());
+          questions.add(getMathEasyQuestion1());
         }
     }
     emit(QuestionsModel(
@@ -38,6 +39,7 @@ class QuestionCubit extends Cubit<QuestionsModel> {
 
   void answerQuestion(String answer, Function nextEpoch) {
     bool isCorrect = answer == state.questions[state.index].answer;
+    Vibrate.feedback(isCorrect ? FeedbackType.success : FeedbackType.light);
     int c1 = state.correct + (isCorrect ? 1 : 0);
     if (c1 < 0) {
       c1 = 0;

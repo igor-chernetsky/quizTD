@@ -1,5 +1,5 @@
-name: quiz_td
-description: "A new Flutter project."
+name: quiz_defence
+description: "A game where you answer the questions to develop and protect your sity"
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.0+1
+version: 1.0.0+3
 
 environment:
   sdk: '>=3.5.0-47.0.dev <4.0.0'
@@ -42,6 +42,8 @@ dependencies:
   path: ^1.8.2
   uuid: ^3.0.6
   image_fade: ^0.6.2
+  flutter_launcher_icons: "^0.13.1"
+  flutter_vibrate: ^1.3.0
 
 dev_dependencies:
   flutter_test:
@@ -94,7 +96,6 @@ flutter:
     - assets/img/helicopter.gif
     - assets/img/zombie.gif
     - assets/img/zombie.png
-    - assets/img/bg1.png
     - assets/img/e1.png
     - assets/img/e2.png
     - assets/img/e3.png

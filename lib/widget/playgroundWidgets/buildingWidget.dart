@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_td/models/building_model.dart';
+import 'package:quiz_defence/models/building_model.dart';
 
 class BuildingWidget extends StatelessWidget {
   final BuildingModel? building;

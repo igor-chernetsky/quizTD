@@ -1,17 +1,20 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
-import 'package:quiz_td/models/upgrade_model.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_td/widget/infoWidgets/repairButton.dart';
-import 'package:quiz_td/widget/infoWidgets/upgradeButtonWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/upgradeInfoWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/upgradeWidget.dart';
-import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
+import 'package:quiz_defence/models/upgrade_model.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
+import 'package:quiz_defence/widget/infoWidgets/repairButton.dart';
+import 'package:quiz_defence/widget/infoWidgets/sellButtonWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/upgradeButtonWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/upgradeInfoWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/upgradeWidget.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
 
 class SchoolWidget extends StatelessWidget {
   final PlateModel plate;
@@ -24,7 +27,9 @@ class SchoolWidget extends StatelessWidget {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
     double widgetHeight = availableHeight / 2;
-    double size = MediaQuery.of(context).size.width * 0.4;
+    double mainSize = min<double>(MediaQuery.of(context).size.width,
+        MediaQuery.of(context).size.height / 2);
+    double size = mainSize * 0.4;
     double upgradeSize = 70;
 
     upgradeClick(UpgradeType upgrade) {
@@ -113,21 +118,21 @@ class SchoolWidget extends StatelessWidget {
             getInfoWidget(UpgradeType.fence)
           ],
         ));
-        if (gm.epoch > 3) {
-          children.add(Column(
-            children: [
-              UpgradeWidget(
-                size: upgradeSize,
-                upgrade: UpgradeType.dome,
-                price: upgradePriceMap[UpgradeType.dome] ?? 0,
-                done: gm.upgrades?.repair == true,
-                score: gm.score,
-                onTap: () => upgradeClick(UpgradeType.dome),
-              ),
-              getInfoWidget(UpgradeType.dome)
-            ],
-          ));
-        }
+        // if (gm.epoch > 3) {
+        //   children.add(Column(
+        //     children: [
+        //       UpgradeWidget(
+        //         size: upgradeSize,
+        //         upgrade: UpgradeType.dome,
+        //         price: upgradePriceMap[UpgradeType.dome] ?? 0,
+        //         done: gm.upgrades?.repair == true,
+        //         score: gm.score,
+        //         onTap: () => upgradeClick(UpgradeType.dome),
+        //       ),
+        //       getInfoWidget(UpgradeType.dome)
+        //     ],
+        //   ));
+        // }
       }
       return Row(children: children);
     }
@@ -137,6 +142,7 @@ class SchoolWidget extends StatelessWidget {
               children: [
                 Container(
                   height: widgetHeight,
+                  width: mainSize,
                   padding: const EdgeInsets.only(
                       top: 10, left: 20, right: 20, bottom: 30),
                   child: Column(
@@ -189,9 +195,13 @@ class SchoolWidget extends StatelessWidget {
                                         ],
                                       ),
                                       const SizedBox(
-                                        height: 10,
+                                        height: 4,
                                       ),
                                       UpgradeButton(plate: plate),
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      SellButton(plate: plate),
                                     ],
                                   ),
                                 ]),
@@ -205,7 +215,7 @@ class SchoolWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
-                              width: MediaQuery.of(context).size.width - 140,
+                              width: mainSize - 140,
                               child: BarWidget(
                                 value: plate.hp,
                                 total: plate.building!.hp * plate.level,

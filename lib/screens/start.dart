@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_fade/image_fade.dart';
-import 'package:quiz_td/cubit/statsCubit.dart';
-import 'package:quiz_td/main.dart';
-import 'package:quiz_td/models/fame_model.dart';
-import 'package:quiz_td/models/stats_model.dart';
-import 'package:quiz_td/screens/game.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/rotatedImg.dart';
+import 'package:quiz_defence/cubit/statsCubit.dart';
+import 'package:quiz_defence/main.dart';
+import 'package:quiz_defence/models/fame_model.dart';
+import 'package:quiz_defence/models/stats_model.dart';
+import 'package:quiz_defence/screens/game.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/rotatedImg.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -56,7 +56,9 @@ class _StartScreenState extends State<StartScreen> {
                     child: Text(
                         'Year ${fames[index].year} Epoch ${fames[index].epoch}',
                         style: const TextStyle(
-                            fontSize: 16, decoration: TextDecoration.none))),
+                            color: Color(0xFFB0B0B0),
+                            fontSize: 16,
+                            decoration: TextDecoration.none))),
               );
             }),
       );
@@ -98,7 +100,7 @@ class _StartScreenState extends State<StartScreen> {
               height: availableHeight,
               width: double.infinity,
               decoration:
-                  const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.4)),
+                  const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.7)),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -110,11 +112,17 @@ class _StartScreenState extends State<StartScreen> {
                     height: 30,
                   ),
                   ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: const Color(0xFFA2031E),
+                      ),
                       onPressed: () =>
                           Navigator.pushNamed(context, GameScreen.routeName),
                       child: const Text(
                         'START',
-                        style: TextStyle(letterSpacing: 2, fontSize: 18),
+                        style: TextStyle(
+                            color: Colors.white,
+                            letterSpacing: 3,
+                            fontSize: 20),
                       )),
                   const SizedBox(
                     height: 30,
@@ -132,7 +140,9 @@ class _StartScreenState extends State<StartScreen> {
                       children: [
                         const Text('Top 10:',
                             style: TextStyle(
-                                fontSize: 20, decoration: TextDecoration.none)),
+                                color: Colors.white,
+                                fontSize: 20,
+                                decoration: TextDecoration.none)),
                         const SizedBox(
                           height: 10,
                         ),

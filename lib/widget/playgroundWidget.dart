@@ -1,18 +1,21 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_fade/image_fade.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
-import 'package:quiz_td/screens/start.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/epochNum.dart';
-import 'package:quiz_td/widget/playgroundWidgets/arrowWidget.dart';
-import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/healthBarWidget.dart';
-import 'package:quiz_td/widget/playgroundWidgets/actionWidget.dart';
-import 'package:quiz_td/widget/playgroundWidgets/seasonWidget.dart';
-import 'package:quiz_td/widget/playgroundWidgets/scoreWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
+import 'package:quiz_defence/screens/start.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/epochNum.dart';
+import 'package:quiz_defence/widget/menus/mainMenu.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/arrowWidget.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/healthBarWidget.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/actionWidget.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/seasonWidget.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/scoreWidget.dart';
 
 class PlaygroundWidget extends StatelessWidget {
   const PlaygroundWidget({super.key});
@@ -82,12 +85,18 @@ class PlaygroundWidget extends StatelessWidget {
     List<Widget> background = fence
         ? [
             Positioned(
-              child: Container(
-                width: size * 3,
-                height: size * 3,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/img/fencemap.png'))),
+              child: Transform.scale(
+                scale: 1.12,
+                child: Opacity(
+                  opacity: 0.75,
+                  child: Container(
+                    width: size * 3,
+                    height: size * 3,
+                    decoration: const BoxDecoration(
+                        image: DecorationImage(
+                            image: AssetImage('assets/img/fencemap.png'))),
+                  ),
+                ),
               ),
             ),
           ]
@@ -119,7 +128,7 @@ class PlaygroundWidget extends StatelessWidget {
       height: size,
       width: size,
       child: Card(
-        color: const Color.fromRGBO(0, 0, 0, 0.4),
+        color: const Color.fromRGBO(0, 0, 0, 0.6),
         child: Container(
           padding: const EdgeInsets.all(10),
           height: double.infinity,
@@ -127,36 +136,6 @@ class PlaygroundWidget extends StatelessWidget {
           child: EpochnumWidget(epoch: epoch),
         ),
       ),
-    );
-  }
-
-  getMenu(BuildContext context, double size) {
-    return SizedBox(
-      height: size,
-      width: size,
-      child: Card(
-          color: const Color.fromRGBO(0, 0, 0, 0.4),
-          child: IconButton(
-              onPressed: () => showModalBottomSheet<void>(
-                  context: context,
-                  builder: (BuildContext context) {
-                    return Container(
-                      alignment: Alignment.center,
-                      color: AppColors.backgroundColor,
-                      padding: const EdgeInsets.all(10),
-                      height: 300,
-                      width: double.infinity,
-                      child: Column(
-                        children: [
-                          ElevatedButton(
-                              onPressed: () => Navigator.pushNamed(
-                                  context, StartScreen.routeName),
-                              child: const Text('Exit'))
-                        ],
-                      ),
-                    );
-                  }),
-              icon: const Icon(Icons.menu, size: 38))),
     );
   }
 
@@ -174,66 +153,77 @@ class PlaygroundWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(builder: (context, gm) {
-      double size = MediaQuery.of(context).size.width / (gm.width + 2);
+      double mainSize = min<double>(MediaQuery.of(context).size.width,
+          MediaQuery.of(context).size.height / 2);
+      double size = mainSize / (gm.width + 2);
       int maxSize = gm.width * gm.width;
       return Stack(
         children: [
-          Opacity(
-            opacity: 0.7,
-            child: Positioned.fill(
+          Positioned.fill(
+            child: Opacity(
+                opacity: 1,
                 child: ImageFade(
-              // whenever the image changes, it will be loaded, and then faded in:
-              image: AssetImage(
-                  'assets/img/seasons/${getSeasonName(gm.counter)}.png'),
+                  // whenever the image changes, it will be loaded, and then faded in:
+                  image: AssetImage(
+                      'assets/img/seasons/${getSeasonName(gm.counter)}.png'),
 
-              // slow-ish fade for loaded images:
-              duration: const Duration(milliseconds: 1000),
+                  // slow-ish fade for loaded images:
+                  duration: const Duration(milliseconds: 1000),
 
-              // supports most properties of Image:
-              alignment: Alignment.center,
-              fit: BoxFit.cover,
-              scale: 1,
-            )),
+                  // supports most properties of Image:
+                  alignment: Alignment.center,
+                  fit: BoxFit.cover,
+                  scale: 1,
+                )),
           ),
-          Column(
-            children: [
-              SizedBox(
-                height: size,
-                child: Row(
-                  children: [
-                    ScoreWidget(size: size),
-                    ...getActionWidgets(size, 0, gm.width),
-                    SeasonWidget(size: size)
-                  ],
-                ),
-              ),
-              Row(
+          Center(
+            child: Container(
+              alignment: Alignment.center,
+              width: mainSize,
+              child: Column(
                 children: [
-                  Column(
+                  SizedBox(
+                    height: size,
+                    child: Row(
+                      children: [
+                        ScoreWidget(size: size),
+                        ...getActionWidgets(size, 0, gm.width),
+                        SeasonWidget(size: size)
+                      ],
+                    ),
+                  ),
+                  Row(
                     children: [
-                      ...getActionWidgets(size, gm.width * 3, gm.width),
+                      Column(
+                        children: [
+                          ...getActionWidgets(size, gm.width * 3, gm.width),
+                        ],
+                      ),
+                      drawCity(context, gm.plates, gm.width, size,
+                          gm.upgrades?.fence == true, gm.selectedIndex),
+                      Column(
+                        children: [
+                          ...getActionWidgets(size, gm.width, gm.width),
+                        ],
+                      )
                     ],
                   ),
-                  drawCity(context, gm.plates, gm.width, size,
-                      gm.upgrades?.fence == true, gm.selectedIndex),
-                  Column(
-                    children: [
-                      ...getActionWidgets(size, gm.width, gm.width),
-                    ],
-                  )
+                  SizedBox(
+                    height: size,
+                    child: Row(
+                      children: [
+                        getEpoch(gm.epoch, size),
+                        ...getActionWidgets(size, maxSize - gm.width, gm.width),
+                        MainMenu(
+                          size: size,
+                          parentContext: context,
+                        )
+                      ],
+                    ),
+                  ),
                 ],
               ),
-              SizedBox(
-                height: size,
-                child: Row(
-                  children: [
-                    getEpoch(gm.epoch, size),
-                    ...getActionWidgets(size, maxSize - gm.width, gm.width),
-                    getMenu(context, size),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
         ],
       );

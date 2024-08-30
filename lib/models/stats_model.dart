@@ -1,4 +1,4 @@
-import 'package:quiz_td/models/fame_model.dart';
+import 'package:quiz_defence/models/fame_model.dart';
 
 class StatsModel {
   GameState state;

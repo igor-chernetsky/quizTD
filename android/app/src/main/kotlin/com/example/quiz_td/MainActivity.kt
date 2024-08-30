@@ -1,4 +1,4 @@
-package com.example.quiz_td
+package com.blackcross.quiz_defense
 
 import io.flutter.embedding.android.FlutterActivity
 

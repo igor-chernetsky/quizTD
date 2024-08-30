@@ -1,7 +1,7 @@
-import 'package:quiz_td/models/building_model.dart';
-import 'package:quiz_td/models/enemy_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
-import 'package:quiz_td/models/upgrade_model.dart';
+import 'package:quiz_defence/models/building_model.dart';
+import 'package:quiz_defence/models/enemy_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
+import 'package:quiz_defence/models/upgrade_model.dart';
 
 class GameModel {
   int score;
@@ -91,5 +91,5 @@ getDefaultModel() {
     PlateModel(),
     PlateModel(),
     PlateModel()
-  ], score: 1000);
+  ], score: 10);
 }

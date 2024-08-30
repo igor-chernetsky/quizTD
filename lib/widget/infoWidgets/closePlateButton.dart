@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/game_model.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/game_model.dart';
 
 class ClosePlateButton extends StatelessWidget {
   const ClosePlateButton({super.key});

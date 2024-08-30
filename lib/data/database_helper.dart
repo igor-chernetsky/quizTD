@@ -1,5 +1,5 @@
 import 'package:path/path.dart';
-import 'package:quiz_td/models/fame_model.dart';
+import 'package:quiz_defence/models/fame_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:uuid/uuid.dart';

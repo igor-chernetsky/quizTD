@@ -1,13 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/models/building_model.dart';
-import 'package:quiz_td/models/enemy_model.dart';
-import 'package:quiz_td/models/fame_model.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
-import 'package:quiz_td/models/upgrade_model.dart';
-import 'package:quiz_td/utils/enemies.dart';
+import 'package:flutter_vibrate/flutter_vibrate.dart';
+import 'package:quiz_defence/models/building_model.dart';
+import 'package:quiz_defence/models/enemy_model.dart';
+import 'package:quiz_defence/models/fame_model.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
+import 'package:quiz_defence/models/upgrade_model.dart';
+import 'package:quiz_defence/utils/enemies.dart';
 
 class GameCubit extends Cubit<GameModel> {
   final int _mainIndex = 4;
@@ -191,7 +192,7 @@ class GameCubit extends Cubit<GameModel> {
 
   void changeState() {
     GameModel res = _cloneModel();
-    res.counter += 0.02;
+    res.counter += 0.01;
     _setFence(res.enemies);
     for (int i = 0; i < res.plates.length; i++) {
       _changeBuildState(res.plates[i], res);
@@ -276,6 +277,9 @@ class GameCubit extends Cubit<GameModel> {
         } else {
           res.plates[enemy.targetIndex!].hp -= enemy.dps;
           enemy.damege += enemy.dps;
+          if (enemy.type == EnemyType.meteor) {
+            Vibrate.feedback(FeedbackType.heavy);
+          }
           if (enemy.type == EnemyType.zombie && enemy.damege >= 100) {
             enemy.damege = 0;
             int? nextIndex = _getNextEnemyIndex(i, res);

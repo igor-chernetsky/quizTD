@@ -1,14 +1,16 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:path/path.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/building_model.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/buildingInfoWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_td/widget/infoWidgets/epochNum.dart';
-import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/building_model.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/buildingInfoWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
+import 'package:quiz_defence/widget/infoWidgets/epochNum.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
 
 class BuilderWidget extends StatelessWidget {
   const BuilderWidget({super.key});
@@ -21,43 +23,49 @@ class BuilderWidget extends StatelessWidget {
         MediaQuery.of(context).padding.bottom;
 
     double widgetHeight = availableHeight / 2;
-    double size = MediaQuery.of(context).size.width / 3 - 24;
+    double mainSize = min<double>(MediaQuery.of(context).size.width,
+        MediaQuery.of(context).size.height / 2);
+    double size = mainSize / 3 - 24;
     List<List<BuildingModel>> buildings = [
       [
-        BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
+        BuildingModel(
+            type: BuildingType.farm, price: 10, hp: 100, buildSpeed: 4),
       ],
       [
-        BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
+        BuildingModel(
+            type: BuildingType.farm, price: 10, hp: 100, buildSpeed: 4),
         BuildingModel(
             type: BuildingType.tower,
             price: 50,
-            hp: 150,
+            hp: 200,
             dps: 10,
             buildSpeed: 5),
         BuildingModel(
-            type: BuildingType.school, price: 100, hp: 100, buildSpeed: 10)
+            type: BuildingType.school, price: 100, hp: 100, buildSpeed: 5)
       ],
       [
-        BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
+        BuildingModel(
+            type: BuildingType.farm, price: 10, hp: 100, buildSpeed: 4),
         BuildingModel(
             type: BuildingType.tower,
             price: 50,
-            hp: 150,
+            hp: 200,
             dps: 10,
             buildSpeed: 5),
         BuildingModel(
-            type: BuildingType.school, price: 100, hp: 100, buildSpeed: 10)
+            type: BuildingType.school, price: 100, hp: 150, buildSpeed: 5)
       ],
       [
-        BuildingModel(type: BuildingType.farm, price: 10, hp: 50),
+        BuildingModel(
+            type: BuildingType.farm, price: 10, hp: 100, buildSpeed: 4),
         BuildingModel(
             type: BuildingType.tower,
             price: 50,
-            hp: 150,
+            hp: 200,
             dps: 10,
             buildSpeed: 5),
         BuildingModel(
-            type: BuildingType.school, price: 100, hp: 100, buildSpeed: 10)
+            type: BuildingType.school, price: 100, hp: 150, buildSpeed: 5)
       ]
     ];
 
@@ -173,6 +181,7 @@ class BuilderWidget extends StatelessWidget {
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => SizedBox(
               height: widgetHeight,
+              width: mainSize,
               child: DefaultTabController(
                 initialIndex: gm.epoch - 1,
                 length: gm.epoch,

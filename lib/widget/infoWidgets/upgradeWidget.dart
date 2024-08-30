@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_td/models/upgrade_model.dart';
+import 'package:quiz_defence/models/upgrade_model.dart';
 
 class UpgradeWidget extends StatelessWidget {
   final UpgradeType upgrade;

@@ -1,12 +1,14 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/building_model.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
-import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/building_model.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
+import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
 
 class BuildingProcessWidget extends StatelessWidget {
   final PlateModel plate;
@@ -20,10 +22,13 @@ class BuildingProcessWidget extends StatelessWidget {
         MediaQuery.of(context).padding.bottom;
 
     double widgetHeight = availableHeight / 3;
-    double size = MediaQuery.of(context).size.width / 3;
+    double mainSize = min<double>(MediaQuery.of(context).size.width,
+        MediaQuery.of(context).size.height / 2);
+    double size = mainSize / 3;
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => SizedBox(
+              width: mainSize,
               height: widgetHeight,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

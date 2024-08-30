@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
 
 class RepairButton extends StatelessWidget {
   final PlateModel plate;

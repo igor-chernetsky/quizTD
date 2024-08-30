@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
-import 'package:quiz_td/data/database_helper.dart';
-import 'package:quiz_td/screens/game.dart';
-import 'package:quiz_td/screens/start.dart';
-import 'package:quiz_td/utils/colors.dart';
+import 'package:quiz_defence/data/database_helper.dart';
+import 'package:quiz_defence/screens/game.dart';
+import 'package:quiz_defence/screens/start.dart';
+import 'package:quiz_defence/utils/colors.dart';
 
 final dbHelper = DatabaseHelper();
 

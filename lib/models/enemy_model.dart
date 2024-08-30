@@ -2,7 +2,6 @@ class EnemyModel {
   late int hp;
   late int max;
   late int dps;
-  late bool oneTimeUse = false;
   EnemyType? type;
   int? targetIndex;
   int damege = 0;
@@ -28,7 +27,6 @@ class EnemyModel {
       case EnemyType.meteor:
         hp = 20;
         dps = 200;
-        oneTimeUse = true;
         break;
       default:
         hp = 1;

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/cubit/questionCubit.dart';
-import 'package:quiz_td/cubit/statsCubit.dart';
-import 'package:quiz_td/models/fame_model.dart';
-import 'package:quiz_td/models/stats_model.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/looseWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/winWidget.dart';
-import 'package:quiz_td/widget/playgroundWidget.dart';
-import 'package:quiz_td/widget/topWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/cubit/questionCubit.dart';
+import 'package:quiz_defence/cubit/statsCubit.dart';
+import 'package:quiz_defence/models/fame_model.dart';
+import 'package:quiz_defence/models/stats_model.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/looseWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/winWidget.dart';
+import 'package:quiz_defence/widget/playgroundWidget.dart';
+import 'package:quiz_defence/widget/topWidget.dart';
 
 class GameScreen extends StatelessWidget {
   static String routeName = '/game';

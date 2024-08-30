@@ -1,14 +1,17 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_td/cubit/gameCubit.dart';
-import 'package:quiz_td/models/game_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
-import 'package:quiz_td/utils/colors.dart';
-import 'package:quiz_td/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_td/widget/infoWidgets/repairButton.dart';
-import 'package:quiz_td/widget/infoWidgets/upgradeButtonWidget.dart';
-import 'package:quiz_td/widget/playgroundWidgets/buildingWidget.dart';
-import 'package:quiz_td/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_defence/cubit/gameCubit.dart';
+import 'package:quiz_defence/models/game_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
+import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
+import 'package:quiz_defence/widget/infoWidgets/repairButton.dart';
+import 'package:quiz_defence/widget/infoWidgets/sellButtonWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/upgradeButtonWidget.dart';
+import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
 
 class TowerWidget extends StatelessWidget {
   final PlateModel plate;
@@ -21,7 +24,9 @@ class TowerWidget extends StatelessWidget {
         MediaQuery.of(context).padding.top -
         MediaQuery.of(context).padding.bottom;
     double widgetHeight = availableHeight / 2;
-    double size = MediaQuery.of(context).size.width * 0.4;
+    double mainSize = min<double>(MediaQuery.of(context).size.width,
+        MediaQuery.of(context).size.height / 2);
+    double size = mainSize * 0.4;
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Stack(
@@ -85,9 +90,13 @@ class TowerWidget extends StatelessWidget {
                                         ],
                                       ),
                                       const SizedBox(
-                                        height: 10,
+                                        height: 4,
                                       ),
                                       UpgradeButton(plate: plate),
+                                      const SizedBox(
+                                        height: 4,
+                                      ),
+                                      SellButton(plate: plate),
                                     ],
                                   ),
                                 ]),
@@ -101,7 +110,7 @@ class TowerWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           SizedBox(
-                              width: MediaQuery.of(context).size.width - 140,
+                              width: mainSize - 140,
                               child: BarWidget(
                                 value: plate.hp,
                                 total: plate.building!.hp * plate.level,

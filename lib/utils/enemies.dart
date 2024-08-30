@@ -1,7 +1,7 @@
 import 'dart:math';
 
-import 'package:quiz_td/models/enemy_model.dart';
-import 'package:quiz_td/models/plate_model.dart';
+import 'package:quiz_defence/models/enemy_model.dart';
+import 'package:quiz_defence/models/plate_model.dart';
 
 class DayMapItem {
   List<EnemyType?> enemies;
