@@ -11,8 +11,7 @@ getArifmetick(int count, bool simple) {
   for (int i = 0; i < count; i++) {
     int operand = rnd.nextInt(simple ? 10 : 100);
     if (i != 0) {
-      String operator =
-          mathOperators[rnd.nextInt(simple && count == 2 ? 1 : 2)];
+      String operator = mathOperators[rnd.nextInt(simple ? 1 : 2)];
       result += ' $operator $operand';
       switch (operator) {
         case '+':
@@ -26,6 +25,28 @@ getArifmetick(int count, bool simple) {
       result = operand.toString();
       answer = operand;
     }
+  }
+
+  List<String> answers = _generateAnswers(answer);
+
+  return QuestionModel(
+    question: result,
+    answer: answer.toString(),
+    answers: answers,
+  );
+}
+
+getSubSimple(bool simple) {
+  Random rnd = Random();
+  String result = '';
+  int answer = rnd.nextInt(simple ? 20 : 100);
+  int operand = rnd.nextInt(simple ? 20 : 100);
+  if (answer > operand) {
+    result = '$answer - $operand';
+    answer = answer - operand;
+  } else {
+    result = '$operand - $answer';
+    answer = operand - answer;
   }
 
   List<String> answers = _generateAnswers(answer);
@@ -65,19 +86,19 @@ getMathEasyQuestion1() {
 }
 
 getMathEasyQuestion2() {
-  return getArifmetick(3, true);
+  return getSubSimple(true);
 }
 
 getMathEasyQuestion3() {
-  return getArifmetick(3, false);
+  return getArifmetick(3, true);
 }
 
 getMathEasyQuestion4() {
-  return getArifmetick(4, false);
+  return getSubSimple(false);
 }
 
 getMathQuestion1() {
-  return getArifmetick(2, false);
+  return getArifmetick(3, false);
 }
 
 getMathQuestion2() {
@@ -85,7 +106,7 @@ getMathQuestion2() {
   if (rnd.nextBool()) {
     return getMultiplyQuestion();
   }
-  return getArifmetick(3, false);
+  return getArifmetick(4, false);
 }
 
 getMathQuestion3() {
@@ -142,11 +163,16 @@ List<String> _generateAnswers(int answer) {
   Random rnd = Random();
   List<String> answers = [answer.toString()];
   for (int i = 0; i < 5; i++) {
+    int variant = 0;
     if (rnd.nextBool()) {
-      answers.add((answer + (1 + rnd.nextInt(1 + 20))).toString());
+      variant = answer + (1 + rnd.nextInt(1 + 20));
     } else {
-      answers.add((answer - (1 + rnd.nextInt(1 + 20))).toString());
+      variant = answer - (1 + rnd.nextInt(1 + 20));
     }
+    if ((answer >= 0 && variant < 0) || (answer < 0 && variant >= 0)) {
+      variant *= -1;
+    }
+    answers.add(variant.toString());
   }
   answers.shuffle();
   return answers;

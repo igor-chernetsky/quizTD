@@ -11,11 +11,10 @@ class StatsCubit extends Cubit<StatsModel> {
     return res;
   }
 
-  void initFame(Future<List<FameModel>> famesGetter) {
-    famesGetter.then((fames) {
+  void initFame(Function famesGetter) {
+    famesGetter(state.level).then((fames) {
       StatsModel res = _cloneModel();
       res.fameList = fames;
-      print(fames);
       return emit(res);
     });
   }

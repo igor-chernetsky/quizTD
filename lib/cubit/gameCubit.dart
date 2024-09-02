@@ -24,6 +24,7 @@ class GameCubit extends Cubit<GameModel> {
         epoch: state.epoch,
         score: state.score,
         plates: plates,
+        level: state.level,
         selectedIndex: state.selectedIndex,
         selectedEnemyIndex: state.selectedEnemyIndex,
         yearNumber: state.yearNumber,
@@ -53,7 +54,7 @@ class GameCubit extends Cubit<GameModel> {
       mainPlate.hp += delta;
       if (mainPlate.hp <= 0) {
         _dalayed.cancel();
-        onLose!();
+        onLose!(FameModel(year: res.yearNumber, epoch: res.epoch));
       }
       return emit(res);
     }
@@ -120,7 +121,11 @@ class GameCubit extends Cubit<GameModel> {
     GameModel res = _cloneModel();
     PlateModel seletedPlate = res.plates[state.selectedIndex ?? _mainIndex];
     int price = seletedPlate.building!.price;
-    if (state.epoch == 5 || (!isFree && state.score < price)) {
+    if (!isFree && state.score < price) {
+      return res.epoch;
+    }
+    if (res.epoch == 4) {
+      onWin!(FameModel(year: res.yearNumber, epoch: res.epoch));
       return res.epoch;
     }
     seletedPlate.level++;

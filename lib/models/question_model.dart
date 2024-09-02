@@ -18,7 +18,6 @@ class QuestionModel {
 class QuestionsModel {
   List<QuestionModel> questions;
   int index;
-  String theme;
   int correct;
   int diff;
   QuestionState state;
@@ -27,7 +26,6 @@ class QuestionsModel {
       {required this.questions,
       this.index = 0,
       this.state = QuestionState.none,
-      this.theme = 'Math',
       this.correct = 0,
       this.diff = 1});
 

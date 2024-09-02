@@ -10,6 +10,7 @@ import 'package:quiz_defence/models/stats_model.dart';
 import 'package:quiz_defence/screens/game.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/infoWidgets/rotatedImg.dart';
+import 'package:quiz_defence/widget/menus/themeSelector.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -77,7 +78,7 @@ class _StartScreenState extends State<StartScreen> {
     var availableHeight = MediaQuery.of(context).size.height;
     return BlocProvider<StatsCubit>(
       create: (BuildContext context) =>
-          StatsCubit()..initFame(dbHelper.queryAllRows(10)),
+          StatsCubit()..initFame((level) => dbHelper.queryAllRows(10, level)),
       child: BlocBuilder<StatsCubit, StatsModel>(builder: (context, sm) {
         return Stack(
           clipBehavior: Clip.none,
@@ -109,7 +110,7 @@ class _StartScreenState extends State<StartScreen> {
                     width: 100,
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -125,7 +126,7 @@ class _StartScreenState extends State<StartScreen> {
                             fontSize: 20),
                       )),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   Container(
                     height: 200,
@@ -149,7 +150,13 @@ class _StartScreenState extends State<StartScreen> {
                         renderTop(sm.fameList)
                       ],
                     ),
-                  )
+                  ),
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
+                  // ThemeSelector(
+                  //   parentContext: context,
+                  // )
                 ],
               ),
             ),

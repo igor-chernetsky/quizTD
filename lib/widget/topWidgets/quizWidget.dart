@@ -28,7 +28,9 @@ class QuizWidget extends StatelessWidget {
 
                 context.read<QuestionCubit>().answerQuestion(answers[i], () {
                   int epoch = context.read<GameCubit>().nextEpoch(true);
-                  context.read<QuestionCubit>().setQuestions(epoch, 0);
+                  if (epoch < 5) {
+                    context.read<QuestionCubit>().setQuestions(epoch, 0);
+                  }
                 });
                 Future.delayed(const Duration(milliseconds: 500), () {
                   context.read<QuestionCubit>().nextQuestion();

@@ -1,5 +1,6 @@
 import 'package:quiz_defence/models/building_model.dart';
 import 'package:quiz_defence/models/enemy_model.dart';
+import 'package:quiz_defence/models/fame_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/models/upgrade_model.dart';
 
@@ -11,6 +12,7 @@ class GameModel {
   int? selectedEnemyIndex;
   int epoch;
   int yearNumber;
+  int level;
   double counter;
   List<int> actionUnderAttack;
   late List<EnemyModel?> enemies;
@@ -26,6 +28,7 @@ class GameModel {
       this.selectedEnemyIndex,
       this.actionUnderAttack = const [],
       this.selectedIndex,
+      this.level = 0,
       this.upgrades}) {
     upgrades ??= UpgradeModel();
     if (enemies.isEmpty) {
@@ -64,7 +67,7 @@ class GameModel {
   }
 
   int get answerBoost {
-    int multiplier = 4;
+    int multiplier = 4 * levelMultiplyMap[level]!;
     int schoolCount = plates
         .where((p) =>
             p.building?.type == BuildingType.school && p.buildProgress == null)
@@ -91,5 +94,5 @@ getDefaultModel() {
     PlateModel(),
     PlateModel(),
     PlateModel()
-  ], score: 10);
+  ], score: 10000);
 }
