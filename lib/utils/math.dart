@@ -160,20 +160,29 @@ getMathQuestion4() {
 }
 
 List<String> _generateAnswers(int answer) {
-  Random rnd = Random();
   List<String> answers = [answer.toString()];
   for (int i = 0; i < 5; i++) {
-    int variant = 0;
-    if (rnd.nextBool()) {
-      variant = answer + (1 + rnd.nextInt(1 + 20));
-    } else {
-      variant = answer - (1 + rnd.nextInt(1 + 20));
-    }
-    if ((answer >= 0 && variant < 0) || (answer < 0 && variant >= 0)) {
-      variant *= -1;
-    }
+    int variant = getVariant(answer);
+    int cc = 0;
+    do {
+      variant = getVariant(answer);
+    } while (answers.contains(variant.toString()) && cc++ < 30);
     answers.add(variant.toString());
   }
   answers.shuffle();
   return answers;
+}
+
+getVariant(value) {
+  int variant = 0;
+  Random rnd = Random();
+  if (rnd.nextBool()) {
+    variant = value + (1 + rnd.nextInt(1 + 20));
+  } else {
+    variant = value - (1 + rnd.nextInt(1 + 20));
+  }
+  if ((value >= 0 && variant < 0) || (value < 0 && variant >= 0)) {
+    variant *= -1;
+  }
+  return variant;
 }
