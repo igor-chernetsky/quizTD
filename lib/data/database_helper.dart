@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:quiz_defence/models/fame_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -61,7 +62,7 @@ class DatabaseHelper {
     var response = await _db.query(table);
     response.map((item) {});
     var data = await _db.query(table,
-        orderBy: '$columnEpoch DESC',
+        orderBy: '$columnEpoch DESC, $columnYear DESC',
         limit: limit,
         where: '$columnLevel = ?',
         whereArgs: [level]);
@@ -80,8 +81,8 @@ class DatabaseHelper {
   Future<List<FameModel>> queryTops(int limit) async {
     var response = await _db.query(table);
     response.map((item) {});
-    var data = await _db.query(table,
-        orderBy: '$columnYear DESC', groupBy: columnLevel, limit: limit);
+    var data = await _db.rawQuery(
+        'SELECT $columnId, $columnLevel, $columnYear, MAX($columnEpoch) as $columnEpoch FROM $table GROUP BY $columnLevel');
     var result = data.map((element) {
       return FameModel(
           id: 'element[columnId] as String',

@@ -1,24 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:quiz_defence/cubit/gameCubit.dart';
-import 'package:quiz_defence/cubit/questionCubit.dart';
 import 'package:quiz_defence/models/fame_model.dart';
-import 'package:quiz_defence/models/game_model.dart';
-import 'package:quiz_defence/screens/start.dart';
+import 'package:quiz_defence/models/stats_model.dart';
 import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
+import 'package:quiz_defence/widget/infoWidgets/healthBarWidget.dart';
+
+import '../../cubit/statsCubit.dart';
 
 class ThemeSelector extends StatelessWidget {
   final BuildContext parentContext;
   const ThemeSelector({super.key, required this.parentContext});
 
-  renderThemeSelector(int level) {
-    ListView.builder(
-        itemBuilder: (context, index) => GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
+  renderThemeSelector(BuildContext context, List<ThemeItem> top) {
+    return GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3, mainAxisSpacing: 10, crossAxisSpacing: 10),
+        itemCount: top.length,
+        itemBuilder: (context1, index) => GestureDetector(
+              onTap: () {
+                context.read<StatsCubit>().initFame(themeItems[index]);
+                Navigator.of(context1).pop();
+              },
               child: Container(
-                height: 100,
+                height: 40,
                 child: Column(
-                  children: [Text(levelNameMap[level]!)],
+                  children: [
+                    Image.asset(
+                      'assets/img/${themeItems[index].img}',
+                      width: 80,
+                    ),
+                    Text(themeItems[index].name),
+                    const SizedBox(
+                      height: 6,
+                    ),
+                    HealthbarWidget(
+                      width: 100,
+                      hp: (themeItems[index].level ?? 0) * 0.2,
+                    ),
+                  ],
                 ),
               ),
             ));
@@ -26,51 +46,54 @@ class ThemeSelector extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => SizedBox(
-              height: 80,
-              width: 80,
-              child: Container(
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: AssetImage('assets/img/splash.gif'))),
-                  child: IconButton(
-                      onPressed: () => showModalBottomSheet<void>(
+    return BlocBuilder<StatsCubit, StatsModel>(
+        builder: (context, sm) => SizedBox(
+              height: 180,
+              width: 300,
+              child: SizedBox(
+                  child: GestureDetector(
+                      onTap: () => showModalBottomSheet<void>(
                           context: context,
-                          builder: (BuildContext context) {
+                          builder: (BuildContext context1) {
                             return Container(
                               alignment: Alignment.center,
                               color: AppColors.backgroundColor,
                               padding: const EdgeInsets.all(10),
-                              height: 220,
+                              height: 320,
                               width: double.infinity,
-                              child: Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  ElevatedButton.icon(
-                                      icon: const Icon(Icons.arrow_back,
-                                          color: Colors.white),
-                                      onPressed: () =>
-                                          Navigator.of(context).pop(),
-                                      label: Container(
-                                        alignment: Alignment.center,
-                                        width: 120,
-                                        child: const Text(
-                                          'RESUME',
-                                          style: TextStyle(
-                                              color: Colors.white,
-                                              letterSpacing: 3,
-                                              fontSize: 20),
-                                        ),
-                                      )),
-                                  const SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
-                              ),
+                              child: renderThemeSelector(context, sm.top),
                             );
                           }),
-                      icon: const Icon(Icons.menu, size: 38))),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            'assets/img/${sm.theme.img}',
+                            width: 80,
+                          ),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                  width: 140,
+                                  child: BarWidget(
+                                      value: sm.theme.level ?? 0, total: 5)),
+                              const SizedBox(
+                                height: 6,
+                              ),
+                              Text(
+                                sm.theme.name,
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              ),
+                            ],
+                          )
+                        ],
+                      ))),
             ));
   }
 }

@@ -12,7 +12,7 @@ class GameModel {
   int? selectedEnemyIndex;
   int epoch;
   int yearNumber;
-  int level;
+  ThemeItem? theme;
   double counter;
   List<int> actionUnderAttack;
   late List<EnemyModel?> enemies;
@@ -25,10 +25,10 @@ class GameModel {
       this.counter = 0,
       this.plates = const [],
       this.enemies = const [],
+      this.theme,
       this.selectedEnemyIndex,
       this.actionUnderAttack = const [],
       this.selectedIndex,
-      this.level = 0,
       this.upgrades}) {
     upgrades ??= UpgradeModel();
     if (enemies.isEmpty) {
@@ -67,7 +67,7 @@ class GameModel {
   }
 
   int get answerBoost {
-    int multiplier = 4 * levelMultiplyMap[level]!;
+    int multiplier = 4 * (theme?.multiply ?? 1);
     int schoolCount = plates
         .where((p) =>
             p.building?.type == BuildingType.school && p.buildProgress == null)

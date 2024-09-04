@@ -24,7 +24,7 @@ class GameCubit extends Cubit<GameModel> {
         epoch: state.epoch,
         score: state.score,
         plates: plates,
-        level: state.level,
+        theme: state.theme,
         selectedIndex: state.selectedIndex,
         selectedEnemyIndex: state.selectedEnemyIndex,
         yearNumber: state.yearNumber,
