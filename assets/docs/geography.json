@@ -1,0 +1,2882 @@
+[
+  {
+    "question": "What is the capital of France?",
+    "answer": "Paris",
+    "level": 1,
+    "answers": [
+      "Paris",
+      "London",
+      "Berlin",
+      "Madrid",
+      "Rome",
+      "Lisbon"
+    ]
+  },
+  {
+    "question": "Which continent is Egypt located in?",
+    "answer": "Africa",
+    "level": 1,
+    "answers": [
+      "Africa",
+      "Asia",
+      "Europe",
+      "Australia",
+      "South America",
+      "North America"
+    ]
+  },
+  {
+    "question": "Which ocean is the largest?",
+    "answer": "Pacific Ocean",
+    "level": 1,
+    "answers": [
+      "Pacific Ocean",
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Arctic Ocean",
+      "Southern Ocean",
+      "Mediterranean Sea"
+    ]
+  },
+  {
+    "question": "Which country has the largest population?",
+    "answer": "China",
+    "level": 1,
+    "answers": [
+      "China",
+      "India",
+      "United States",
+      "Indonesia",
+      "Russia",
+      "Brazil"
+    ]
+  },
+  {
+    "question": "Which mountain is the highest in the world?",
+    "answer": "Mount Everest",
+    "level": 1,
+    "answers": [
+      "Mount Everest",
+      "K2",
+      "Kangchenjunga",
+      "Lhotse",
+      "Makalu",
+      "Mount Kilimanjaro"
+    ]
+  },
+  {
+    "question": "What is the capital of Japan?",
+    "answer": "Tokyo",
+    "level": 1,
+    "answers": [
+      "Tokyo",
+      "Seoul",
+      "Beijing",
+      "Bangkok",
+      "Shanghai",
+      "Osaka"
+    ]
+  },
+  {
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "answer": "Japan",
+    "level": 2,
+    "answers": [
+      "Japan",
+      "China",
+      "South Korea",
+      "Thailand",
+      "Vietnam",
+      "Philippines"
+    ]
+  },
+  {
+    "question": "Which desert is the largest in the world?",
+    "answer": "Sahara",
+    "level": 2,
+    "answers": [
+      "Sahara",
+      "Gobi",
+      "Kalahari",
+      "Atacama",
+      "Arabian",
+      "Great Victoria"
+    ]
+  },
+  {
+    "question": "Which country has the longest coastline in the world?",
+    "answer": "Canada",
+    "level": 3,
+    "answers": [
+      "Canada",
+      "Russia",
+      "Australia",
+      "United States",
+      "Indonesia",
+      "Norway"
+    ]
+  },
+  {
+    "question": "What is the smallest country in the world by land area?",
+    "answer": "Vatican City",
+    "level": 2,
+    "answers": [
+      "Vatican City",
+      "Monaco",
+      "San Marino",
+      "Liechtenstein",
+      "Malta",
+      "Andorra"
+    ]
+  },
+  {
+    "question": "Which river flows through the city of London?",
+    "answer": "Thames",
+    "level": 2,
+    "answers": [
+      "Thames",
+      "Seine",
+      "Danube",
+      "Rhine",
+      "Volga",
+      "Elbe"
+    ]
+  },
+  {
+    "question": "Which continent is the Sahara Desert located on?",
+    "answer": "Africa",
+    "level": 2,
+    "answers": [
+      "Africa",
+      "Asia",
+      "North America",
+      "Australia",
+      "Europe",
+      "South America"
+    ]
+  },
+  {
+    "question": "Which is the largest island in the world?",
+    "answer": "Greenland",
+    "level": 1,
+    "answers": [
+      "Greenland",
+      "New Guinea",
+      "Borneo",
+      "Madagascar",
+      "Great Britain",
+      "Sumatra"
+    ]
+  },
+  {
+    "question": "Which country is home to the Great Barrier Reef?",
+    "answer": "Australia",
+    "level": 2,
+    "answers": [
+      "Australia",
+      "New Zealand",
+      "Fiji",
+      "Indonesia",
+      "Philippines",
+      "Malaysia"
+    ]
+  },
+  {
+    "question": "Which U.S. state is the Grand Canyon located in?",
+    "answer": "Arizona",
+    "level": 3,
+    "answers": [
+      "Arizona",
+      "California",
+      "Nevada",
+      "Utah",
+      "New Mexico",
+      "Colorado"
+    ]
+  },
+  {
+    "question": "Which country has the most time zones?",
+    "answer": "France",
+    "level": 3,
+    "answers": [
+      "France",
+      "Russia",
+      "United States",
+      "China",
+      "Canada",
+      "Brazil"
+    ]
+  },
+  {
+    "question": "What is the capital of Australia?",
+    "answer": "Canberra",
+    "level": 2,
+    "answers": [
+      "Canberra",
+      "Sydney",
+      "Melbourne",
+      "Brisbane",
+      "Perth",
+      "Adelaide"
+    ]
+  },
+  {
+    "question": "Which continent is the country of Brazil located in?",
+    "answer": "South America",
+    "level": 1,
+    "answers": [
+      "South America",
+      "North America",
+      "Europe",
+      "Africa",
+      "Asia",
+      "Australia"
+    ]
+  },
+  {
+    "question": "What is the highest mountain in Africa?",
+    "answer": "Mount Kilimanjaro",
+    "level": 2,
+    "answers": [
+      "Mount Kilimanjaro",
+      "Mount Kenya",
+      "Atlas Mountains",
+      "Ras Dashen",
+      "Simien Mountains",
+      "Rwenzori Mountains"
+    ]
+  },
+  {
+    "question": "Which sea separates Europe and Africa?",
+    "answer": "Mediterranean Sea",
+    "level": 2,
+    "answers": [
+      "Mediterranean Sea",
+      "Red Sea",
+      "Black Sea",
+      "Caspian Sea",
+      "Adriatic Sea",
+      "Aegean Sea"
+    ]
+  },
+  {
+    "question": "What is the largest country in South America?",
+    "answer": "Brazil",
+    "level": 2,
+    "answers": [
+      "Brazil",
+      "Argentina",
+      "Colombia",
+      "Peru",
+      "Chile",
+      "Venezuela"
+    ]
+  },
+  {
+    "question": "Which U.S. state is the largest by area?",
+    "answer": "Alaska",
+    "level": 2,
+    "answers": [
+      "Alaska",
+      "Texas",
+      "California",
+      "Montana",
+      "New Mexico",
+      "Nevada"
+    ]
+  },
+  {
+    "question": "What is the capital of Canada?",
+    "answer": "Ottawa",
+    "level": 1,
+    "answers": [
+      "Ottawa",
+      "Toronto",
+      "Vancouver",
+      "Montreal",
+      "Calgary",
+      "Edmonton"
+    ]
+  },
+  {
+    "question": "Which country shares the longest border with the United States?",
+    "answer": "Canada",
+    "level": 1,
+    "answers": [
+      "Canada",
+      "Mexico",
+      "Russia",
+      "Cuba",
+      "Greenland",
+      "Bahamas"
+    ]
+  },
+  {
+    "question": "What is the capital of Russia?",
+    "answer": "Moscow",
+    "level": 1,
+    "answers": [
+      "Moscow",
+      "Saint Petersburg",
+      "Kiev",
+      "Minsk",
+      "Vladivostok",
+      "Novosibirsk"
+    ]
+  },
+  {
+    "question": "Which continent has the most countries?",
+    "answer": "Africa",
+    "level": 2,
+    "answers": [
+      "Africa",
+      "Asia",
+      "Europe",
+      "North America",
+      "South America",
+      "Australia"
+    ]
+  },
+  {
+    "question": "Which European country is known for its fjords?",
+    "answer": "Norway",
+    "level": 2,
+    "answers": [
+      "Norway",
+      "Sweden",
+      "Finland",
+      "Iceland",
+      "Denmark",
+      "Scotland"
+    ]
+  },
+  {
+    "question": "Which is the longest river in Europe?",
+    "answer": "Volga",
+    "level": 3,
+    "answers": [
+      "Volga",
+      "Danube",
+      "Rhine",
+      "Seine",
+      "Dnieper",
+      "Loire"
+    ]
+  },
+  {
+    "question": "Which is the smallest ocean in the world?",
+    "answer": "Arctic Ocean",
+    "level": 2,
+    "answers": [
+      "Arctic Ocean",
+      "Indian Ocean",
+      "Southern Ocean",
+      "Pacific Ocean",
+      "Atlantic Ocean",
+      "Mediterranean Sea"
+    ]
+  },
+  {
+    "question": "What is the capital of Italy?",
+    "answer": "Rome",
+    "level": 1,
+    "answers": [
+      "Rome",
+      "Milan",
+      "Venice",
+      "Florence",
+      "Naples",
+      "Turin"
+    ]
+  },
+  {
+    "question": "What is the official language of Brazil?",
+    "answer": "Portuguese",
+    "level": 2,
+    "answers": [
+      "Portuguese",
+      "Spanish",
+      "English",
+      "French",
+      "German",
+      "Italian"
+    ]
+  },
+  {
+    "question": "Which country is the largest in the world by land area?",
+    "answer": "Russia",
+    "level": 1,
+    "answers": [
+      "Russia",
+      "Canada",
+      "China",
+      "United States",
+      "Brazil",
+      "Australia"
+    ]
+  },
+  {
+    "question": "Which sea lies between Australia and New Zealand?",
+    "answer": "Tasman Sea",
+    "level": 4,
+    "answers": [
+      "Tasman Sea",
+      "Coral Sea",
+      "Arafura Sea",
+      "Bismarck Sea",
+      "Timor Sea",
+      "Java Sea"
+    ]
+  },
+  {
+    "question": "Which is the driest continent?",
+    "answer": "Antarctica",
+    "level": 2,
+    "answers": [
+      "Antarctica",
+      "Africa",
+      "Australia",
+      "Asia",
+      "Europe",
+      "South America"
+    ]
+  },
+  {
+    "question": "What is the largest desert in the world?",
+    "answer": "Antarctic Desert",
+    "level": 2,
+    "answers": [
+      "Antarctic Desert",
+      "Sahara Desert",
+      "Gobi Desert",
+      "Arabian Desert",
+      "Kalahari Desert",
+      "Atacama Desert"
+    ]
+  },
+  {
+    "question": "Which country is known as the land of the thousand lakes?",
+    "answer": "Finland",
+    "level": 3,
+    "answers": [
+      "Finland",
+      "Sweden",
+      "Norway",
+      "Canada",
+      "Iceland",
+      "Russia"
+    ]
+  },
+  {
+    "question": "Which continent is the Andes Mountain range located on?",
+    "answer": "South America",
+    "level": 2,
+    "answers": [
+      "South America",
+      "North America",
+      "Africa",
+      "Europe",
+      "Asia",
+      "Australia"
+    ]
+  },
+  {
+    "question": "Which is the largest freshwater lake by surface area?",
+    "answer": "Lake Superior",
+    "level": 3,
+    "answers": [
+      "Lake Superior",
+      "Lake Victoria",
+      "Lake Michigan",
+      "Lake Huron",
+      "Caspian Sea",
+      "Lake Baikal"
+    ]
+  },
+  {
+    "question": "What is the capital of Germany?",
+    "answer": "Berlin",
+    "level": 1,
+    "answers": [
+      "Berlin",
+      "Munich",
+      "Hamburg",
+      "Frankfurt",
+      "Stuttgart",
+      "Cologne"
+    ]
+  },
+  {
+    "question": "Which country is home to Mount Fuji?",
+    "answer": "Japan",
+    "level": 2,
+    "answers": [
+      "Japan",
+      "China",
+      "South Korea",
+      "Indonesia",
+      "Philippines",
+      "Vietnam"
+    ]
+  },
+  {
+    "question": "What is the capital of Spain?",
+    "answer": "Madrid",
+    "level": 1,
+    "answers": [
+      "Madrid",
+      "Barcelona",
+      "Valencia",
+      "Seville",
+      "Malaga",
+      "Bilbao"
+    ]
+  },
+  {
+    "question": "Which African country is the largest by land area?",
+    "answer": "Algeria",
+    "level": 3,
+    "answers": [
+      "Algeria",
+      "Sudan",
+      "Congo",
+      "South Africa",
+      "Nigeria",
+      "Egypt"
+    ]
+  },
+  {
+    "question": "Which country is known as the Pearl of the Indian Ocean?",
+    "answer": "Sri Lanka",
+    "level": 3,
+    "answers": [
+      "Sri Lanka",
+      "Maldives",
+      "India",
+      "Indonesia",
+      "Thailand",
+      "Malaysia"
+    ]
+  },
+  {
+    "question": "What is the capital of Egypt?",
+    "answer": "Cairo",
+    "level": 2,
+    "answers": [
+      "Cairo",
+      "Alexandria",
+      "Luxor",
+      "Giza",
+      "Aswan",
+      "Port Said"
+    ]
+  },
+  {
+    "question": "Which is the longest river in North America?",
+    "answer": "Mississippi River",
+    "level": 3,
+    "answers": [
+      "Mississippi River",
+      "Missouri River",
+      "Yukon River",
+      "Colorado River",
+      "Rio Grande",
+      "Ohio River"
+    ]
+  },
+  {
+    "question": "What is the capital of India?",
+    "answer": "New Delhi",
+    "level": 1,
+    "answers": [
+      "New Delhi",
+      "Mumbai",
+      "Bangalore",
+      "Kolkata",
+      "Chennai",
+      "Hyderabad"
+    ]
+  },
+  {
+    "question": "Which country has the highest population in Africa?",
+    "answer": "Nigeria",
+    "level": 3,
+    "answers": [
+      "Nigeria",
+      "Ethiopia",
+      "Egypt",
+      "South Africa",
+      "Kenya",
+      "Democratic Republic of the Congo"
+    ]
+  },
+  {
+    "question": "Which is the only continent without a desert?",
+    "answer": "Europe",
+    "level": 2,
+    "answers": [
+      "Europe",
+      "Asia",
+      "North America",
+      "South America",
+      "Australia",
+      "Africa"
+    ]
+  },
+  {
+    "question": "Which country has the most UNESCO World Heritage Sites?",
+    "answer": "Italy",
+    "level": 3,
+    "answers": [
+      "Italy",
+      "China",
+      "Spain",
+      "Germany",
+      "France",
+      "India"
+    ]
+  },
+  {
+    "question": "What is the deepest point in the world's oceans?",
+    "answer": "Mariana Trench",
+    "level": 3,
+    "answers": [
+      "Mariana Trench",
+      "Tonga Trench",
+      "Java Trench",
+      "Puerto Rico Trench",
+      "Philippine Trench",
+      "Kermadec Trench"
+    ]
+  },
+  {
+    "question": "Which European country has the longest coastline?",
+    "answer": "Norway",
+    "level": 4,
+    "answers": [
+      "Norway",
+      "Greece",
+      "Italy",
+      "Spain",
+      "United Kingdom",
+      "Sweden"
+    ]
+  },
+  {
+    "question": "What is the longest mountain range in the world?",
+    "answer": "Andes",
+    "level": 4,
+    "answers": [
+      "Andes",
+      "Rockies",
+      "Himalayas",
+      "Alps",
+      "Great Dividing Range",
+      "Atlas Mountains"
+    ]
+  },
+  {
+    "question": "Which is the only country that shares a border with the United Kingdom?",
+    "answer": "Ireland",
+    "level": 3,
+    "answers": [
+      "Ireland",
+      "France",
+      "Belgium",
+      "Netherlands",
+      "Denmark",
+      "Germany"
+    ]
+  },
+  {
+    "question": "Which river forms the natural border between the United States and Mexico?",
+    "answer": "Rio Grande",
+    "level": 4,
+    "answers": [
+      "Rio Grande",
+      "Colorado River",
+      "Mississippi River",
+      "Yukon River",
+      "Columbia River",
+      "Arkansas River"
+    ]
+  },
+  {
+    "question": "Which desert covers much of northern China and southern Mongolia?",
+    "answer": "Gobi Desert",
+    "level": 4,
+    "answers": [
+      "Gobi Desert",
+      "Taklamakan Desert",
+      "Karakum Desert",
+      "Thar Desert",
+      "Sonoran Desert",
+      "Kyzylkum Desert"
+    ]
+  },
+  {
+    "question": "What is the second highest mountain in the world?",
+    "answer": "K2",
+    "level": 3,
+    "answers": [
+      "K2",
+      "Mount Everest",
+      "Kangchenjunga",
+      "Lhotse",
+      "Makalu",
+      "Cho Oyu"
+    ]
+  },
+  {
+    "question": "What is the capital of Kazakhstan?",
+    "answer": "Astana",
+    "level": 3,
+    "answers": [
+      "Astana",
+      "Almaty",
+      "Bishkek",
+      "Tashkent",
+      "Dushanbe",
+      "Ashgabat"
+    ]
+  },
+  {
+    "question": "Which country controls the Galápagos Islands?",
+    "answer": "Ecuador",
+    "level": 4,
+    "answers": [
+      "Ecuador",
+      "Peru",
+      "Colombia",
+      "Chile",
+      "Argentina",
+      "Brazil"
+    ]
+  },
+  {
+    "question": "What is the capital of Mexico?",
+    "answer": "Mexico City",
+    "level": 2,
+    "answers": [
+      "Mexico City",
+      "Guadalajara",
+      "Monterrey",
+      "Tijuana",
+      "Cancun",
+      "Puebla"
+    ]
+  },
+  {
+    "question": "Which continent is Australia located in?",
+    "answer": "Australia",
+    "level": 1,
+    "answers": [
+      "Australia",
+      "Asia",
+      "Africa",
+      "Europe",
+      "South America",
+      "North America"
+    ]
+  },
+  {
+    "question": "Which country is famous for the Eiffel Tower?",
+    "answer": "France",
+    "level": 1,
+    "answers": [
+      "France",
+      "Italy",
+      "Germany",
+      "Spain",
+      "United Kingdom",
+      "Belgium"
+    ]
+  },
+  {
+    "question": "Which continent is the country of India located in?",
+    "answer": "Asia",
+    "level": 1,
+    "answers": [
+      "Asia",
+      "Africa",
+      "Europe",
+      "North America",
+      "South America",
+      "Australia"
+    ]
+  },
+  {
+    "question": "Which ocean is located to the west of the United States?",
+    "answer": "Pacific Ocean",
+    "level": 2,
+    "answers": [
+      "Pacific Ocean",
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Arctic Ocean",
+      "Southern Ocean",
+      "Mediterranean Sea"
+    ]
+  },
+  {
+    "question": "Which country is known as the Land of the Maple Leaf?",
+    "answer": "Canada",
+    "level": 1,
+    "answers": [
+      "Canada",
+      "United States",
+      "United Kingdom",
+      "Australia",
+      "New Zealand",
+      "Sweden"
+    ]
+  },
+  {
+    "question": "What is the capital of China?",
+    "answer": "Beijing",
+    "level": 1,
+    "answers": [
+      "Beijing",
+      "Shanghai",
+      "Hong Kong",
+      "Guangzhou",
+      "Chengdu",
+      "Shenzhen"
+    ]
+  },
+  {
+    "question": "Which is the largest continent by land area?",
+    "answer": "Asia",
+    "level": 2,
+    "answers": [
+      "Asia",
+      "Africa",
+      "North America",
+      "Europe",
+      "Australia",
+      "South America"
+    ]
+  },
+  {
+    "question": "Which country is famous for pizza and pasta?",
+    "answer": "Italy",
+    "level": 1,
+    "answers": [
+      "Italy",
+      "France",
+      "Spain",
+      "Mexico",
+      "Greece",
+      "Germany"
+    ]
+  },
+  {
+    "question": "What is the capital of Argentina?",
+    "answer": "Buenos Aires",
+    "level": 1,
+    "answers": [
+      "Buenos Aires",
+      "Lima",
+      "Santiago",
+      "Montevideo",
+      "Asuncion",
+      "Brasilia"
+    ]
+  },
+  {
+    "question": "Which desert is the largest hot desert in the world?",
+    "answer": "Sahara",
+    "level": 2,
+    "answers": [
+      "Sahara",
+      "Gobi",
+      "Kalahari",
+      "Arabian",
+      "Atacama",
+      "Sonoran"
+    ]
+  },
+  {
+    "question": "Which country is home to the city of Sydney?",
+    "answer": "Australia",
+    "level": 1,
+    "answers": [
+      "Australia",
+      "New Zealand",
+      "Canada",
+      "United States",
+      "South Africa",
+      "United Kingdom"
+    ]
+  },
+  {
+    "question": "Which U.S. state is known as the Sunshine State?",
+    "answer": "Florida",
+    "level": 3,
+    "answers": [
+      "Florida",
+      "California",
+      "Texas",
+      "Arizona",
+      "Hawaii",
+      "Nevada"
+    ]
+  },
+  {
+    "question": "What is the capital of South Korea?",
+    "answer": "Seoul",
+    "level": 1,
+    "answers": [
+      "Seoul",
+      "Busan",
+      "Incheon",
+      "Daegu",
+      "Gwangju",
+      "Daejeon"
+    ]
+  },
+  {
+    "question": "Which mountain range is located between France and Spain?",
+    "answer": "Pyrenees",
+    "level": 3,
+    "answers": [
+      "Pyrenees",
+      "Alps",
+      "Rockies",
+      "Himalayas",
+      "Carpathians",
+      "Andes"
+    ]
+  },
+  {
+    "question": "What is the capital of Thailand?",
+    "answer": "Bangkok",
+    "level": 1,
+    "answers": [
+      "Bangkok",
+      "Phuket",
+      "Chiang Mai",
+      "Pattaya",
+      "Krabi",
+      "Ayutthaya"
+    ]
+  },
+  {
+    "question": "us.png",
+    "answer": "United States",
+    "isImg": true,
+    "answers": [
+      "United States",
+      "Canada",
+      "Mexico",
+      "United Kingdom",
+      "Australia",
+      "New Zealand"
+    ],
+    "level": 1
+  },
+  {
+    "question": "fr.png",
+    "answer": "France",
+    "isImg": true,
+    "answers": [
+      "France",
+      "Germany",
+      "Italy",
+      "Spain",
+      "Belgium",
+      "Switzerland"
+    ],
+    "level": 1
+  },
+  {
+    "question": "de.png",
+    "answer": "Germany",
+    "isImg": true,
+    "answers": [
+      "Germany",
+      "Austria",
+      "Switzerland",
+      "Belgium",
+      "Netherlands",
+      "Denmark"
+    ],
+    "level": 1
+  },
+  {
+    "question": "es.png",
+    "answer": "Spain",
+    "isImg": true,
+    "answers": [
+      "Spain",
+      "Portugal",
+      "Italy",
+      "France",
+      "Mexico",
+      "Argentina"
+    ],
+    "level": 1
+  },
+  {
+    "question": "it.png",
+    "answer": "Italy",
+    "isImg": true,
+    "answers": [
+      "Italy",
+      "France",
+      "Spain",
+      "Portugal",
+      "Greece",
+      "Switzerland"
+    ],
+    "level": 1
+  },
+  {
+    "question": "cn.png",
+    "answer": "China",
+    "isImg": true,
+    "answers": [
+      "China",
+      "Japan",
+      "South Korea",
+      "Vietnam",
+      "Thailand",
+      "Taiwan"
+    ],
+    "level": 1
+  },
+  {
+    "question": "jp.png",
+    "answer": "Japan",
+    "isImg": true,
+    "answers": [
+      "Japan",
+      "South Korea",
+      "China",
+      "Thailand",
+      "Philippines",
+      "Vietnam"
+    ],
+    "level": 1
+  },
+  {
+    "question": "ca.png",
+    "answer": "Canada",
+    "isImg": true,
+    "answers": [
+      "Canada",
+      "United States",
+      "Australia",
+      "New Zealand",
+      "United Kingdom",
+      "Ireland"
+    ],
+    "level": 1
+  },
+  {
+    "question": "br.png",
+    "answer": "Brazil",
+    "isImg": true,
+    "answers": [
+      "Brazil",
+      "Argentina",
+      "Mexico",
+      "Chile",
+      "Colombia",
+      "Peru"
+    ],
+    "level": 1
+  },
+  {
+    "question": "gb.png",
+    "answer": "United Kingdom",
+    "isImg": true,
+    "answers": [
+      "United Kingdom",
+      "Ireland",
+      "Australia",
+      "New Zealand",
+      "Canada",
+      "United States"
+    ],
+    "level": 1
+  },
+  {
+    "question": "au.png",
+    "answer": "Australia",
+    "isImg": true,
+    "answers": [
+      "Australia",
+      "New Zealand",
+      "Canada",
+      "United States",
+      "United Kingdom",
+      "South Africa"
+    ],
+    "level": 1
+  },
+  {
+    "question": "ru.png",
+    "answer": "Russia",
+    "isImg": true,
+    "answers": [
+      "Russia",
+      "Ukraine",
+      "Belarus",
+      "Kazakhstan",
+      "Poland",
+      "Lithuania"
+    ],
+    "level": 2
+  },
+  {
+    "question": "in.png",
+    "answer": "India",
+    "isImg": true,
+    "answers": [
+      "India",
+      "Pakistan",
+      "Sri Lanka",
+      "Nepal",
+      "Bangladesh",
+      "Bhutan"
+    ],
+    "level": 1
+  },
+  {
+    "question": "mx.png",
+    "answer": "Mexico",
+    "isImg": true,
+    "answers": [
+      "Mexico",
+      "Argentina",
+      "Spain",
+      "Brazil",
+      "Colombia",
+      "Chile"
+    ],
+    "level": 1
+  },
+  {
+    "question": "za.png",
+    "answer": "South Africa",
+    "isImg": true,
+    "answers": [
+      "South Africa",
+      "Zimbabwe",
+      "Namibia",
+      "Botswana",
+      "Lesotho",
+      "Eswatini"
+    ],
+    "level": 2
+  },
+  {
+    "question": "eg.png",
+    "answer": "Egypt",
+    "isImg": true,
+    "answers": [
+      "Egypt",
+      "Sudan",
+      "Libya",
+      "Algeria",
+      "Morocco",
+      "Tunisia"
+    ],
+    "level": 2
+  },
+  {
+    "question": "kr.png",
+    "answer": "South Korea",
+    "isImg": true,
+    "answers": [
+      "South Korea",
+      "Japan",
+      "China",
+      "Vietnam",
+      "Philippines",
+      "Thailand"
+    ],
+    "level": 1
+  },
+  {
+    "question": "ar.png",
+    "answer": "Argentina",
+    "isImg": true,
+    "answers": [
+      "Argentina",
+      "Brazil",
+      "Chile",
+      "Uruguay",
+      "Paraguay",
+      "Mexico"
+    ],
+    "level": 1
+  },
+  {
+    "question": "se.png",
+    "answer": "Sweden",
+    "isImg": true,
+    "answers": [
+      "Sweden",
+      "Norway",
+      "Denmark",
+      "Finland",
+      "Iceland",
+      "Germany"
+    ],
+    "level": 2
+  },
+  {
+    "question": "pl.png",
+    "answer": "Poland",
+    "isImg": true,
+    "answers": [
+      "Poland",
+      "Czech Republic",
+      "Slovakia",
+      "Hungary",
+      "Germany",
+      "Ukraine"
+    ],
+    "level": 1
+  },
+  {
+    "question": "nl.png",
+    "answer": "Netherlands",
+    "isImg": true,
+    "answers": [
+      "Netherlands",
+      "Belgium",
+      "Germany",
+      "France",
+      "Luxembourg",
+      "Denmark"
+    ],
+    "level": 1
+  },
+  {
+    "question": "ch.png",
+    "answer": "Switzerland",
+    "isImg": true,
+    "answers": [
+      "Switzerland",
+      "Austria",
+      "Germany",
+      "France",
+      "Italy",
+      "Belgium"
+    ],
+    "level": 2
+  },
+  {
+    "question": "no.png",
+    "answer": "Norway",
+    "isImg": true,
+    "answers": [
+      "Norway",
+      "Sweden",
+      "Denmark",
+      "Finland",
+      "Iceland",
+      "Greenland"
+    ],
+    "level": 2
+  },
+  {
+    "question": "gr.png",
+    "answer": "Greece",
+    "isImg": true,
+    "answers": [
+      "Greece",
+      "Italy",
+      "Cyprus",
+      "Turkey",
+      "Albania",
+      "Bulgaria"
+    ],
+    "level": 2
+  },
+  {
+    "question": "pt.png",
+    "answer": "Portugal",
+    "isImg": true,
+    "answers": [
+      "Portugal",
+      "Spain",
+      "Italy",
+      "Brazil",
+      "Argentina",
+      "France"
+    ],
+    "level": 1
+  },
+  {
+    "question": "ua.png",
+    "answer": "Ukraine",
+    "isImg": true,
+    "answers": [
+      "Ukraine",
+      "Russia",
+      "Belarus",
+      "Poland",
+      "Moldova",
+      "Romania"
+    ],
+    "level": 2
+  },
+  {
+    "question": "dk.png",
+    "answer": "Denmark",
+    "isImg": true,
+    "answers": [
+      "Denmark",
+      "Sweden",
+      "Norway",
+      "Finland",
+      "Germany",
+      "Netherlands"
+    ],
+    "level": 2
+  },
+  {
+    "question": "tr.png",
+    "answer": "Turkey",
+    "isImg": true,
+    "answers": [
+      "Turkey",
+      "Greece",
+      "Cyprus",
+      "Armenia",
+      "Iran",
+      "Azerbaijan"
+    ],
+    "level": 2
+  },
+  {
+    "question": "nz.png",
+    "answer": "New Zealand",
+    "isImg": true,
+    "answers": [
+      "New Zealand",
+      "Australia",
+      "Canada",
+      "South Africa",
+      "United Kingdom",
+      "Fiji"
+    ],
+    "level": 1
+  },
+  {
+    "question": "fi.png",
+    "answer": "Finland",
+    "isImg": true,
+    "answers": [
+      "Finland",
+      "Sweden",
+      "Norway",
+      "Denmark",
+      "Estonia",
+      "Russia"
+    ],
+    "level": 2
+  },
+  {
+    "question": "at.png",
+    "answer": "Austria",
+    "isImg": true,
+    "answers": [
+      "Austria",
+      "Switzerland",
+      "Germany",
+      "Hungary",
+      "Czech Republic",
+      "Slovakia"
+    ],
+    "level": 2
+  },
+  {
+    "question": "hu.png",
+    "answer": "Hungary",
+    "isImg": true,
+    "answers": [
+      "Hungary",
+      "Austria",
+      "Slovakia",
+      "Romania",
+      "Serbia",
+      "Croatia"
+    ],
+    "level": 2
+  },
+  {
+    "question": "cz.png",
+    "answer": "Czech Republic",
+    "isImg": true,
+    "answers": [
+      "Czech Republic",
+      "Slovakia",
+      "Poland",
+      "Germany",
+      "Austria",
+      "Hungary"
+    ],
+    "level": 2
+  },
+  {
+    "question": "ie.png",
+    "answer": "Ireland",
+    "isImg": true,
+    "answers": [
+      "Ireland",
+      "United Kingdom",
+      "Scotland",
+      "Wales",
+      "Northern Ireland",
+      "Iceland"
+    ],
+    "level": 2
+  },
+  {
+    "question": "is.png",
+    "answer": "Iceland",
+    "isImg": true,
+    "answers": [
+      "Iceland",
+      "Greenland",
+      "Norway",
+      "Denmark",
+      "Finland",
+      "Sweden"
+    ],
+    "level": 3
+  },
+  {
+    "question": "cl.png",
+    "answer": "Chile",
+    "isImg": true,
+    "answers": [
+      "Chile",
+      "Argentina",
+      "Peru",
+      "Uruguay",
+      "Brazil",
+      "Colombia"
+    ],
+    "level": 2
+  },
+  {
+    "question": "vn.png",
+    "answer": "Vietnam",
+    "isImg": true,
+    "answers": [
+      "Vietnam",
+      "Thailand",
+      "Cambodia",
+      "Laos",
+      "Malaysia",
+      "Philippines"
+    ],
+    "level": 2
+  },
+  {
+    "question": "th.png",
+    "answer": "Thailand",
+    "isImg": true,
+    "answers": [
+      "Thailand",
+      "Vietnam",
+      "Malaysia",
+      "Indonesia",
+      "Cambodia",
+      "Myanmar"
+    ],
+    "level": 2
+  },
+  {
+    "question": "il.png",
+    "answer": "Israel",
+    "isImg": true,
+    "answers": [
+      "Israel",
+      "Lebanon",
+      "Jordan",
+      "Syria",
+      "Egypt",
+      "Palestine"
+    ],
+    "level": 2
+  },
+  {
+    "question": "ng.png",
+    "answer": "Nigeria",
+    "isImg": true,
+    "answers": [
+      "Nigeria",
+      "Ghana",
+      "Cameroon",
+      "Chad",
+      "Senegal",
+      "Ivory Coast"
+    ],
+    "level": 2
+  },
+  {
+    "question": "ph.png",
+    "answer": "Philippines",
+    "isImg": true,
+    "answers": [
+      "Philippines",
+      "Vietnam",
+      "Indonesia",
+      "Thailand",
+      "Malaysia",
+      "Singapore"
+    ],
+    "level": 2
+  },
+  {
+    "question": "pk.png",
+    "answer": "Pakistan",
+    "isImg": true,
+    "answers": [
+      "Pakistan",
+      "India",
+      "Bangladesh",
+      "Afghanistan",
+      "Sri Lanka",
+      "Nepal"
+    ],
+    "level": 2
+  },
+  {
+    "question": "pt.png",
+    "answer": "Portugal",
+    "isImg": true,
+    "answers": [
+      "Portugal",
+      "Spain",
+      "Brazil",
+      "Italy",
+      "France",
+      "Argentina"
+    ],
+    "level": 1
+  },
+  {
+    "question": "ae.png",
+    "answer": "United Arab Emirates",
+    "isImg": true,
+    "answers": [
+      "United Arab Emirates",
+      "Saudi Arabia",
+      "Qatar",
+      "Bahrain",
+      "Kuwait",
+      "Oman"
+    ],
+    "level": 2
+  },
+  {
+    "question": "lk.png",
+    "answer": "Sri Lanka",
+    "isImg": true,
+    "answers": [
+      "Sri Lanka",
+      "India",
+      "Bangladesh",
+      "Maldives",
+      "Pakistan",
+      "Nepal"
+    ],
+    "level": 2
+  },
+  {
+    "question": "sa.png",
+    "answer": "Saudi Arabia",
+    "isImg": true,
+    "answers": [
+      "Saudi Arabia",
+      "Qatar",
+      "United Arab Emirates",
+      "Kuwait",
+      "Oman",
+      "Bahrain"
+    ],
+    "level": 2
+  },
+  {
+    "question": "kz.png",
+    "answer": "Kazakhstan",
+    "isImg": true,
+    "answers": [
+      "Kazakhstan",
+      "Uzbekistan",
+      "Turkmenistan",
+      "Kyrgyzstan",
+      "Russia",
+      "Mongolia"
+    ],
+    "level": 3
+  },
+  {
+    "question": "ke.png",
+    "answer": "Kenya",
+    "isImg": true,
+    "answers": [
+      "Kenya",
+      "Uganda",
+      "Tanzania",
+      "Rwanda",
+      "Ethiopia",
+      "Sudan"
+    ],
+    "level": 2
+  },
+  {
+    "question": "my.png",
+    "answer": "Malaysia",
+    "isImg": true,
+    "answers": [
+      "Malaysia",
+      "Indonesia",
+      "Singapore",
+      "Thailand",
+      "Vietnam",
+      "Philippines"
+    ],
+    "level": 2
+  },
+  {
+    "question": "dz.png",
+    "answer": "Algeria",
+    "isImg": true,
+    "answers": [
+      "Algeria",
+      "Morocco",
+      "Tunisia",
+      "Libya",
+      "Egypt",
+      "Mauritania"
+    ],
+    "level": 2
+  },
+  {
+    "question": "ge.png",
+    "answer": "Georgia",
+    "isImg": true,
+    "answers": [
+      "Georgia",
+      "Armenia",
+      "Azerbaijan",
+      "Turkey",
+      "Russia",
+      "Ukraine"
+    ],
+    "level": 3
+  },
+  {
+    "question": "jo.png",
+    "answer": "Jordan",
+    "isImg": true,
+    "answers": [
+      "Jordan",
+      "Israel",
+      "Lebanon",
+      "Syria",
+      "Egypt",
+      "Palestine"
+    ],
+    "level": 2
+  },
+  {
+    "question": "ec.png",
+    "answer": "Ecuador",
+    "isImg": true,
+    "answers": [
+      "Ecuador",
+      "Peru",
+      "Colombia",
+      "Chile",
+      "Argentina",
+      "Venezuela"
+    ],
+    "level": 2
+  },
+  {
+    "question": "bg.png",
+    "answer": "Bulgaria",
+    "isImg": true,
+    "answers": [
+      "Bulgaria",
+      "Romania",
+      "Serbia",
+      "Greece",
+      "Turkey",
+      "North Macedonia"
+    ],
+    "level": 3
+  },
+  {
+    "question": "vn.png",
+    "answer": "Vietnam",
+    "isImg": true,
+    "answers": [
+      "Vietnam",
+      "Cambodia",
+      "Thailand",
+      "Malaysia",
+      "Laos",
+      "Philippines"
+    ],
+    "level": 2
+  },
+  {
+    "question": "bd.png",
+    "answer": "Bangladesh",
+    "isImg": true,
+    "answers": [
+      "Bangladesh",
+      "India",
+      "Pakistan",
+      "Nepal",
+      "Myanmar",
+      "Sri Lanka"
+    ],
+    "level": 2
+  },
+  {
+    "question": "mt.png",
+    "answer": "Malta",
+    "isImg": true,
+    "answers": [
+      "Malta",
+      "Cyprus",
+      "Greece",
+      "Italy",
+      "Spain",
+      "Portugal"
+    ],
+    "level": 3
+  },
+  {
+    "question": "lk.png",
+    "answer": "Sri Lanka",
+    "isImg": true,
+    "answers": [
+      "Sri Lanka",
+      "India",
+      "Maldives",
+      "Bangladesh",
+      "Pakistan",
+      "Nepal"
+    ],
+    "level": 2
+  },
+  {
+    "question": "bt.png",
+    "answer": "Bhutan",
+    "isImg": true,
+    "answers": [
+      "Bhutan",
+      "Nepal",
+      "Tibet",
+      "Bangladesh",
+      "Sri Lanka",
+      "Myanmar"
+    ],
+    "level": 4
+  },
+  {
+    "question": "cv.png",
+    "answer": "Cape Verde",
+    "isImg": true,
+    "answers": [
+      "Cape Verde",
+      "Seychelles",
+      "Mauritius",
+      "Comoros",
+      "Madagascar",
+      "Gabon"
+    ],
+    "level": 4
+  },
+  {
+    "question": "tl.png",
+    "answer": "Timor-Leste",
+    "isImg": true,
+    "answers": [
+      "Timor-Leste",
+      "Indonesia",
+      "Malaysia",
+      "Papua New Guinea",
+      "Brunei",
+      "Philippines"
+    ],
+    "level": 4
+  },
+  {
+    "question": "dj.png",
+    "answer": "Djibouti",
+    "isImg": true,
+    "answers": [
+      "Djibouti",
+      "Eritrea",
+      "Somalia",
+      "Ethiopia",
+      "Sudan",
+      "Yemen"
+    ],
+    "level": 4
+  },
+  {
+    "question": "gq.png",
+    "answer": "Equatorial Guinea",
+    "isImg": true,
+    "answers": [
+      "Equatorial Guinea",
+      "Gabon",
+      "Cameroon",
+      "Congo",
+      "Angola",
+      "Guinea"
+    ],
+    "level": 4
+  },
+  {
+    "question": "bi.png",
+    "answer": "Burundi",
+    "isImg": true,
+    "answers": [
+      "Burundi",
+      "Rwanda",
+      "Uganda",
+      "Tanzania",
+      "Kenya",
+      "Zambia"
+    ],
+    "level": 4
+  },
+  {
+    "question": "mw.png",
+    "answer": "Malawi",
+    "isImg": true,
+    "answers": [
+      "Malawi",
+      "Zambia",
+      "Mozambique",
+      "Zimbabwe",
+      "Tanzania",
+      "Lesotho"
+    ],
+    "level": 4
+  },
+  {
+    "question": "ls.png",
+    "answer": "Lesotho",
+    "isImg": true,
+    "answers": [
+      "Lesotho",
+      "Eswatini",
+      "Botswana",
+      "South Africa",
+      "Namibia",
+      "Angola"
+    ],
+    "level": 4
+  },
+  {
+    "question": "kn.png",
+    "answer": "Saint Kitts and Nevis",
+    "isImg": true,
+    "answers": [
+      "Saint Kitts and Nevis",
+      "Saint Lucia",
+      "Barbados",
+      "Grenada",
+      "Dominica",
+      "Antigua and Barbuda"
+    ],
+    "level": 4
+  },
+  {
+    "question": "ag.png",
+    "answer": "Antigua and Barbuda",
+    "isImg": true,
+    "answers": [
+      "Antigua and Barbuda",
+      "Saint Kitts and Nevis",
+      "Barbados",
+      "Dominica",
+      "Grenada",
+      "Saint Vincent and the Grenadines"
+    ],
+    "level": 4
+  },
+  {
+    "question": "sc.png",
+    "answer": "Seychelles",
+    "isImg": true,
+    "answers": [
+      "Seychelles",
+      "Mauritius",
+      "Comoros",
+      "Maldives",
+      "Madagascar",
+      "Sri Lanka"
+    ],
+    "level": 4
+  },
+  {
+    "question": "fm.png",
+    "answer": "Micronesia",
+    "isImg": true,
+    "answers": [
+      "Micronesia",
+      "Palau",
+      "Marshall Islands",
+      "Kiribati",
+      "Tuvalu",
+      "Nauru"
+    ],
+    "level": 4
+  },
+  {
+    "question": "nr.png",
+    "answer": "Nauru",
+    "isImg": true,
+    "answers": [
+      "Nauru",
+      "Kiribati",
+      "Tuvalu",
+      "Micronesia",
+      "Marshall Islands",
+      "Palau"
+    ],
+    "level": 4
+  },
+  {
+    "question": "mh.png",
+    "answer": "Marshall Islands",
+    "isImg": true,
+    "answers": [
+      "Marshall Islands",
+      "Micronesia",
+      "Palau",
+      "Kiribati",
+      "Tuvalu",
+      "Nauru"
+    ],
+    "level": 4
+  },
+  {
+    "question": "sb.png",
+    "answer": "Solomon Islands",
+    "isImg": true,
+    "answers": [
+      "Solomon Islands",
+      "Vanuatu",
+      "Papua New Guinea",
+      "Fiji",
+      "Samoa",
+      "Tonga"
+    ],
+    "level": 4
+  },
+  {
+    "question": "vu.png",
+    "answer": "Vanuatu",
+    "isImg": true,
+    "answers": [
+      "Vanuatu",
+      "Solomon Islands",
+      "Fiji",
+      "Samoa",
+      "Tonga",
+      "Kiribati"
+    ],
+    "level": 4
+  },
+  {
+    "question": "to.png",
+    "answer": "Tonga",
+    "isImg": true,
+    "answers": [
+      "Tonga",
+      "Samoa",
+      "Fiji",
+      "Vanuatu",
+      "Solomon Islands",
+      "Tuvalu"
+    ],
+    "level": 4
+  },
+  {
+    "question": "ws.png",
+    "answer": "Samoa",
+    "isImg": true,
+    "answers": [
+      "Samoa",
+      "Tonga",
+      "Fiji",
+      "Vanuatu",
+      "Solomon Islands",
+      "Tuvalu"
+    ],
+    "level": 4
+  },
+  {
+    "question": "ki.png",
+    "answer": "Kiribati",
+    "isImg": true,
+    "answers": [
+      "Kiribati",
+      "Tuvalu",
+      "Nauru",
+      "Marshall Islands",
+      "Micronesia",
+      "Palau"
+    ],
+    "level": 4
+  },
+  {
+    "question": "tv.png",
+    "answer": "Tuvalu",
+    "isImg": true,
+    "answers": [
+      "Tuvalu",
+      "Kiribati",
+      "Nauru",
+      "Marshall Islands",
+      "Micronesia",
+      "Palau"
+    ],
+    "level": 4
+  },
+  {
+    "question": "am.png",
+    "answer": "Armenia",
+    "answers": [
+      "Armenia",
+      "Georgia",
+      "Azerbaijan",
+      "Turkey",
+      "Iran",
+      "Iraq"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "az.png",
+    "answer": "Azerbaijan",
+    "answers": [
+      "Azerbaijan",
+      "Armenia",
+      "Georgia",
+      "Kazakhstan",
+      "Turkey",
+      "Russia"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "by.png",
+    "answer": "Belarus",
+    "answers": [
+      "Belarus",
+      "Russia",
+      "Ukraine",
+      "Poland",
+      "Lithuania",
+      "Latvia"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "md.png",
+    "answer": "Moldova",
+    "answers": [
+      "Moldova",
+      "Romania",
+      "Ukraine",
+      "Bulgaria",
+      "Hungary",
+      "Poland"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "me.png",
+    "answer": "Montenegro",
+    "answers": [
+      "Montenegro",
+      "Serbia",
+      "Bosnia and Herzegovina",
+      "Albania",
+      "Croatia",
+      "North Macedonia"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "na.png",
+    "answer": "Namibia",
+    "answers": [
+      "Namibia",
+      "Botswana",
+      "South Africa",
+      "Angola",
+      "Zambia",
+      "Zimbabwe"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "py.png",
+    "answer": "Paraguay",
+    "answers": [
+      "Paraguay",
+      "Uruguay",
+      "Argentina",
+      "Brazil",
+      "Bolivia",
+      "Peru"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "tm.png",
+    "answer": "Turkmenistan",
+    "answers": [
+      "Turkmenistan",
+      "Uzbekistan",
+      "Kazakhstan",
+      "Iran",
+      "Afghanistan",
+      "Tajikistan"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "uz.png",
+    "answer": "Uzbekistan",
+    "answers": [
+      "Uzbekistan",
+      "Kazakhstan",
+      "Turkmenistan",
+      "Tajikistan",
+      "Kyrgyzstan",
+      "Afghanistan"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "kg.png",
+    "answer": "Kyrgyzstan",
+    "answers": [
+      "Kyrgyzstan",
+      "Uzbekistan",
+      "Kazakhstan",
+      "Tajikistan",
+      "Afghanistan",
+      "Turkmenistan"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "bo.png",
+    "answer": "Bolivia",
+    "answers": [
+      "Bolivia",
+      "Peru",
+      "Paraguay",
+      "Argentina",
+      "Brazil",
+      "Chile"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "tg.png",
+    "answer": "Togo",
+    "answers": [
+      "Togo",
+      "Benin",
+      "Ghana",
+      "Burkina Faso",
+      "Ivory Coast",
+      "Nigeria"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "zw.png",
+    "answer": "Zimbabwe",
+    "answers": [
+      "Zimbabwe",
+      "Zambia",
+      "Botswana",
+      "Mozambique",
+      "Namibia",
+      "South Africa"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "gm.png",
+    "answer": "Gambia",
+    "answers": [
+      "Gambia",
+      "Senegal",
+      "Guinea-Bissau",
+      "Guinea",
+      "Sierra Leone",
+      "Mauritania"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "bw.png",
+    "answer": "Botswana",
+    "answers": [
+      "Botswana",
+      "Zimbabwe",
+      "Namibia",
+      "South Africa",
+      "Angola",
+      "Zambia"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "cf.png",
+    "answer": "Central African Republic",
+    "answers": [
+      "Central African Republic",
+      "Chad",
+      "Sudan",
+      "Cameroon",
+      "Democratic Republic of the Congo",
+      "South Sudan"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "lr.png",
+    "answer": "Liberia",
+    "answers": [
+      "Liberia",
+      "Sierra Leone",
+      "Guinea",
+      "Ivory Coast",
+      "Ghana",
+      "Nigeria"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "tm.png",
+    "answer": "Turkmenistan",
+    "answers": [
+      "Turkmenistan",
+      "Uzbekistan",
+      "Kazakhstan",
+      "Iran",
+      "Afghanistan",
+      "Tajikistan"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "lb.png",
+    "answer": "Lebanon",
+    "answers": [
+      "Lebanon",
+      "Syria",
+      "Israel",
+      "Jordan",
+      "Palestine",
+      "Cyprus"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "tn.png",
+    "answer": "Tunisia",
+    "answers": [
+      "Tunisia",
+      "Morocco",
+      "Algeria",
+      "Libya",
+      "Egypt",
+      "Sudan"
+    ],
+    "level": 3,
+    "isImg": true
+  },
+  {
+    "question": "Poland",
+    "answer": "pl.png",
+    "answers": [
+      "pl.png",
+      "de.png",
+      "cz.png",
+      "sk.png",
+      "lt.png",
+      "ua.png"
+    ],
+    "level": 1,
+    "isTile": true
+  },
+  {
+    "question": "Spain",
+    "answer": "es.png",
+    "answers": [
+      "es.png",
+      "it.png",
+      "pt.png",
+      "fr.png",
+      "gr.png",
+      "mt.png"
+    ],
+    "level": 1,
+    "isTile": true
+  },
+  {
+    "question": "Argentina",
+    "answer": "ar.png",
+    "answers": [
+      "ar.png",
+      "cl.png",
+      "uy.png",
+      "br.png",
+      "py.png",
+      "bo.png"
+    ],
+    "level": 1,
+    "isTile": true
+  },
+  {
+    "question": "China",
+    "answer": "cn.png",
+    "answers": [
+      "cn.png",
+      "jp.png",
+      "kr.png",
+      "vn.png",
+      "tw.png",
+      "in.png"
+    ],
+    "level": 1,
+    "isTile": true
+  },
+  {
+    "question": "India",
+    "answer": "in.png",
+    "answers": [
+      "in.png",
+      "pk.png",
+      "bd.png",
+      "lk.png",
+      "np.png",
+      "mm.png"
+    ],
+    "level": 1,
+    "isTile": true
+  },
+  {
+    "question": "Australia",
+    "answer": "au.png",
+    "answers": [
+      "au.png",
+      "nz.png",
+      "fj.png",
+      "pg.png",
+      "sb.png",
+      "id.png"
+    ],
+    "level": 1,
+    "isTile": true
+  },
+  {
+    "question": "Canada",
+    "answer": "ca.png",
+    "answers": [
+      "ca.png",
+      "us.png",
+      "mx.png",
+      "gt.png",
+      "bz.png",
+      "hn.png"
+    ],
+    "level": 1,
+    "isTile": true
+  },
+  {
+    "question": "South Africa",
+    "answer": "za.png",
+    "answers": [
+      "za.png",
+      "na.png",
+      "bw.png",
+      "zm.png",
+      "mz.png",
+      "sz.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Ethiopia",
+    "answer": "et.png",
+    "answers": [
+      "et.png",
+      "so.png",
+      "dj.png",
+      "sd.png",
+      "er.png",
+      "ke.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Iraq",
+    "answer": "iq.png",
+    "answers": [
+      "iq.png",
+      "sy.png",
+      "jo.png",
+      "sa.png",
+      "ir.png",
+      "tr.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Vietnam",
+    "answer": "vn.png",
+    "answers": [
+      "vn.png",
+      "th.png",
+      "kh.png",
+      "la.png",
+      "mm.png",
+      "my.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Norway",
+    "answer": "no.png",
+    "answers": [
+      "no.png",
+      "se.png",
+      "dk.png",
+      "fi.png",
+      "is.png",
+      "gb.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Morocco",
+    "answer": "ma.png",
+    "answers": [
+      "ma.png",
+      "dz.png",
+      "tn.png",
+      "ly.png",
+      "mr.png",
+      "pt.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Kenya",
+    "answer": "ke.png",
+    "answers": [
+      "ke.png",
+      "tz.png",
+      "ug.png",
+      "so.png",
+      "et.png",
+      "ss.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Serbia",
+    "answer": "rs.png",
+    "answers": [
+      "rs.png",
+      "hr.png",
+      "me.png",
+      "ba.png",
+      "mk.png",
+      "bg.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Chile",
+    "answer": "cl.png",
+    "answers": [
+      "cl.png",
+      "ar.png",
+      "bo.png",
+      "py.png",
+      "pe.png",
+      "uy.png"
+    ],
+    "level": 2,
+    "isTile": true
+  },
+  {
+    "question": "Uzbekistan",
+    "answer": "uz.png",
+    "answers": [
+      "uz.png",
+      "tm.png",
+      "kg.png",
+      "tj.png",
+      "kz.png",
+      "af.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Kazakhstan",
+    "answer": "kz.png",
+    "answers": [
+      "kz.png",
+      "uz.png",
+      "kg.png",
+      "tm.png",
+      "ru.png",
+      "cn.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Jordan",
+    "answer": "jo.png",
+    "answers": [
+      "jo.png",
+      "il.png",
+      "ps.png",
+      "sa.png",
+      "sy.png",
+      "lb.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Qatar",
+    "answer": "qa.png",
+    "answers": [
+      "qa.png",
+      "ae.png",
+      "bh.png",
+      "kw.png",
+      "sa.png",
+      "om.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Albania",
+    "answer": "al.png",
+    "answers": [
+      "al.png",
+      "me.png",
+      "rs.png",
+      "gr.png",
+      "mk.png",
+      "hr.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Tanzania",
+    "answer": "tz.png",
+    "answers": [
+      "tz.png",
+      "ke.png",
+      "ug.png",
+      "rw.png",
+      "bi.png",
+      "zm.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Mauritania",
+    "answer": "mr.png",
+    "answers": [
+      "mr.png",
+      "ml.png",
+      "dz.png",
+      "ma.png",
+      "sn.png",
+      "gn.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Honduras",
+    "answer": "hn.png",
+    "answers": [
+      "hn.png",
+      "gt.png",
+      "sv.png",
+      "ni.png",
+      "cr.png",
+      "mx.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Kyrgyzstan",
+    "answer": "kg.png",
+    "answers": [
+      "kg.png",
+      "kz.png",
+      "uz.png",
+      "tj.png",
+      "cn.png",
+      "tm.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Madagascar",
+    "answer": "mg.png",
+    "answers": [
+      "mg.png",
+      "mu.png",
+      "sc.png",
+      "zm.png",
+      "zm.png",
+      "za.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Gabon",
+    "answer": "ga.png",
+    "answers": [
+      "ga.png",
+      "cg.png",
+      "cm.png",
+      "gq.png",
+      "ao.png",
+      "td.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Bahamas",
+    "answer": "bs.png",
+    "answers": [
+      "bs.png",
+      "bb.png",
+      "jm.png",
+      "ht.png",
+      "tc.png",
+      "cu.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Ghana",
+    "answer": "gh.png",
+    "answers": [
+      "gh.png",
+      "ci.png",
+      "tg.png",
+      "bf.png",
+      "ng.png",
+      "sn.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Papua New Guinea",
+    "answer": "pg.png",
+    "answers": [
+      "pg.png",
+      "sb.png",
+      "vu.png",
+      "fj.png",
+      "nz.png",
+      "au.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Zambia",
+    "answer": "zm.png",
+    "answers": [
+      "zm.png",
+      "zw.png",
+      "mw.png",
+      "ao.png",
+      "cd.png",
+      "mz.png"
+    ],
+    "level": 3,
+    "isTile": true
+  },
+  {
+    "question": "Sri Lanka",
+    "answer": "lk.png",
+    "answers": [
+      "lk.png",
+      "in.png",
+      "mv.png",
+      "bn.png",
+      "mm.png",
+      "pk.png"
+    ],
+    "level": 4,
+    "isTile": true
+  },
+  {
+    "question": "Seychelles",
+    "answer": "sc.png",
+    "answers": [
+      "sc.png",
+      "mu.png",
+      "mg.png",
+      "mv.png",
+      "za.png",
+      "ke.png"
+    ],
+    "level": 4,
+    "isTile": true
+  },
+  {
+    "question": "Niger",
+    "answer": "ne.png",
+    "answers": [
+      "ne.png",
+      "ml.png",
+      "td.png",
+      "ng.png",
+      "dz.png",
+      "ly.png"
+    ],
+    "level": 4,
+    "isTile": true
+  },
+  {
+    "question": "Djibouti",
+    "answer": "dj.png",
+    "answers": [
+      "dj.png",
+      "et.png",
+      "so.png",
+      "er.png",
+      "sd.png",
+      "ye.png"
+    ],
+    "level": 4,
+    "isTile": true
+  },
+  {
+    "question": "Lesotho",
+    "answer": "ls.png",
+    "answers": [
+      "ls.png",
+      "sz.png",
+      "za.png",
+      "mz.png",
+      "na.png",
+      "bw.png"
+    ],
+    "level": 4,
+    "isTile": true
+  },
+  {
+    "question": "Burundi",
+    "answer": "bi.png",
+    "answers": [
+      "bi.png",
+      "rw.png",
+      "ug.png",
+      "tz.png",
+      "cd.png",
+      "ke.png"
+    ],
+    "level": 4,
+    "isTile": true
+  },
+  {
+    "question": "Guinea-Bissau",
+    "answer": "gw.png",
+    "answers": [
+      "gw.png",
+      "gn.png",
+      "sn.png",
+      "lr.png",
+      "sl.png",
+      "ci.png"
+    ],
+    "level": 4,
+    "isTile": true
+  },
+  {
+    "question": "Eswatini",
+    "answer": "sz.png",
+    "answers": [
+      "sz.png",
+      "ls.png",
+      "za.png",
+      "mz.png",
+      "bw.png",
+      "na.png"
+    ],
+    "level": 4,
+    "isTile": true
+  }
+]

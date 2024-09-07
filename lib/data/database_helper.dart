@@ -78,7 +78,7 @@ class DatabaseHelper {
 
   // All of the rows are returned as a list of maps, where each map is
   // a key-value list of columns.
-  Future<List<FameModel>> queryTops(int limit) async {
+  Future<List<FameModel>> queryTops() async {
     var response = await _db.query(table);
     response.map((item) {});
     var data = await _db.rawQuery(

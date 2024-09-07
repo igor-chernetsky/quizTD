@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_defence/cubit/gameCubit.dart';
 import 'package:quiz_defence/cubit/questionCubit.dart';
@@ -13,8 +12,12 @@ import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
 class QuizWidget extends StatelessWidget {
   const QuizWidget({super.key});
 
-  getAnswerTiles(BuildContext context, List<String> answers, String answer,
-      QuestionState state) {
+  getAnswerTiles(BuildContext context, QuestionsModel qm) {
+    var answers = qm.currentQuestions!.answers;
+    var answer = qm.currentQuestions!.answer;
+    var isTile = qm.currentQuestions!.isTile;
+    var state = qm.state;
+    var themeId = qm.theme?.id ?? 0;
     List<Widget> output = [];
     for (int i = 0; i < answers.length; i++) {
       output.add(OutlinedButton(
@@ -38,14 +41,37 @@ class QuizWidget extends StatelessWidget {
               }
             : null,
         child: SizedBox(
-          child: Text(answers[i],
-              style: const TextStyle(
-                fontSize: 22,
-              )),
+          child: isTile
+              ? Image(
+                  image: AssetImage(answers[i]),
+                  width: 40,
+                )
+              : Text(answers[i],
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: themeId == 2 ? 14 : 22,
+                  )),
         ),
       ));
     }
     return output;
+  }
+
+  renderQuestion(QuestionsModel qm) {
+    if (qm.currentQuestions!.isImg) {
+      return Image(
+        image: AssetImage(qm.currentQuestions!.question),
+        width: 80,
+      );
+    }
+    return Text(
+      textAlign: TextAlign.center,
+      qm.currentQuestions!.question,
+      style: TextStyle(
+          color: getStatusColor(qm.state),
+          fontSize: qm.theme?.id == 2 ? 18 : 32,
+          fontWeight: FontWeight.bold),
+    );
   }
 
   getEmptyBlock() {
@@ -139,17 +165,11 @@ class QuizWidget extends StatelessWidget {
                             vertical: 8, horizontal: 4),
                         child: Card(
                             color: AppColors.cardColor,
-                            child: SizedBox(
+                            child: Container(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12),
                               width: double.infinity,
-                              child: Center(
-                                child: Text(
-                                  qm.currentQuestions!.question,
-                                  style: TextStyle(
-                                      color: getStatusColor(qm.state),
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
+                              child: Center(child: renderQuestion(qm)),
                             ))),
                     Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -159,11 +179,7 @@ class QuizWidget extends StatelessWidget {
                           crossAxisSpacing: 8,
                           childAspectRatio: 2,
                           crossAxisCount: 3,
-                          children: getAnswerTiles(
-                              context,
-                              qm.currentQuestions!.answers,
-                              qm.currentQuestions!.answer,
-                              qm.state),
+                          children: getAnswerTiles(context, qm),
                         )),
                   ],
                 )),

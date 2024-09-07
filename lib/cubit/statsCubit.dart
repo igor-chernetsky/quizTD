@@ -17,7 +17,7 @@ class StatsCubit extends Cubit<StatsModel> {
     if (theme != null) {
       state.theme = theme;
     } else {
-      List<FameModel> value = await dbHelper.queryTops(10);
+      List<FameModel> value = await dbHelper.queryTops();
       for (var a in value) {
         for (var b in state.top) {
           if (b.id == a.level) {
@@ -26,12 +26,19 @@ class StatsCubit extends Cubit<StatsModel> {
         }
       }
     }
-    List<FameModel> fames = await dbHelper.queryAllRows(10, theme?.id ?? 0);
+    List<FameModel> fames =
+        await dbHelper.queryAllRows(10, theme?.id ?? state.theme.id);
     StatsModel res = _cloneModel();
     res.fameList = fames;
     if (res.fameList.isNotEmpty) {
       res.theme.level = res.fameList.map((item) => item.epoch).reduce(max);
     }
+    return emit(res);
+  }
+
+  void resetState() {
+    StatsModel res = _cloneModel();
+    res.state = GameState.game;
     return emit(res);
   }
 

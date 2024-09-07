@@ -14,9 +14,10 @@ class GameCubit extends Cubit<GameModel> {
   final int _mainIndex = 4;
   Function? onWin;
   Function? onLose;
+  ThemeItem? theme;
   late Timer _dalayed;
 
-  GameCubit() : super(getDefaultModel());
+  GameCubit({this.onLose, this.onWin, this.theme}) : super(getDefaultModel());
 
   GameModel _cloneModel() {
     List<PlateModel> plates = [...state.plates];
@@ -38,7 +39,11 @@ class GameCubit extends Cubit<GameModel> {
 
   void resetState() {
     EpochHelper.resetCounter();
-    return emit(getDefaultModel());
+    GameModel res = getDefaultModel();
+    if (theme != null) {
+      res.theme = theme;
+    }
+    return emit(res);
   }
 
   void addScore(int s) {
@@ -54,7 +59,8 @@ class GameCubit extends Cubit<GameModel> {
       mainPlate.hp += delta;
       if (mainPlate.hp <= 0) {
         _dalayed.cancel();
-        onLose!(FameModel(year: res.yearNumber, epoch: res.epoch));
+        onLose!(FameModel(
+            year: res.yearNumber, epoch: res.epoch, level: state.theme!.id));
       }
       return emit(res);
     }
@@ -120,12 +126,13 @@ class GameCubit extends Cubit<GameModel> {
   int nextEpoch(bool isFree) {
     GameModel res = _cloneModel();
     PlateModel seletedPlate = res.plates[state.selectedIndex ?? _mainIndex];
-    int price = seletedPlate.building!.price;
+    int price = seletedPlate.level * seletedPlate.building!.price;
     if (!isFree && state.score < price) {
       return res.epoch;
     }
     if (res.epoch == 4) {
-      onWin!(FameModel(year: res.yearNumber, epoch: res.epoch));
+      onWin!(FameModel(
+          year: res.yearNumber, epoch: res.epoch, level: state.theme!.id));
       return res.epoch;
     }
     seletedPlate.level++;
@@ -220,7 +227,8 @@ class GameCubit extends Cubit<GameModel> {
       } else {
         if (onWin != null) {
           _dalayed.cancel();
-          onWin!(FameModel(year: res.yearNumber, epoch: res.epoch));
+          onWin!(FameModel(
+              year: res.yearNumber, epoch: res.epoch, level: state.theme!.id));
           return emit(res);
         }
       }
@@ -301,7 +309,10 @@ class GameCubit extends Cubit<GameModel> {
             }
             if (destroyedType == BuildingType.main) {
               _dalayed.cancel();
-              onLose!(FameModel(year: res.yearNumber, epoch: res.epoch));
+              onLose!(FameModel(
+                  year: res.yearNumber,
+                  epoch: res.epoch,
+                  level: state.theme!.id));
               return true;
             }
             enemy.targetIndex = null;

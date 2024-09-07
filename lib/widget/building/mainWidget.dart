@@ -27,7 +27,9 @@ class MainWidget extends StatelessWidget {
     double size = mainSize * 0.4;
 
     isDisabled(GameModel gm) {
-      return gm.epoch == 4 || gm.selectedPlate!.building!.price > gm.score;
+      return gm.epoch == 4 ||
+          (gm.selectedPlate!.building!.price * gm.selectedPlate!.level) >
+              gm.score;
     }
 
     return BlocBuilder<GameCubit, GameModel>(
@@ -98,7 +100,7 @@ class MainWidget extends StatelessWidget {
                                                 : Colors.white,
                                           ),
                                           label: Text(
-                                              '\$${plate.building!.price}',
+                                              '\$${plate.building!.price * plate.level}',
                                               style: TextStyle(
                                                   color: isDisabled(gm)
                                                       ? Colors.grey

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:quiz_defence/cubit/statsCubit.dart';
 import 'package:quiz_defence/data/database_helper.dart';
 import 'package:quiz_defence/screens/game.dart';
 import 'package:quiz_defence/screens/start.dart';
@@ -38,25 +39,28 @@ class QuizTDApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Quiz Tower Defence',
-      theme: ThemeData(
-        primaryColor: AppColors.primarySwatch,
-        outlinedButtonTheme: OutlinedButtonThemeData(
-            style: OutlinedButton.styleFrom(
-                side: BorderSide(color: AppColors.primarySwatch))),
-        colorScheme: ColorScheme.fromSwatch(
-            brightness: Brightness.dark,
-            backgroundColor: AppColors.backgroundColor,
-            cardColor: AppColors.cardColor,
-            primarySwatch: AppColors.primarySwatch,
-            accentColor: AppColors.accentColor),
+    return BlocProvider<StatsCubit>(
+      create: (BuildContext context) => StatsCubit()..initFame(null),
+      child: MaterialApp(
+        title: 'Quiz Tower Defence',
+        theme: ThemeData(
+          primaryColor: AppColors.primarySwatch,
+          outlinedButtonTheme: OutlinedButtonThemeData(
+              style: OutlinedButton.styleFrom(
+                  side: BorderSide(color: AppColors.primarySwatch))),
+          colorScheme: ColorScheme.fromSwatch(
+              brightness: Brightness.dark,
+              backgroundColor: AppColors.backgroundColor,
+              cardColor: AppColors.cardColor,
+              primarySwatch: AppColors.primarySwatch,
+              accentColor: AppColors.accentColor),
+        ),
+        initialRoute: StartScreen.routeName,
+        routes: {
+          StartScreen.routeName: (context) => const StartScreen(),
+          GameScreen.routeName: (context) => const GameScreen(),
+        },
       ),
-      initialRoute: StartScreen.routeName,
-      routes: {
-        StartScreen.routeName: (context) => const StartScreen(),
-        GameScreen.routeName: (context) => const GameScreen(),
-      },
     );
   }
 }

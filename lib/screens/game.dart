@@ -19,11 +19,11 @@ class GameScreen extends StatelessWidget {
   getStateWidget(GameState state) {
     switch (state) {
       case GameState.win:
-        return [const WinWidget()];
+        return const WinWidget();
       case GameState.loose:
-        return [const LooseWidget()];
+        return const LooseWidget();
       default:
-        return [];
+        return const Column(children: [PlaygroundWidget(), TopWidget()]);
     }
   }
 
@@ -31,39 +31,26 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
-      body: SafeArea(
-        child: MultiBlocProvider(
-            providers: [
-              BlocProvider<GameCubit>(
-                create: (BuildContext context) => GameCubit()
-                  ..resetState()
-                  ..changeState(),
-              ),
-              BlocProvider<QuestionCubit>(
-                create: (BuildContext context) =>
-                    QuestionCubit()..setQuestions(1, 0),
-              ),
-              BlocProvider<StatsCubit>(
-                create: (BuildContext context) => StatsCubit(),
-              ),
-            ],
-            child: BlocBuilder<StatsCubit, StatsModel>(
-              builder: (context, sm) {
-                context.read<GameCubit>().onWin =
-                    (FameModel fame) => context.read<StatsCubit>().setWin(fame);
-                context.read<GameCubit>().onLose = (FameModel fame) =>
-                    context.read<StatsCubit>().setLoose(fame);
-                return Stack(
-                  children: [
-                    const Column(
-                      children: [PlaygroundWidget(), TopWidget()],
-                    ),
-                    ...getStateWidget(sm.state),
-                  ],
-                );
-              },
-            )),
-      ),
+      body: SafeArea(child: BlocBuilder<StatsCubit, StatsModel>(
+        builder: (context, sm) {
+          return MultiBlocProvider(providers: [
+            BlocProvider<GameCubit>(create: (BuildContext context) {
+              return GameCubit(
+                  theme: sm.theme,
+                  onWin: (FameModel fame) =>
+                      context.read<StatsCubit>().setWin(fame),
+                  onLose: (FameModel fame) =>
+                      context.read<StatsCubit>().setLoose(fame))
+                ..resetState()
+                ..changeState();
+            }),
+            BlocProvider<QuestionCubit>(
+              create: (BuildContext context) =>
+                  QuestionCubit()..setQuestions(1, 0, theme: sm.theme),
+            ),
+          ], child: getStateWidget(sm.state));
+        },
+      )),
     );
   }
 }

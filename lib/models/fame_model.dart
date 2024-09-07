@@ -21,7 +21,7 @@ class ThemeItem {
 }
 
 List<ThemeItem> themeItems = [
-  ThemeItem(id: 0, name: 'Elementary Math 1', multiply: 1, img: 'ep1.png'),
-  ThemeItem(id: 1, name: 'Elementary Math 2', multiply: 2, img: 'ep2.png'),
-  ThemeItem(id: 1, name: 'Geograply', multiply: 1, img: 'ep3.png'),
+  ThemeItem(id: 0, name: 'Elementary Math 1', multiply: 1, img: 'math1.png'),
+  ThemeItem(id: 1, name: 'Elementary Math 2', multiply: 2, img: 'math2.png'),
+  ThemeItem(id: 2, name: 'Geograply', multiply: 1, img: 'geo1.png'),
 ];

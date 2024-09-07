@@ -98,7 +98,7 @@ getMathEasyQuestion4() {
 }
 
 getMathQuestion1() {
-  return getArifmetick(3, false);
+  return getArifmetick(2, false);
 }
 
 getMathQuestion2() {
@@ -157,6 +157,58 @@ getMathQuestion4() {
   res.answers = _generateAnswers(int.tryParse(res.answer)!);
 
   return res;
+}
+
+getElMath1(int epoch) {
+  List<QuestionModel> questions = [];
+  switch (epoch) {
+    case 4:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathEasyQuestion4());
+      }
+      break;
+    case 3:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathEasyQuestion3());
+      }
+      break;
+    case 2:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathEasyQuestion2());
+      }
+      break;
+    default:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathEasyQuestion1());
+      }
+  }
+  return questions;
+}
+
+getElMath2(int epoch) {
+  List<QuestionModel> questions = [];
+  switch (epoch) {
+    case 4:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathQuestion4());
+      }
+      break;
+    case 3:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathQuestion3());
+      }
+      break;
+    case 2:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathQuestion2());
+      }
+      break;
+    default:
+      for (int i = 0; i < 20; i++) {
+        questions.add(getMathQuestion1());
+      }
+  }
+  return questions;
 }
 
 List<String> _generateAnswers(int answer) {

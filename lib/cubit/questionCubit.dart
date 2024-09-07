@@ -1,36 +1,29 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quiz_defence/models/fame_model.dart';
 import 'package:quiz_defence/models/question_model.dart';
+import 'package:quiz_defence/utils/geography.dart';
 import 'package:quiz_defence/utils/math.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 
 class QuestionCubit extends Cubit<QuestionsModel> {
   QuestionCubit() : super(QuestionsModel(questions: []));
 
-  void setQuestions(int epoch, int c) {
+  void setQuestions(int epoch, int c, {ThemeItem? theme}) async {
+    theme = theme ?? state.theme ?? themeItems[0];
     List<QuestionModel> questions = [];
-    switch (epoch) {
-      case 4:
-        for (int i = 0; i < 20; i++) {
-          questions.add(getMathEasyQuestion4());
-        }
+    switch (theme.id) {
+      case 0:
+        questions = getElMath1(epoch);
         break;
-      case 3:
-        for (int i = 0; i < 20; i++) {
-          questions.add(getMathEasyQuestion3());
-        }
+      case 1:
+        questions = getElMath2(epoch);
         break;
       case 2:
-        for (int i = 0; i < 20; i++) {
-          questions.add(getMathEasyQuestion2());
-        }
-        break;
-      default:
-        for (int i = 0; i < 20; i++) {
-          questions.add(getMathEasyQuestion1());
-        }
+        questions = await getGeoQuestions(epoch);
     }
     emit(QuestionsModel(
         questions: questions,
+        theme: theme,
         index: 0,
         correct: c,
         diff: epoch,
@@ -51,6 +44,7 @@ class QuestionCubit extends Cubit<QuestionsModel> {
         setQuestions(state.diff, c1);
       } else {
         emit(QuestionsModel(
+            theme: state.theme,
             questions: state.questions,
             index: state.index,
             state: isCorrect ? QuestionState.correct : QuestionState.wrong,
@@ -62,6 +56,7 @@ class QuestionCubit extends Cubit<QuestionsModel> {
 
   void nextQuestion() {
     return emit(QuestionsModel(
+        theme: state.theme,
         questions: state.questions,
         index: state.index + 1,
         state: QuestionState.none,

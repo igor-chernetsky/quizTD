@@ -38,7 +38,9 @@ class PlaygroundWidget extends StatelessWidget {
       res.add(Padding(
         padding: const EdgeInsets.only(bottom: 4),
         child: HealthbarWidget(
-          hp: plate.hp / plate.topHP!,
+          hp: ((plate.topHP ?? 0) > 0 && plate.hp > 0)
+              ? (plate.hp / plate.topHP!)
+              : 0,
           width: size - 4,
         ),
       ));
