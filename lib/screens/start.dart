@@ -10,6 +10,7 @@ import 'package:quiz_defence/screens/game.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/infoWidgets/rotatedImg.dart';
 import 'package:quiz_defence/widget/menus/themeSelector.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StartScreen extends StatefulWidget {
   const StartScreen({super.key});
@@ -117,9 +118,9 @@ class _StartScreenState extends State<StartScreen> {
                       ),
                       onPressed: () =>
                           Navigator.pushNamed(context, GameScreen.routeName),
-                      child: const Text(
-                        'START',
-                        style: TextStyle(
+                      child: Text(
+                        AppLocalizations.of(context)!.start,
+                        style: const TextStyle(
                             color: Colors.white,
                             letterSpacing: 3,
                             fontSize: 20),

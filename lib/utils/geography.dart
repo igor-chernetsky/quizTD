@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
 import 'package:quiz_defence/models/question_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-getGeoQuestions(int level) async {
-  final String doc = await rootBundle.loadString('assets/docs/geography.json');
+getGeoQuestions(int level, bool onlyFlags, AppLocalizations? local) async {
+  final String doc = await rootBundle.loadString(
+      'assets/docs/${local != null ? local.geoFile : 'geography'}.json');
   final List<dynamic> data = await json.decode(doc);
   List<QuestionModel> res = data.where((d) => d['level'] == level).map((item) {
     List<String> questions = List<String>.from(item['answers'] as List);
@@ -17,8 +19,10 @@ getGeoQuestions(int level) async {
         isTile: item['isTile'] ?? false,
         isImg: item['isImg'] ?? false);
   }).toList();
-  // res.shuffle();
-  res.sort((a, b) => a.isTile ? 0 : 1);
+  if (onlyFlags) {
+    res = res.where((q) => q.isImg || q.isTile).toList();
+  }
+  res.shuffle();
   res = res.sublist(0, 20);
   for (var q in res) {
     if (q.isTile) {

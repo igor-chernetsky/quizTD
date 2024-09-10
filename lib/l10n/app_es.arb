@@ -1,0 +1,16 @@
+{
+  "start": "COMENZAR",
+  "restart": "RESTART",
+  "exit": "SALIDA",
+  "resume": "RESUMIR",
+  "math1": "Matemáticas 1",
+  "math2": "Matemáticas 2",
+  "math3": "Matemáticas 3",
+  "geo": "Geografía",
+  "flag": "Banderas",
+  "descriptionFarm": "Este edificio aporta cierta cantidad de oro cada temporada. La cantidad de oro se puede aumentar con el nuevo nivel del edificio.",
+  "descriptionMain": "Este es el edificio PRINCIPAL. El juego termina cuando se destruye. Puede atacar a una unidad enemiga. Mejóralo para llegar a la siguiente época.",
+  "descriptionSchool": "Aquí puedes realizar mejoras para tu edificio, además cada ESCUELA aumenta la recompensa por las respuestas correctas.",
+  "descriptionTower": "Este edificio puede atacar a los enemigos en un rango específico, el rango se puede aumentar en la ESCUELA.",
+  "geoFile": "geography-es"
+}

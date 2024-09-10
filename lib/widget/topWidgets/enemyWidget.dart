@@ -23,7 +23,7 @@ class EnemyWidget extends StatelessWidget {
     double widgetHeight = availableHeight / 2;
     double mainSize = min<double>(MediaQuery.of(context).size.width,
         MediaQuery.of(context).size.height / 2);
-    double size = mainSize * 0.4;
+    double size = mainSize * 0.35;
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Stack(

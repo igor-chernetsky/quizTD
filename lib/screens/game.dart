@@ -10,6 +10,7 @@ import 'package:quiz_defence/widget/infoWidgets/looseWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/winWidget.dart';
 import 'package:quiz_defence/widget/playgroundWidget.dart';
 import 'package:quiz_defence/widget/topWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GameScreen extends StatelessWidget {
   static String routeName = '/game';
@@ -45,8 +46,9 @@ class GameScreen extends StatelessWidget {
                 ..changeState();
             }),
             BlocProvider<QuestionCubit>(
-              create: (BuildContext context) =>
-                  QuestionCubit()..setQuestions(1, 0, theme: sm.theme),
+              create: (BuildContext context) => QuestionCubit()
+                ..setQuestions(1, 0,
+                    theme: sm.theme, local: AppLocalizations.of(context)!),
             ),
           ], child: getStateWidget(sm.state));
         },

@@ -6,6 +6,7 @@ import 'package:quiz_defence/cubit/gameCubit.dart';
 import 'package:quiz_defence/cubit/questionCubit.dart';
 import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
+import 'package:quiz_defence/widget/building/buildingHP.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
@@ -24,7 +25,7 @@ class MainWidget extends StatelessWidget {
     double widgetHeight = availableHeight / 2;
     double mainSize = min<double>(MediaQuery.of(context).size.width,
         MediaQuery.of(context).size.height / 2);
-    double size = mainSize * 0.4;
+    double size = mainSize * 0.35;
 
     isDisabled(GameModel gm) {
       return gm.epoch == 4 ||
@@ -115,19 +116,10 @@ class MainWidget extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                              width: mainSize - 140,
-                              child: BarWidget(
-                                value: plate.hp,
-                                total: plate.building!.hp * plate.level,
-                                icon: Icons.favorite,
-                              )),
-                          RepairButton(plate: plate),
-                        ],
-                      ),
+                      BuildingHp(
+                        plate: plate,
+                        mainSize: mainSize,
+                      )
                     ],
                   ),
                 ),

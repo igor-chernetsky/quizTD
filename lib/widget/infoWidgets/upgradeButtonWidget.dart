@@ -15,22 +15,26 @@ class UpgradeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<GameCubit, GameModel>(
-        builder: (context, gm) => ElevatedButton.icon(
-            onPressed: isDisabled(gm)
-                ? null
-                : () => context.read<GameCubit>().upgradeBuilding(),
-            icon: Icon(
-              Icons.upgrade,
-              color: isDisabled(gm) ? Colors.grey : Colors.white,
-            ),
-            label: SizedBox(
-                width: 90,
-                child: Center(
-                    child: Text(
-                  '\$${plate.building!.price}',
-                  style: TextStyle(
-                      color: isDisabled(gm) ? Colors.grey : Colors.white,
-                      letterSpacing: 1.4),
-                )))));
+        builder: (context, gm) => gm.epoch > plate.level
+            ? ElevatedButton.icon(
+                onPressed: isDisabled(gm)
+                    ? null
+                    : () => context.read<GameCubit>().upgradeBuilding(),
+                icon: Icon(
+                  Icons.upgrade,
+                  color: isDisabled(gm) ? Colors.grey : Colors.white,
+                ),
+                label: SizedBox(
+                    width: 90,
+                    child: Center(
+                        child: Text(
+                      '\$${plate.building!.price}',
+                      style: TextStyle(
+                          color: isDisabled(gm) ? Colors.grey : Colors.white,
+                          letterSpacing: 1.4),
+                    ))))
+            : const SizedBox(
+                height: 0,
+              ));
   }
 }

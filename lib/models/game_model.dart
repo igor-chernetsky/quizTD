@@ -67,13 +67,13 @@ class GameModel {
   }
 
   int get answerBoost {
-    int multiplier = 4 * (theme?.multiply ?? 1);
+    int multiplier = 4;
     int schoolCount = plates
         .where((p) =>
             p.building?.type == BuildingType.school && p.buildProgress == null)
         .length;
     if (schoolCount > 0) {
-      multiplier += (upgrades?.education == true ? 1 : 2) * schoolCount;
+      multiplier += (upgrades?.education == true ? 2 : 1) * schoolCount;
     }
     return multiplier * 5 * epoch;
   }

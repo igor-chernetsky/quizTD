@@ -1,5 +1,7 @@
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:flutter/services.dart';
 import 'package:quiz_defence/models/question_model.dart';
 
 List<String> mathOperators = ['+', '-', '*'];
@@ -73,6 +75,22 @@ getMultiply() {
     answer: answer.toString(),
     answers: [],
   );
+}
+
+getMath2Questions(int level) async {
+  final String doc = await rootBundle.loadString('assets/docs/math.json');
+  final List<dynamic> data = await json.decode(doc);
+  List<QuestionModel> res = data.where((d) => d['level'] == level).map((item) {
+    List<String> questions = List<String>.from(item['answers'] as List);
+    return QuestionModel(
+        question: item['question'], answer: item['answer'], answers: questions);
+  }).toList();
+  res.shuffle();
+  res = res.sublist(0, 20);
+  for (var q in res) {
+    q.answers.shuffle();
+  }
+  return res;
 }
 
 getMultiplyQuestion() {

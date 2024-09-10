@@ -4,11 +4,13 @@ import 'package:quiz_defence/models/question_model.dart';
 import 'package:quiz_defence/utils/geography.dart';
 import 'package:quiz_defence/utils/math.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuestionCubit extends Cubit<QuestionsModel> {
   QuestionCubit() : super(QuestionsModel(questions: []));
 
-  void setQuestions(int epoch, int c, {ThemeItem? theme}) async {
+  void setQuestions(int epoch, int c,
+      {ThemeItem? theme, AppLocalizations? local}) async {
     theme = theme ?? state.theme ?? themeItems[0];
     List<QuestionModel> questions = [];
     switch (theme.id) {
@@ -19,7 +21,14 @@ class QuestionCubit extends Cubit<QuestionsModel> {
         questions = getElMath2(epoch);
         break;
       case 2:
-        questions = await getGeoQuestions(epoch);
+        questions = await getGeoQuestions(epoch, false, local);
+        break;
+      case 3:
+        questions = await getMath2Questions(epoch);
+        break;
+      case 4:
+        questions = await getGeoQuestions(epoch, true, local);
+        break;
     }
     emit(QuestionsModel(
         questions: questions,

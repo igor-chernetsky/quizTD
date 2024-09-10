@@ -5,6 +5,7 @@ import 'package:quiz_defence/cubit/questionCubit.dart';
 import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/screens/start.dart';
 import 'package:quiz_defence/utils/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainMenu extends StatelessWidget {
   final double size;
@@ -12,7 +13,7 @@ class MainMenu extends StatelessWidget {
   const MainMenu({super.key, required this.size, required this.parentContext});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext ctx) {
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => SizedBox(
               height: size,
@@ -40,9 +41,9 @@ class MainMenu extends StatelessWidget {
                                       label: Container(
                                         alignment: Alignment.center,
                                         width: 120,
-                                        child: const Text(
-                                          'RESUME',
-                                          style: TextStyle(
+                                        child: Text(
+                                          AppLocalizations.of(ctx)!.resume,
+                                          style: const TextStyle(
                                               color: Colors.white,
                                               letterSpacing: 3,
                                               fontSize: 20),
@@ -69,9 +70,9 @@ class MainMenu extends StatelessWidget {
                                       label: Container(
                                           alignment: Alignment.center,
                                           width: 120,
-                                          child: const Text(
-                                            'RESTART',
-                                            style: TextStyle(
+                                          child: Text(
+                                            AppLocalizations.of(ctx)!.restart,
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 letterSpacing: 3,
                                                 fontSize: 20),
@@ -93,9 +94,9 @@ class MainMenu extends StatelessWidget {
                                       label: Container(
                                           alignment: Alignment.center,
                                           width: 120,
-                                          child: const Text(
-                                            'EXIT',
-                                            style: TextStyle(
+                                          child: Text(
+                                            AppLocalizations.of(ctx)!.exit,
+                                            style: const TextStyle(
                                                 color: Colors.white,
                                                 letterSpacing: 3,
                                                 fontSize: 20),

@@ -6,7 +6,6 @@ import 'package:image_fade/image_fade.dart';
 import 'package:quiz_defence/cubit/gameCubit.dart';
 import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
-import 'package:quiz_defence/screens/start.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/infoWidgets/epochNum.dart';
 import 'package:quiz_defence/widget/menus/mainMenu.dart';
@@ -21,7 +20,7 @@ class PlaygroundWidget extends StatelessWidget {
   const PlaygroundWidget({super.key});
 
   drawBuilding(PlateModel plate, BuildContext context, int index, double size,
-      bool isSelected, int width) {
+      bool isSelected, int width, int epoch, bool canRepair) {
     List<Widget> res = [
       Transform.scale(
         scale: isSelected ? 1.3 : 1.1,
@@ -61,11 +60,51 @@ class PlaygroundWidget extends StatelessWidget {
         size: size,
       ));
     }
+    if (plate.level < epoch && plate.building?.hp != null) {
+      res.add(Positioned(
+        right: 0,
+        top: 2,
+        child: Icon(
+          Icons.upgrade,
+          size: size / 2.5,
+          color: AppColors.primarySwatch,
+        ),
+      ));
+    }
+    if (plate.level < epoch && plate.building?.hp != null) {
+      res.add(Positioned(
+        right: 0,
+        top: 2,
+        child: Icon(
+          Icons.upgrade,
+          size: size / 2.5,
+          color: AppColors.primarySwatch,
+        ),
+      ));
+    }
+    if (canRepair &&
+        plate.hp > 0 &&
+        plate.hp < plate.topHP! &&
+        plate.buildProgress == null) {
+      res.add(Positioned(
+        left: 0,
+        top: 2,
+        child: Icon(
+          Icons.gavel,
+          size: size / 2.5,
+          color: AppColors.primarySwatch,
+        ),
+      ));
+    }
     return res;
   }
 
-  drawCity(BuildContext context, List<PlateModel> plates, int width,
-      double size, bool fence, int? selectedIndex) {
+  drawCity(BuildContext context, double size, GameModel gm) {
+    List<PlateModel> plates = gm.plates;
+    int width = gm.width;
+    bool fence = gm.upgrades?.fence == true;
+    int? selectedIndex = gm.selectedIndex;
+    int epoch = gm.epoch;
     List<Widget> res = [];
     int height = plates.length ~/ width;
     for (int y = 0; y < height; y++) {
@@ -77,7 +116,14 @@ class PlaygroundWidget extends StatelessWidget {
           clipBehavior: Clip.none,
           alignment: Alignment.bottomCenter,
           children: drawBuilding(
-              plate, context, index, size, index == selectedIndex, width),
+              plate,
+              context,
+              index,
+              size,
+              index == selectedIndex,
+              width,
+              epoch,
+              gm.upgrades?.repair == true),
         ));
       }
       res.add(Row(
@@ -201,8 +247,7 @@ class PlaygroundWidget extends StatelessWidget {
                           ...getActionWidgets(size, gm.width * 3, gm.width),
                         ],
                       ),
-                      drawCity(context, gm.plates, gm.width, size,
-                          gm.upgrades?.fence == true, gm.selectedIndex),
+                      drawCity(context, size, gm),
                       Column(
                         children: [
                           ...getActionWidgets(size, gm.width, gm.width),

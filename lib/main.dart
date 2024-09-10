@@ -6,6 +6,8 @@ import 'package:quiz_defence/data/database_helper.dart';
 import 'package:quiz_defence/screens/game.dart';
 import 'package:quiz_defence/screens/start.dart';
 import 'package:quiz_defence/utils/colors.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final dbHelper = DatabaseHelper();
 
@@ -42,6 +44,17 @@ class QuizTDApp extends StatelessWidget {
     return BlocProvider<StatsCubit>(
       create: (BuildContext context) => StatsCubit()..initFame(null),
       child: MaterialApp(
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [
+          Locale('en'), // English
+          Locale('es'), // Spanish
+          Locale('ru'), // Russian
+        ],
         title: 'Quiz Tower Defence',
         theme: ThemeData(
           primaryColor: AppColors.primarySwatch,

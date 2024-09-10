@@ -6,6 +6,7 @@ import 'package:quiz_defence/cubit/gameCubit.dart';
 import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/utils/colors.dart';
+import 'package:quiz_defence/widget/building/buildingHP.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/sellButtonWidget.dart';
@@ -26,7 +27,7 @@ class TowerWidget extends StatelessWidget {
     double widgetHeight = availableHeight / 2;
     double mainSize = min<double>(MediaQuery.of(context).size.width,
         MediaQuery.of(context).size.height / 2);
-    double size = mainSize * 0.4;
+    double size = mainSize * 0.35;
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Stack(
@@ -106,19 +107,10 @@ class TowerWidget extends StatelessWidget {
                       const SizedBox(
                         height: 10,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          SizedBox(
-                              width: mainSize - 140,
-                              child: BarWidget(
-                                value: plate.hp,
-                                total: plate.building!.hp * plate.level,
-                                icon: Icons.favorite,
-                              )),
-                          RepairButton(plate: plate),
-                        ],
-                      ),
+                      BuildingHp(
+                        plate: plate,
+                        mainSize: mainSize,
+                      )
                     ],
                   ),
                 ),
