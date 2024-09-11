@@ -8,14 +8,13 @@ import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/models/upgrade_model.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/building/buildingHP.dart';
-import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_defence/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/sellButtonWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/upgradeButtonWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/upgradeInfoWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/upgradeWidget.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SchoolWidget extends StatelessWidget {
   final PlateModel plate;
@@ -165,7 +164,7 @@ class SchoolWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'SCHOOL level ${plate.level}',
+                                    '${AppLocalizations.of(context)!.school} ${AppLocalizations.of(context)!.level}  ${plate.level}',
                                     style: TextStyle(
                                         height: 2,
                                         fontSize: 20,
@@ -183,7 +182,7 @@ class SchoolWidget extends StatelessWidget {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                  '+${gm.upgrades?.education == true ? 50 : 25}% question reward',
+                                                  '+${gm.upgrades?.education == true ? 50 : 25}% ${AppLocalizations.of(context)!.reward}',
                                                   style: TextStyle(
                                                       color:
                                                           AppColors.textColor,

@@ -49,7 +49,7 @@ class QuizWidget extends StatelessWidget {
               : Text(answers[i],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: [2, 4].contains(qm.theme?.id) ? 14 : 22,
+                    fontSize: [2, 4].contains(themeId) ? 14 : 22,
                   )),
         ),
       ));
@@ -69,7 +69,7 @@ class QuizWidget extends StatelessWidget {
       qm.currentQuestions!.question,
       style: TextStyle(
           color: getStatusColor(qm.state),
-          fontSize: [2, 4].contains(qm.theme?.id) ? 18 : 32,
+          fontSize: [2, 4].contains(qm.theme?.id ?? 0) ? 18 : 32,
           fontWeight: FontWeight.bold),
     );
   }

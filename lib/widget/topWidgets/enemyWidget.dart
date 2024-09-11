@@ -9,6 +9,7 @@ import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/enemyInfo.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class EnemyWidget extends StatelessWidget {
   final EnemyModel enemy;
@@ -24,6 +25,40 @@ class EnemyWidget extends StatelessWidget {
     double mainSize = min<double>(MediaQuery.of(context).size.width,
         MediaQuery.of(context).size.height / 2);
     double size = mainSize * 0.35;
+
+    getEnemyDescription(AppLocalizations locale, EnemyType? t) {
+      if (t != null) {
+        switch (t) {
+          case EnemyType.wolf:
+            return locale.descriptionWolf;
+          case EnemyType.enemy:
+            return locale.descriptionEnemy;
+          case EnemyType.helicopter:
+            return locale.descriptionHelicopter;
+          case EnemyType.zombie:
+            return locale.descriptionZombie;
+          case EnemyType.meteor:
+            return locale.descriptionMeteor;
+        }
+      }
+    }
+
+    getEnemyName(AppLocalizations locale, EnemyType? t) {
+      if (t != null) {
+        switch (t) {
+          case EnemyType.wolf:
+            return locale.nameWolf;
+          case EnemyType.enemy:
+            return locale.nameEnemy;
+          case EnemyType.helicopter:
+            return locale.nameHelicopter;
+          case EnemyType.zombie:
+            return locale.nameZombie;
+          case EnemyType.meteor:
+            return locale.nameMeteor;
+        }
+      }
+    }
 
     return BlocBuilder<GameCubit, GameModel>(
         builder: (context, gm) => Stack(
@@ -52,7 +87,10 @@ class EnemyWidget extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      enemyNameMap[enemy.type]!,
+                                      getEnemyName(
+                                              AppLocalizations.of(context)!,
+                                              enemy.type) ??
+                                          '',
                                       style: TextStyle(
                                           height: 2,
                                           fontSize: 20,
@@ -86,7 +124,10 @@ class EnemyWidget extends StatelessWidget {
                                       height: 10,
                                     ),
                                     Text(
-                                      enemyDescriptionMap[enemy.type]!,
+                                      getEnemyDescription(
+                                              AppLocalizations.of(context)!,
+                                              enemy.type) ??
+                                          '',
                                       style: const TextStyle(
                                           height: 1.2,
                                           fontSize: 16,

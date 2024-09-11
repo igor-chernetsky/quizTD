@@ -8,9 +8,8 @@ import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/widget/building/buildingHP.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_defence/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
-import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainWidget extends StatelessWidget {
   final PlateModel plate;
@@ -60,7 +59,7 @@ class MainWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'MAIN level ${plate.level}',
+                                    '${AppLocalizations.of(context)!.main} ${AppLocalizations.of(context)!.level}  ${plate.level}',
                                     style: const TextStyle(
                                         height: 2,
                                         fontSize: 20,
@@ -74,7 +73,7 @@ class MainWidget extends StatelessWidget {
                                       Row(
                                         children: [
                                           Text(
-                                            'EPOCH: ${gm.epochName}',
+                                            '${AppLocalizations.of(context)!.epoch}: ${gm.epochName(AppLocalizations.of(context)!)}',
                                             style: const TextStyle(
                                                 height: 2,
                                                 fontSize: 16,

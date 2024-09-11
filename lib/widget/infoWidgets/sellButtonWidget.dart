@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_defence/cubit/gameCubit.dart';
 import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SellButton extends StatelessWidget {
   final PlateModel plate;
@@ -25,7 +26,7 @@ class SellButton extends StatelessWidget {
                 width: 90,
                 child: Center(
                     child: Text(
-                  'Sell \$$price',
+                  '${AppLocalizations.of(context)!.sell} \$$price',
                   style:
                       const TextStyle(color: Colors.white, letterSpacing: 1.4),
                 )))));

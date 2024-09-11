@@ -6,27 +6,11 @@ import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/healthBarWidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 import '../../cubit/statsCubit.dart';
 
 class ThemeSelector extends StatelessWidget {
   final BuildContext parentContext;
   const ThemeSelector({super.key, required this.parentContext});
-
-  getName(AppLocalizations locale, int id) {
-    switch (id) {
-      case 0:
-        return locale.math1;
-      case 1:
-        return locale.math2;
-      case 2:
-        return locale.geo;
-      case 3:
-        return locale.math3;
-      case 4:
-        return locale.flag;
-    }
-  }
 
   renderThemeSelector(BuildContext context, List<ThemeItem> top) {
     return GridView.builder(
@@ -46,7 +30,7 @@ class ThemeSelector extends StatelessWidget {
                       'assets/img/${themeItems[index].img}',
                       width: 80,
                     ),
-                    Text(getName(
+                    Text(getThemeName(
                         AppLocalizations.of(context)!, themeItems[index].id)),
                     const SizedBox(
                       height: 6,
@@ -103,7 +87,8 @@ class ThemeSelector extends StatelessWidget {
                                 height: 6,
                               ),
                               Text(
-                                sm.theme.name,
+                                getThemeName(
+                                    AppLocalizations.of(context)!, sm.theme.id),
                                 style: const TextStyle(
                                     fontSize: 16, color: Colors.white),
                               ),

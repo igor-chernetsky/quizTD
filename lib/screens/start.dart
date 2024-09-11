@@ -55,7 +55,7 @@ class _StartScreenState extends State<StartScreen> {
                 height: 24,
                 child: Center(
                     child: Text(
-                        'Year ${fames[index].year} Epoch ${fames[index].epoch}',
+                        '${AppLocalizations.of(context)!.epoch} ${fames[index].epoch} ${AppLocalizations.of(context)!.year} ${fames[index].year}',
                         style: const TextStyle(
                             color: Color(0xFFB0B0B0),
                             fontSize: 16,
@@ -139,8 +139,8 @@ class _StartScreenState extends State<StartScreen> {
                             color: AppColors.primarySwatch, width: 2)),
                     child: Column(
                       children: [
-                        const Text('Top 10:',
-                            style: TextStyle(
+                        Text(AppLocalizations.of(context)!.top10,
+                            style: const TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,
                                 decoration: TextDecoration.none)),

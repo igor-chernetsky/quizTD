@@ -29,7 +29,7 @@ class GameScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext ctx) {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       body: SafeArea(child: BlocBuilder<StatsCubit, StatsModel>(
@@ -48,7 +48,7 @@ class GameScreen extends StatelessWidget {
             BlocProvider<QuestionCubit>(
               create: (BuildContext context) => QuestionCubit()
                 ..setQuestions(1, 0,
-                    theme: sm.theme, local: AppLocalizations.of(context)!),
+                    theme: sm.theme, local: AppLocalizations.of(ctx)!),
             ),
           ], child: getStateWidget(sm.state));
         },

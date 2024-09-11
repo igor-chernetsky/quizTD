@@ -11,6 +11,7 @@ import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/sellButtonWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/upgradeButtonWidget.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FarmWidget extends StatelessWidget {
   final PlateModel plate;
@@ -52,7 +53,7 @@ class FarmWidget extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'FARM level ${plate.level}',
+                              '${AppLocalizations.of(context)!.farm} ${AppLocalizations.of(context)!.level} ${plate.level}',
                               style: TextStyle(
                                   fontSize: 20,
                                   color: Theme.of(context).primaryColor,
@@ -68,7 +69,7 @@ class FarmWidget extends StatelessWidget {
                                           MainAxisAlignment.center,
                                       children: [
                                         Text(
-                                            'INCOME ${plate.income.toString()}/',
+                                            '${AppLocalizations.of(context)!.income} ${plate.income.toString()}/',
                                             style: TextStyle(
                                                 color: AppColors.textColor,
                                                 fontSize: 16,

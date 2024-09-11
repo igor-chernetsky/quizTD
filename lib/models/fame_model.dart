@@ -1,3 +1,5 @@
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 class FameModel {
   String? id;
   int year;
@@ -27,3 +29,17 @@ List<ThemeItem> themeItems = [
   ThemeItem(id: 2, name: 'Geograply', multiply: 1, img: 'geo1.png'),
   ThemeItem(id: 4, name: 'Flags', multiply: 1, img: 'geo2.png'),
 ];
+getThemeName(AppLocalizations locale, int id) {
+  switch (id) {
+    case 0:
+      return locale.math1;
+    case 1:
+      return locale.math2;
+    case 2:
+      return locale.geo;
+    case 3:
+      return locale.math3;
+    case 4:
+      return locale.flag;
+  }
+}

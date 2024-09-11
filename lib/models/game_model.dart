@@ -3,6 +3,7 @@ import 'package:quiz_defence/models/enemy_model.dart';
 import 'package:quiz_defence/models/fame_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/models/upgrade_model.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class GameModel {
   int score;
@@ -36,16 +37,16 @@ class GameModel {
     }
   }
 
-  String get epochName {
+  String epochName(AppLocalizations locale) {
     switch (epoch) {
       case 4:
-        return 'Future day';
+        return locale.future;
       case 3:
-        return 'Current ages';
+        return locale.current;
       case 2:
-        return 'Middle ages';
+        return locale.middle;
     }
-    return 'Stone age';
+    return locale.stone;
   }
 
   PlateModel? get selectedPlate {

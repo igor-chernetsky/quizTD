@@ -8,11 +8,10 @@ import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/building/buildingHP.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
-import 'package:quiz_defence/widget/infoWidgets/repairButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/sellButtonWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/upgradeButtonWidget.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
-import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class TowerWidget extends StatelessWidget {
   final PlateModel plate;
@@ -55,7 +54,7 @@ class TowerWidget extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    'TOWER level ${plate.level}',
+                                    '${AppLocalizations.of(context)!.tower} ${AppLocalizations.of(context)!.level}  ${plate.level}',
                                     style: TextStyle(
                                         height: 2,
                                         fontSize: 20,
@@ -73,7 +72,7 @@ class TowerWidget extends StatelessWidget {
                                                 MainAxisAlignment.center,
                                             children: [
                                               Text(
-                                                  'DEMAGE ${plate.dps.toString()}',
+                                                  '${AppLocalizations.of(context)!.damage} ${plate.dps.toString()}',
                                                   style: TextStyle(
                                                       height: 2,
                                                       color:

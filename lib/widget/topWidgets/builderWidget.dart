@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:path/path.dart';
 import 'package:quiz_defence/cubit/gameCubit.dart';
 import 'package:quiz_defence/models/building_model.dart';
 import 'package:quiz_defence/models/game_model.dart';
@@ -11,6 +10,7 @@ import 'package:quiz_defence/widget/infoWidgets/buildingInfoWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/epochNum.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BuilderWidget extends StatelessWidget {
   const BuilderWidget({super.key});
@@ -97,7 +97,9 @@ class BuilderWidget extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(buldingNames[b.type]!,
+                          Text(
+                              buldingNames(
+                                  AppLocalizations.of(context)!, b.type)!,
                               style: TextStyle(
                                   color: AppColors.textColor, fontSize: 16)),
                           const SizedBox(

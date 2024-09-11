@@ -45,7 +45,9 @@ class BuildingInfo extends StatelessWidget {
                     building: building,
                     level: epoch,
                   ),
-                  Text(buldingNames[building.type]!,
+                  Text(
+                      buldingNames(
+                          AppLocalizations.of(context)!, building.type)!,
                       style:
                           TextStyle(color: AppColors.textColor, fontSize: 20)),
                 ],

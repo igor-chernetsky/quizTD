@@ -4,6 +4,7 @@ import 'package:quiz_defence/cubit/gameCubit.dart';
 import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/screens/start.dart';
 import 'package:quiz_defence/utils/colors.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WinWidget extends StatelessWidget {
   const WinWidget({super.key});
@@ -34,21 +35,21 @@ class WinWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'VICTORY!',
+                        AppLocalizations.of(context)!.victory,
                         style: TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
                             color: AppColors.primarySwatch),
                       ),
                       Text(
-                        'YEAR: ${gm.yearNumber}',
+                        '${AppLocalizations.of(context)!.year}: ${gm.yearNumber}',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
                             color: AppColors.textColor),
                       ),
                       Text(
-                        'EPOCH: ${gm.epochName}',
+                        '${AppLocalizations.of(context)!.main}: ${gm.epochName(AppLocalizations.of(context)!)}',
                         style: TextStyle(
                             fontSize: 20,
                             fontWeight: FontWeight.bold,
@@ -59,7 +60,7 @@ class WinWidget extends StatelessWidget {
                                 Navigator.pushNamed(
                                     context, StartScreen.routeName),
                               },
-                          child: const Text('MENU'))
+                          child: Text(AppLocalizations.of(context)!.menu))
                     ],
                   ),
                 ),
