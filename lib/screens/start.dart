@@ -116,8 +116,8 @@ class _StartScreenState extends State<StartScreen> {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFFA2031E),
                       ),
-                      onPressed: () =>
-                          Navigator.pushNamed(context, GameScreen.routeName),
+                      onPressed: () => Navigator.pushReplacementNamed(
+                          context, GameScreen.routeName),
                       child: Text(
                         AppLocalizations.of(context)!.start,
                         style: const TextStyle(

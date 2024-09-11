@@ -89,8 +89,9 @@ class MainMenu extends StatelessWidget {
                                         backgroundColor:
                                             const Color(0xFFA2031E),
                                       ),
-                                      onPressed: () => Navigator.pushNamed(
-                                          context, StartScreen.routeName),
+                                      onPressed: () =>
+                                          Navigator.pushReplacementNamed(
+                                              context, StartScreen.routeName),
                                       label: Container(
                                           alignment: Alignment.center,
                                           width: 120,

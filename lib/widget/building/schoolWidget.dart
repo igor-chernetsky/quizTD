@@ -8,6 +8,7 @@ import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/models/upgrade_model.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/building/buildingHP.dart';
+import 'package:quiz_defence/widget/infoWidgets/buildingInfoWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_defence/widget/infoWidgets/sellButtonWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/upgradeButtonWidget.dart';
@@ -219,7 +220,33 @@ class SchoolWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Positioned(bottom: 4, right: 4, child: ClosePlateButton())
+                Positioned(
+                    bottom: 4,
+                    right: 4,
+                    child: Row(
+                      children: [
+                        IconButton.outlined(
+                            onPressed: () {
+                              showModalBottomSheet<void>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                        padding: const EdgeInsets.all(10),
+                                        height: 300,
+                                        width: double.infinity,
+                                        child: BuildingInfo(
+                                          building: plate.building!,
+                                          epoch: gm.epoch,
+                                        ));
+                                  });
+                            },
+                            iconSize: 18,
+                            icon: const Icon(
+                              Icons.question_mark,
+                            )),
+                        const ClosePlateButton(),
+                      ],
+                    ))
               ],
             ));
   }

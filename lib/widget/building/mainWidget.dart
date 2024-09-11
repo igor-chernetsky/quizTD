@@ -7,6 +7,7 @@ import 'package:quiz_defence/cubit/questionCubit.dart';
 import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/models/plate_model.dart';
 import 'package:quiz_defence/widget/building/buildingHP.dart';
+import 'package:quiz_defence/widget/infoWidgets/buildingInfoWidget.dart';
 import 'package:quiz_defence/widget/infoWidgets/closePlateButton.dart';
 import 'package:quiz_defence/widget/playgroundWidgets/buildingWidget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -123,7 +124,32 @@ class MainWidget extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                    bottom: 10, right: 10, child: const ClosePlateButton())
+                    bottom: 10,
+                    right: 10,
+                    child: Row(
+                      children: [
+                        IconButton.outlined(
+                            onPressed: () {
+                              showModalBottomSheet<void>(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Container(
+                                        padding: const EdgeInsets.all(10),
+                                        height: 300,
+                                        width: double.infinity,
+                                        child: BuildingInfo(
+                                          building: plate.building!,
+                                          epoch: gm.epoch,
+                                        ));
+                                  });
+                            },
+                            iconSize: 18,
+                            icon: const Icon(
+                              Icons.question_mark,
+                            )),
+                        const ClosePlateButton(),
+                      ],
+                    ))
               ],
             ));
   }

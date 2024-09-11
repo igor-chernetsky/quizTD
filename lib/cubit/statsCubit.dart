@@ -37,9 +37,8 @@ class StatsCubit extends Cubit<StatsModel> {
   }
 
   void resetState() {
-    StatsModel res = _cloneModel();
-    res.state = GameState.game;
-    return emit(res);
+    state.state = GameState.start;
+    return emit(state);
   }
 
   void setWin(FameModel fame) {

@@ -57,7 +57,7 @@ class LooseWidget extends StatelessWidget {
                       ),
                       ElevatedButton(
                           onPressed: () => {
-                                Navigator.pushNamed(
+                                Navigator.pushReplacementNamed(
                                     context, StartScreen.routeName),
                               },
                           child: Text(AppLocalizations.of(context)!.menu))
