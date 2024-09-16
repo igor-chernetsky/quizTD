@@ -28,6 +28,7 @@ List<ThemeItem> themeItems = [
   ThemeItem(id: 3, name: 'Elementary Math 3', multiply: 3, img: 'math3.png'),
   ThemeItem(id: 2, name: 'Geograply', multiply: 1, img: 'geo1.png'),
   ThemeItem(id: 4, name: 'Flags', multiply: 1, img: 'geo2.png'),
+  ThemeItem(id: 5, name: 'History', multiply: 1, img: 'history.png'),
 ];
 getThemeName(AppLocalizations locale, int id) {
   switch (id) {
@@ -41,5 +42,7 @@ getThemeName(AppLocalizations locale, int id) {
       return locale.math3;
     case 4:
       return locale.flag;
+    case 5:
+      return locale.history;
   }
 }

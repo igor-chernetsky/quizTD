@@ -64,7 +64,9 @@ class MainMenu extends StatelessWidget {
                                         parentContext
                                             .read<QuestionCubit>()
                                             .setQuestions(1, 0,
-                                                theme: gm.theme);
+                                                theme: gm.theme,
+                                                local:
+                                                    AppLocalizations.of(ctx)!);
                                         Navigator.of(context).pop();
                                       },
                                       label: Container(

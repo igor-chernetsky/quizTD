@@ -9,8 +9,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../cubit/statsCubit.dart';
 
 class ThemeSelector extends StatelessWidget {
-  final BuildContext parentContext;
-  const ThemeSelector({super.key, required this.parentContext});
+  const ThemeSelector({super.key});
 
   renderThemeSelector(BuildContext context, List<ThemeItem> top) {
     return GridView.builder(
@@ -19,7 +18,7 @@ class ThemeSelector extends StatelessWidget {
         itemCount: top.length,
         itemBuilder: (context1, index) => GestureDetector(
               onTap: () {
-                context.read<StatsCubit>().initFame(themeItems[index]);
+                context.read<StatsCubit>().initFame(themeItems[index], null);
                 Navigator.of(context1).pop();
               },
               child: Container(

@@ -8,6 +8,7 @@ import 'package:quiz_defence/models/game_model.dart';
 import 'package:quiz_defence/models/question_model.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/infoWidgets/barWidget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class QuizWidget extends StatelessWidget {
   const QuizWidget({super.key});
@@ -32,7 +33,8 @@ class QuizWidget extends StatelessWidget {
                 context.read<QuestionCubit>().answerQuestion(answers[i], () {
                   int epoch = context.read<GameCubit>().nextEpoch(true);
                   if (epoch < 5) {
-                    context.read<QuestionCubit>().setQuestions(epoch, 0);
+                    context.read<QuestionCubit>().setQuestions(epoch, 0,
+                        local: AppLocalizations.of(context)!);
                   }
                 });
                 Future.delayed(const Duration(milliseconds: 500), () {
@@ -49,7 +51,7 @@ class QuizWidget extends StatelessWidget {
               : Text(answers[i],
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: [2, 4].contains(themeId) ? 14 : 22,
+                    fontSize: [2, 4, 5].contains(themeId) ? 12 : 22,
                   )),
         ),
       ));
@@ -58,10 +60,11 @@ class QuizWidget extends StatelessWidget {
   }
 
   renderQuestion(QuestionsModel qm) {
+    var themeId = qm.theme?.id ?? 0;
     if (qm.currentQuestions!.isImg) {
       return Image(
         image: AssetImage(qm.currentQuestions!.question),
-        width: 80,
+        height: themeId == 5 ? 100 : 60,
       );
     }
     return Text(
@@ -69,7 +72,7 @@ class QuizWidget extends StatelessWidget {
       qm.currentQuestions!.question,
       style: TextStyle(
           color: getStatusColor(qm.state),
-          fontSize: [2, 4].contains(qm.theme?.id ?? 0) ? 18 : 32,
+          fontSize: [2, 4, 5].contains(qm.theme?.id ?? 0) ? 16 : 32,
           fontWeight: FontWeight.bold),
     );
   }

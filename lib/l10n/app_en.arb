@@ -7,6 +7,7 @@
   "math2": "Math level 2",
   "math3": "Math level 3",
   "geo": "Geograply",
+  "history": "History",
   "flag": "Flags",
   "farm": "Farm",
   "main": "Main",
@@ -39,9 +40,9 @@
   "upgradeRepairDescription": "Building can be repaired for gold.",
   "upgradeAintiAirDescription": "The protecting dome can hold some amount of air damage.",
   "top10": "Top 10",
-  "epoch": "EPOCH",
+  "epoch": "Epoch",
   "menu": "MENU",
-  "year": "YEAR",
+  "year": "Year",
   "victory": "VICTORY!",
   "defeat": "DEFEAT!",
   "income": "INCOME",
@@ -51,5 +52,6 @@
   "middle": "Middle Ages",
   "current": "Nowadays",
   "future": "Future",
-  "geoFile": "geography"
+  "geoFile": "geography",
+  "historyFile": "history"
 }

@@ -7,6 +7,7 @@
   "math2": "Математика 2",
   "math3": "Математика 3",
   "geo": "География",
+  "history": "История",
   "flag": "Флаги",
   "farm": "Ферма",
   "main": "Ратуша",
@@ -38,7 +39,7 @@
   "upgradeRepairDescription": "Здание можно отремонтировать за золото.",
   "upgradeAintiAirDescription": "The protecting dome can hold some amount of air damage.",
   "top10": "10 лушчих",
-  "epoch": "ЭПОХА",
+  "epoch": "Эпоха",
   "menu": "МЕНЮ",
   "year": "ГОД",
   "victory": "ПОБЕДА!",
@@ -50,5 +51,6 @@
   "current": "Современность",
   "future": "Будущее",
   "reward": "заграда за ответы",
-  "geoFile": "geography-ru"
+  "geoFile": "geography-ru",
+  "historyFile": "history-ru"
 }

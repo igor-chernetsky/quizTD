@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_defence/main.dart';
 import 'package:quiz_defence/models/fame_model.dart';
@@ -8,12 +9,13 @@ class StatsCubit extends Cubit<StatsModel> {
   StatsCubit() : super(StatsModel());
 
   StatsModel _cloneModel() {
-    StatsModel res = StatsModel(state: state.state, fameList: state.fameList);
+    StatsModel res = StatsModel(
+        state: state.state, fameList: state.fameList, locale: state.locale);
     res.theme = state.theme;
     return res;
   }
 
-  void initFame(ThemeItem? theme) async {
+  void initFame(ThemeItem? theme, Locale? locale) async {
     if (theme != null) {
       state.theme = theme;
     } else {
@@ -30,6 +32,9 @@ class StatsCubit extends Cubit<StatsModel> {
         await dbHelper.queryAllRows(10, theme?.id ?? state.theme.id);
     StatsModel res = _cloneModel();
     res.fameList = fames;
+    if (locale != null) {
+      res.locale = locale;
+    }
     if (res.fameList.isNotEmpty) {
       res.theme.level = res.fameList.map((item) => item.epoch).reduce(max);
     }
@@ -39,6 +44,12 @@ class StatsCubit extends Cubit<StatsModel> {
   void resetState() {
     state.state = GameState.start;
     return emit(state);
+  }
+
+  void switchLocale(Locale locale) {
+    StatsModel res = _cloneModel();
+    res.locale = locale;
+    return emit(res);
   }
 
   void setWin(FameModel fame) {

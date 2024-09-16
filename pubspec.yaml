@@ -1,7 +1,7 @@
 name: quiz_defence
 description: "A game where you answer the questions to develop and protect your sity"
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-version: 1.0.0+8
+version: 1.0.0+9
 
 environment:
   sdk: '>=3.5.0-47.0.dev <4.0.0'
@@ -39,4 +39,5 @@ flutter:
     - assets/img/
     - assets/img/seasons/
     - assets/img/flags/
+    - assets/img/history/
     - assets/docs/

@@ -95,5 +95,5 @@ getDefaultModel() {
     PlateModel(),
     PlateModel(),
     PlateModel()
-  ], score: 10);
+  ], score: 1000);
 }

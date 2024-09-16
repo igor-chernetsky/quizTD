@@ -7,6 +7,7 @@
   "math2": "Matemáticas 2",
   "math3": "Matemáticas 3",
   "geo": "Geografía",
+  "history": "Historia",
   "flag": "Banderas",
   "farm": "Granja",
   "main": "Ayuntamiento",
@@ -39,9 +40,9 @@
   "upgradeRepairDescription": "El edificio se puede reparar con oro.",
   "upgradeAintiAirDescription": "La cúpula protectora puede contener cierta cantidad de daño aéreo.",
   "top10": "Los 10 mejores",
-  "epoch": "ÉPOCA",
+  "epoch": "Época",
   "menu": "MENÚ",
-  "year": "AÑO",
+  "year": "Año",
   "victory": "¡VICTORIA!",
   "defeat": "¡DERROTA!",
   "income": "INGRESOS",
@@ -51,5 +52,6 @@
   "middle": "Edad Media",
   "current": "Hoy en día",
   "future": "Futuro",
-  "geoFile": "geography-es"
+  "geoFile": "geography-es",
+  "historyFile": "history-es"
 }

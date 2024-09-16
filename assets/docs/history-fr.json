@@ -1,0 +1,1321 @@
+[
+  {
+    "question": "Qui fut le premier président des États-Unis ?",
+    "answer": "Georges Washington",
+    "level": 2,
+    "answers": [
+      "Thomas Jefferson",
+      "John Adams",
+      "Abraham Lincoln",
+      "Georges Washington",
+      "Benjamin Franklin",
+      "James Madison"
+    ]
+  },
+  {
+    "question": "En quelle année le Titanic a-t-il coulé ?",
+    "answer": "1912",
+    "level": 3,
+    "answers": [
+      "1920",
+      "1910",
+      "1905",
+      "1912",
+      "1925",
+      "1900"
+    ]
+  },
+  {
+    "question": "Qui a été le premier humain à marcher sur la lune ?",
+    "answer": "Neil Armstrong",
+    "level": 2,
+    "answers": [
+      "Neil Armstrong",
+      "Buzz Aldrin",
+      "Youri Gagarine",
+      "John Glenn",
+      "Alan Shepard",
+      "Michael Collins"
+    ]
+  },
+  {
+    "question": "Quel empire était dirigé par Jules César ?",
+    "answer": "Empire romain",
+    "level": 2,
+    "answers": [
+      "Empire grec",
+      "Empire mongol",
+      "Empire romain",
+      "Empire byzantin",
+      "Empire ottoman",
+      "Empire égyptien"
+    ]
+  },
+  {
+    "question": "En quelle année a commencé la Première Guerre mondiale ?",
+    "answer": "1914",
+    "level": 1,
+    "answers": [
+      "1914",
+      "1918",
+      "1939",
+      "1920",
+      "1910",
+      "1941"
+    ]
+  },
+  {
+    "question": "Sur quel célèbre navire Christophe Colomb a-t-il navigué pour découvrir l'Amérique ?",
+    "answer": "Sainte Marie",
+    "level": 3,
+    "answers": [
+      "Pinta",
+      "Sainte Marie",
+      "Fleur de mai",
+      "Effort",
+      "Victoria",
+      "Nina"
+    ]
+  },
+  {
+    "question": "1.jpg",
+    "isImg": true,
+    "answer": "Egypte",
+    "level": 1,
+    "answers": [
+      "Chine",
+      "Pérou",
+      "Egypte",
+      "Mexique",
+      "Italie",
+      "Grèce"
+    ]
+  },
+  {
+    "question": "Qui était le chef de l'Allemagne nazie pendant la Seconde Guerre mondiale ?",
+    "answer": "Adolf Hitler",
+    "level": 2,
+    "answers": [
+      "Franklin D. Roosevelt",
+      "Adolf Hitler",
+      "Joseph Staline",
+      "Winston Churchill",
+      "Benito Mussolini",
+      "Hirohito"
+    ]
+  },
+  {
+    "question": "Quel était le nom du premier satellite artificiel lancé dans l’espace ?",
+    "answer": "Spoutnik",
+    "level": 3,
+    "answers": [
+      "Explorateur",
+      "Apollon",
+      "Spoutnik",
+      "Hubble",
+      "Voyageur",
+      "Lune"
+    ]
+  },
+  {
+    "question": "Quel pays a offert la Statue de la Liberté aux États-Unis ?",
+    "answer": "France",
+    "level": 2,
+    "answers": [
+      "Angleterre",
+      "Espagne",
+      "Allemagne",
+      "France",
+      "Canada",
+      "Italie"
+    ]
+  },
+  {
+    "question": "Qui a été la première femme Premier ministre du Royaume-Uni ?",
+    "answer": "Marguerite Thatcher",
+    "level": 3,
+    "answers": [
+      "Thérèse mai",
+      "Angela Merkel",
+      "Élisabeth II",
+      "Marguerite Thatcher",
+      "Indira Gandhi",
+      "Golda Meir"
+    ]
+  },
+  {
+    "question": "Dans quel pays la révolution industrielle a-t-elle commencé ?",
+    "answer": "Angleterre",
+    "level": 2,
+    "answers": [
+      "Angleterre",
+      "Japon",
+      "États-Unis",
+      "Allemagne",
+      "Russie",
+      "France"
+    ]
+  },
+  {
+    "question": "Quelle civilisation ancienne a construit le Machu Picchu ?",
+    "answer": "Incas",
+    "level": 3,
+    "answers": [
+      "Incas",
+      "Maya",
+      "Olmèque",
+      "Aztèque",
+      "Toltèque",
+      "Moche"
+    ]
+  },
+  {
+    "question": "Quel explorateur est crédité de la découverte de l’Amérique en 1492 ?",
+    "answer": "Christophe Colomb",
+    "level": 1,
+    "answers": [
+      "Marco Polo",
+      "Christophe Colomb",
+      "Leif Erikson",
+      "Vasco de Gama",
+      "Ferdinand Magellan",
+      "Amerigo Vespucci"
+    ]
+  },
+  {
+    "question": "Quel était le nom du navire sur lequel les pèlerins naviguaient vers l'Amérique en 1620 ?",
+    "answer": "Fleur de mai",
+    "level": 3,
+    "answers": [
+      "Sainte Marie",
+      "Victoire",
+      "Beagle",
+      "Effort",
+      "Fleur de mai",
+      "Nina"
+    ]
+  },
+  {
+    "question": "Quelle ville a été détruite par le Vésuve en 79 après JC ?",
+    "answer": "Pompéi",
+    "level": 2,
+    "answers": [
+      "Herculanum",
+      "Carthage",
+      "Troie",
+      "Pompéi",
+      "Rome",
+      "Athènes"
+    ]
+  },
+  {
+    "question": "Qui a peint la Joconde ?",
+    "answer": "Léonard de Vinci",
+    "level": 1,
+    "answers": [
+      "Claude Monet",
+      "Michel-Ange",
+      "Pablo Picasso",
+      "Vincent van Gogh",
+      "Léonard de Vinci",
+      "Raphaël"
+    ]
+  },
+  {
+    "question": "Quelle guerre a eu lieu entre les régions du Nord et du Sud des États-Unis ?",
+    "answer": "Guerre civile",
+    "level": 2,
+    "answers": [
+      "Guerre civile",
+      "Première Guerre mondiale",
+      "Guerre d'Indépendance",
+      "Guerre de Corée",
+      "Guerre du Vietnam",
+      "Guerre hispano-américaine"
+    ]
+  },
+  {
+    "question": "Comment s’appelait le système d’écriture égyptien antique ?",
+    "answer": "Hiéroglyphes",
+    "level": 2,
+    "answers": [
+      "Hiéroglyphes",
+      "Cunéiforme",
+      "Alphabet",
+      "Runes",
+      "Calligraphie",
+      "latin"
+    ]
+  },
+  {
+    "question": "Qui était le monarque britannique pendant la Seconde Guerre mondiale ?",
+    "answer": "Le roi George VI",
+    "level": 3,
+    "answers": [
+      "Le roi George VI",
+      "Le roi Édouard VIII",
+      "Reine Victoria",
+      "Le roi George V",
+      "Reine Elizabeth II",
+      "le roi Charles Ier"
+    ]
+  },
+  {
+    "question": "Quelle bataille célèbre a marqué la fin du règne de Napoléon ?",
+    "answer": "Bataille de Waterloo",
+    "level": 3,
+    "answers": [
+      "Bataille de Waterloo",
+      "Bataille de Trafalgar",
+      "Bataille d'Austerlitz",
+      "Bataille d'Hastings",
+      "Bataille des Ardennes",
+      "Bataille de Yorktown"
+    ]
+  },
+  {
+    "question": "En quelle année le mur de Berlin est-il tombé ?",
+    "answer": "1989",
+    "level": 3,
+    "answers": [
+      "1989",
+      "1991",
+      "1975",
+      "1980",
+      "1961",
+      "1995"
+    ]
+  },
+  {
+    "question": "Quel explorateur a réalisé le premier tour du monde ?",
+    "answer": "Ferdinand Magellan",
+    "level": 2,
+    "answers": [
+      "Ferdinand Magellan",
+      "Christophe Colomb",
+      "Vasco de Gama",
+      "James Cook",
+      "Amerigo Vespucci",
+      "Hernan Cortés"
+    ]
+  },
+  {
+    "question": "Quel empire était connu pour ses pharaons et ses pyramides ?",
+    "answer": "Egypte ancienne",
+    "level": 1,
+    "answers": [
+      "Egypte ancienne",
+      "Empire byzantin",
+      "Empire romain",
+      "Empire ottoman",
+      "Empire Inca",
+      "Empire aztèque"
+    ]
+  },
+  {
+    "question": "En quelle année la Seconde Guerre mondiale s'est-elle terminée ?",
+    "answer": "1945",
+    "level": 1,
+    "answers": [
+      "1945",
+      "1939",
+      "1941",
+      "1950",
+      "1942",
+      "1960"
+    ]
+  },
+  {
+    "question": "Qui est le fondateur de l'empire mongol ?",
+    "answer": "Gengis Khan",
+    "level": 3,
+    "answers": [
+      "Gengis Khan",
+      "Kubilaï Khan",
+      "Attila le Hun",
+      "Tamerlan",
+      "Hannibal",
+      "Alexandre le Grand"
+    ]
+  },
+  {
+    "question": "Qui a écrit le Manifeste du Parti Communiste ?",
+    "answer": "Karl Marx",
+    "level": 2,
+    "answers": [
+      "Karl Marx",
+      "Friedrich Engels",
+      "Vladimir Lénine",
+      "Joseph Staline",
+      "Mao Zedong",
+      "Léon Trotski"
+    ]
+  },
+  {
+    "question": "Quelle ancienne structure a été construite pour protéger la Chine des invasions ?",
+    "answer": "Grande Muraille de Chine",
+    "level": 2,
+    "answers": [
+      "Grande Muraille de Chine",
+      "Armée de terre cuite",
+      "Cité Interdite",
+      "Tombeaux Ming",
+      "Taj Mahal",
+      "Pyramides de Gizeh"
+    ]
+  },
+  {
+    "question": "Qui a été assassiné le 22 novembre 1963 ?",
+    "answer": "John F. Kennedy",
+    "level": 1,
+    "answers": [
+      "John F. Kennedy",
+      "Abraham Lincoln",
+      "Martin Luther King Jr.",
+      "Mahatma Gandhi",
+      "Robert Kennedy",
+      "James Garfield"
+    ]
+  },
+  {
+    "question": "Qui était le Premier ministre du Royaume-Uni pendant la majeure partie de la Seconde Guerre mondiale ?",
+    "answer": "Winston Churchill",
+    "level": 2,
+    "answers": [
+      "Winston Churchill",
+      "Neville Chamberlain",
+      "Clément Attlee",
+      "Marguerite Thatcher",
+      "David Lloyd George",
+      "Édouard Heath"
+    ]
+  },
+  {
+    "question": "Quel explorateur est crédité de la découverte de l’océan Pacifique ?",
+    "answer": "Vasco Nuñez de Balboa",
+    "level": 4,
+    "answers": [
+      "Vasco Nuñez de Balboa",
+      "Ferdinand Magellan",
+      "Christophe Colomb",
+      "James Cook",
+      "Jean Cabot",
+      "Francisco Pizarro"
+    ]
+  },
+  {
+    "question": "En quelle année commence la Révolution française ?",
+    "answer": "1789",
+    "level": 3,
+    "answers": [
+      "1789",
+      "1793",
+      "1776",
+      "1815",
+      "1804",
+      "1765"
+    ]
+  },
+  {
+    "question": "Quel traité a mis fin à la Première Guerre mondiale ?",
+    "answer": "Traité de Versailles",
+    "level": 3,
+    "answers": [
+      "Traité de Versailles",
+      "Traité de Tordesillas",
+      "Traité de Paris",
+      "Traité de Gand",
+      "Traité de Brest-Litovsk",
+      "Traité d'Utrecht"
+    ]
+  },
+  {
+    "question": "Quelle ville a accueilli les premiers Jeux Olympiques modernes en 1896 ?",
+    "answer": "Athènes",
+    "level": 3,
+    "answers": [
+      "Athènes",
+      "Paris",
+      "Rome",
+      "Londres",
+      "Berlin",
+      "Tokyo"
+    ]
+  },
+  {
+    "question": "Qui fut le dernier empereur de Russie ?",
+    "answer": "Nicolas II",
+    "level": 3,
+    "answers": [
+      "Nicolas II",
+      "Pierre le Grand",
+      "Ivan le Terrible",
+      "Alexandre II",
+      "Catherine la Grande",
+      "Paul Ier"
+    ]
+  },
+  {
+    "question": "Quel scientifique a développé la théorie de la relativité générale ?",
+    "answer": "Albert Einstein",
+    "level": 2,
+    "answers": [
+      "Albert Einstein",
+      "Isaac Newton",
+      "Nicolas Tesla",
+      "Galilée Galilée",
+      "Marie-Curie",
+      "Charles Darwin"
+    ]
+  },
+  {
+    "question": "Quelle ville était la capitale de l'Empire byzantin ?",
+    "answer": "Constantinople",
+    "level": 3,
+    "answers": [
+      "Constantinople",
+      "Rome",
+      "Carthage",
+      "Alexandrie",
+      "Athènes",
+      "Damas"
+    ]
+  },
+  {
+    "question": "Quel scientifique est connu pour ses travaux sur les lois du mouvement et de la gravité ?",
+    "answer": "Isaac Newton",
+    "level": 2,
+    "answers": [
+      "Isaac Newton",
+      "Albert Einstein",
+      "Galilée Galilée",
+      "Charles Darwin",
+      "Marie-Curie",
+      "Stephen Hawking"
+    ]
+  },
+  {
+    "question": "Qui était le dirigeant de l’Union soviétique pendant la Seconde Guerre mondiale ?",
+    "answer": "Joseph Staline",
+    "level": 1,
+    "answers": [
+      "Joseph Staline",
+      "Vladimir Lénine",
+      "Léon Trotski",
+      "Nikita Khrouchtchev",
+      "Mikhaïl Gorbatchev",
+      "Ivan IV"
+    ]
+  },
+  {
+    "question": "Quel a été le plus grand empire contigu de l’histoire ?",
+    "answer": "Empire mongol",
+    "level": 3,
+    "answers": [
+      "Empire mongol",
+      "Empire romain",
+      "Empire britannique",
+      "Empire ottoman",
+      "Empire russe",
+      "Empire espagnol"
+    ]
+  },
+  {
+    "question": "Quel célèbre document américain a été signé en 1776 ?",
+    "answer": "Déclaration d'indépendance",
+    "level": 1,
+    "answers": [
+      "Déclaration d'indépendance",
+      "Constitution",
+      "Déclaration des droits",
+      "Proclamation d'émancipation",
+      "Grande Charte",
+      "Articles de la Confédération"
+    ]
+  },
+  {
+    "question": "Qui fut le premier président des États-Unis ?",
+    "answer": "Georges Washington",
+    "level": 1,
+    "answers": [
+      "Georges Washington",
+      "John Adams",
+      "Thomas Jefferson",
+      "James Madison",
+      "Benjamin Franklin",
+      "Alexandre Hamilton"
+    ]
+  },
+  {
+    "question": "Quel scientifique célèbre a découvert la pénicilline ?",
+    "answer": "Alexandre Fleming",
+    "level": 3,
+    "answers": [
+      "Alexandre Fleming",
+      "Marie-Curie",
+      "Isaac Newton",
+      "Louis Pasteur",
+      "Charles Darwin",
+      "Albert Einstein"
+    ]
+  },
+  {
+    "question": "Qui a été la première femme à traverser l’océan Atlantique en solitaire ?",
+    "answer": "Amélie Earhart",
+    "level": 4,
+    "answers": [
+      "Amélie Earhart",
+      "Bessie Coleman",
+      "Valentina Terechkova",
+      "Harriet Quimby",
+      "Sally Ride",
+      "Jacqueline Cochran"
+    ]
+  },
+  {
+    "question": "Quel événement a déclenché le début de la Première Guerre mondiale ?",
+    "answer": "Assassinat de l'archiduc François Ferdinand",
+    "level": 4,
+    "answers": [
+      "Assassinat de l'archiduc François Ferdinand",
+      "Invasion de la Pologne",
+      "Bombardement de Pearl Harbor",
+      "Traité de Versailles",
+      "Bataille de la Somme",
+      "Attaque du fort Sumter"
+    ]
+  },
+  {
+    "question": "Quel empereur romain a été assassiné lors des ides de mars ?",
+    "answer": "Jules César",
+    "level": 2,
+    "answers": [
+      "Jules César",
+      "Auguste",
+      "Néron",
+      "Caligula",
+      "Hadrien",
+      "Marc Aurèle"
+    ]
+  },
+  {
+    "question": "Qui était le philosophe grec qui a enseigné Alexandre le Grand ?",
+    "answer": "Aristote",
+    "level": 3,
+    "answers": [
+      "Aristote",
+      "Platon",
+      "Socrate",
+      "Pythagore",
+      "Hippocrate",
+      "Épicure"
+    ]
+  },
+  {
+    "question": "2.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "Italie",
+    "answers": [
+      "Italie",
+      "Grèce",
+      "France",
+      "Egypte",
+      "Turquie",
+      "Espagne"
+    ]
+  },
+  {
+    "question": "3.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "Chine",
+    "answers": [
+      "Chine",
+      "Japon",
+      "Corée",
+      "Viêt Nam",
+      "Inde",
+      "Mongolie"
+    ]
+  },
+  {
+    "question": "4.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "France",
+    "answers": [
+      "France",
+      "Allemagne",
+      "Espagne",
+      "Italie",
+      "Belgique",
+      "Suisse"
+    ]
+  },
+  {
+    "question": "5.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "Royaume-Uni",
+    "answers": [
+      "Royaume-Uni",
+      "France",
+      "États-Unis",
+      "Canada",
+      "Australie",
+      "Irlande"
+    ]
+  },
+  {
+    "question": "6.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "États-Unis",
+    "answers": [
+      "États-Unis",
+      "France",
+      "Royaume-Uni",
+      "Allemagne",
+      "Brésil",
+      "Canada"
+    ]
+  },
+  {
+    "question": "7.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "Inde",
+    "answers": [
+      "Inde",
+      "Pakistan",
+      "Bangladesh",
+      "Népal",
+      "L'Iran",
+      "Sri Lanka"
+    ]
+  },
+  {
+    "question": "8.jpg",
+    "isImg": true,
+    "level": 3,
+    "answer": "Pérou",
+    "answers": [
+      "Pérou",
+      "Mexique",
+      "Brésil",
+      "Chili",
+      "Colombie",
+      "Argentine"
+    ]
+  },
+  {
+    "question": "9.jpg",
+    "isImg": true,
+    "level": 2,
+    "answer": "Italie",
+    "answers": [
+      "Italie",
+      "Espagne",
+      "France",
+      "Grèce",
+      "Portugal",
+      "Suisse"
+    ]
+  },
+  {
+    "question": "10.jpg",
+    "isImg": true,
+    "level": 2,
+    "answer": "Royaume-Uni",
+    "answers": [
+      "Royaume-Uni",
+      "Irlande",
+      "France",
+      "Allemagne",
+      "Espagne",
+      "Belgique"
+    ]
+  },
+  {
+    "question": "11.jpg",
+    "isImg": true,
+    "level": 2,
+    "answer": "Brésil",
+    "answers": [
+      "Brésil",
+      "Argentine",
+      "Colombie",
+      "Pérou",
+      "Chili",
+      "Mexique"
+    ]
+  },
+  {
+    "question": "12.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "Australie",
+    "answers": [
+      "Australie",
+      "Nouvelle-Zélande",
+      "États-Unis",
+      "Royaume-Uni",
+      "Canada",
+      "Afrique du Sud"
+    ]
+  },
+  {
+    "question": "13.jpg",
+    "isImg": true,
+    "level": 2,
+    "answer": "États-Unis",
+    "answers": [
+      "États-Unis",
+      "Canada",
+      "Mexique",
+      "Royaume-Uni",
+      "Australie",
+      "Brésil"
+    ]
+  },
+  {
+    "question": "14.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "France",
+    "answers": [
+      "France",
+      "Italie",
+      "Espagne",
+      "Allemagne",
+      "Suisse",
+      "Belgique"
+    ]
+  },
+  {
+    "question": "15.jpg",
+    "isImg": true,
+    "level": 3,
+    "answer": "Jordanie",
+    "answers": [
+      "Jordanie",
+      "Egypte",
+      "Israël",
+      "Arabie Saoudite",
+      "Turquie",
+      "Grèce"
+    ]
+  },
+  {
+    "question": "16.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "Egypte",
+    "answers": [
+      "Egypte",
+      "Mexique",
+      "Chine",
+      "Inde",
+      "Pérou",
+      "Grèce"
+    ]
+  },
+  {
+    "question": "17.jpg",
+    "isImg": true,
+    "level": 1,
+    "answer": "Grèce",
+    "answers": [
+      "Grèce",
+      "Italie",
+      "Turquie",
+      "Egypte",
+      "Israël",
+      "Jordanie"
+    ]
+  },
+  {
+    "question": "18.jpg",
+    "isImg": true,
+    "level": 2,
+    "answer": "États-Unis",
+    "answers": [
+      "États-Unis",
+      "Canada",
+      "Mexique",
+      "Royaume-Uni",
+      "France",
+      "Australie"
+    ]
+  },
+  {
+    "question": "19.jpg",
+    "isImg": true,
+    "level": 2,
+    "answer": "Émirats arabes unis",
+    "answers": [
+      "Émirats arabes unis",
+      "Arabie Saoudite",
+      "Qatar",
+      "Oman",
+      "Bahreïn",
+      "Koweit"
+    ]
+  },
+  {
+    "question": "Dans quel pays sont nés les Jeux Olympiques ?",
+    "answer": "Grèce",
+    "level": 1,
+    "answers": [
+      "Grèce",
+      "Italie",
+      "France",
+      "Allemagne",
+      "États-Unis",
+      "Japon"
+    ]
+  },
+  {
+    "question": "Qui était connue sous le nom de « Dame à la lampe » ?",
+    "answer": "Florence Rossignol",
+    "level": 3,
+    "answers": [
+      "Florence Rossignol",
+      "Marie-Curie",
+      "Amélie Earhart",
+      "Jane Austen",
+      "Mère Teresa",
+      "Reine Victoria"
+    ]
+  },
+  {
+    "question": "Quelle ville antique est connue pour ses jardins suspendus ?",
+    "answer": "Babylone",
+    "level": 3,
+    "answers": [
+      "Babylone",
+      "Carthage",
+      "Rome",
+      "Athènes",
+      "Alexandrie",
+      "Constantinople"
+    ]
+  },
+  {
+    "question": "Qui fut le premier empereur romain ?",
+    "answer": "Auguste",
+    "level": 3,
+    "answers": [
+      "Auguste",
+      "Jules César",
+      "Néron",
+      "Caligula",
+      "Trajan",
+      "Marc Aurèle"
+    ]
+  },
+  {
+    "question": "Qui est célèbre pour avoir dit « J'ai un rêve » ?",
+    "answer": "Martin Luther King Jr.",
+    "level": 3,
+    "answers": [
+      "Martin Luther King Jr.",
+      "Malcolm X",
+      "John F. Kennedy",
+      "Rosa Parks",
+      "Nelson Mandela",
+      "Barack Obama"
+    ]
+  },
+  {
+    "question": "Qui était la reine d'Angleterre pendant l'Armada espagnole ?",
+    "answer": "Elizabeth I",
+    "level": 3,
+    "answers": [
+      "Elizabeth I",
+      "Victoria",
+      "Marie je",
+      "Élisabeth II",
+      "Anne",
+      "Catherine la Grande"
+    ]
+  },
+  {
+    "question": "En quelle année le mur de Berlin a-t-il été érigé ?",
+    "answer": "1961",
+    "level": 3,
+    "answers": [
+      "1961",
+      "1945",
+      "1975",
+      "1950",
+      "1965",
+      "1980"
+    ]
+  },
+  {
+    "question": "Qui était la reine égyptienne connue pour sa beauté et son sens politique ?",
+    "answer": "Cléopâtre",
+    "level": 2,
+    "answers": [
+      "Cléopâtre",
+      "Néfertiti",
+      "Hatchepsout",
+      "Arsinoé",
+      "Isis",
+      "Bérénice"
+    ]
+  },
+  {
+    "question": "Quel pays a été gouverné par les tsars avant de devenir une république en 1917 ?",
+    "answer": "Russie",
+    "level": 1,
+    "answers": [
+      "Russie",
+      "Allemagne",
+      "France",
+      "Autriche",
+      "Italie",
+      "Espagne"
+    ]
+  },
+  {
+    "question": "En quelle année les États-Unis ont-ils déclaré leur indépendance de la Grande-Bretagne ?",
+    "answer": "1776",
+    "level": 3,
+    "answers": [
+      "1776",
+      "1789",
+      "1812",
+      "1492",
+      "1865",
+      "1901"
+    ]
+  },
+  {
+    "question": "Quel philosophe grec ancien était le professeur de Platon ?",
+    "answer": "Socrate",
+    "level": 3,
+    "answers": [
+      "Socrate",
+      "Platon",
+      "Aristote",
+      "Épicure",
+      "Pythagore",
+      "Héraclite"
+    ]
+  },
+  {
+    "question": "Qui a inventé le téléphone ?",
+    "answer": "Alexandre Graham Bell",
+    "level": 2,
+    "answers": [
+      "Alexandre Graham Bell",
+      "Thomas Edison",
+      "Nicolas Tesla",
+      "James Watt",
+      "Guglielmo Marconi",
+      "Michel Faraday"
+    ]
+  },
+  {
+    "question": "Qui fut le premier empereur de Rome ?",
+    "answer": "Auguste",
+    "level": 2,
+    "answers": [
+      "Auguste",
+      "Jules César",
+      "Néron",
+      "Caligula",
+      "Constantin",
+      "Tibère"
+    ]
+  },
+  {
+    "question": "Quel fleuve a joué un rôle crucial dans le développement de la civilisation égyptienne antique ?",
+    "answer": "Nil",
+    "level": 2,
+    "answers": [
+      "Nil",
+      "Tigre",
+      "Euphrate",
+      "Amazone",
+      "Mississippi",
+      "Yangtsé"
+    ]
+  },
+  {
+    "question": "Quel empire était connu pour son vaste réseau routier et ses jeux de gladiateurs ?",
+    "answer": "Empire romain",
+    "level": 2,
+    "answers": [
+      "Empire romain",
+      "Empire grec",
+      "Empire égyptien",
+      "Empire ottoman",
+      "Empire byzantin",
+      "Empire perse"
+    ]
+  },
+  {
+    "question": "Quel roi britannique a été exécuté pendant la guerre civile anglaise ?",
+    "answer": "Charles Ier",
+    "level": 4,
+    "answers": [
+      "Charles Ier",
+      "Jacques Ier",
+      "Édouard VI",
+      "Henri VIII",
+      "Charles II",
+      "Richard III"
+    ]
+  },
+  {
+    "question": "Quelle a été la principale cause des guerres de l’opium entre la Chine et la Grande-Bretagne ?",
+    "answer": "Déséquilibres commerciaux et commerce de l'opium",
+    "level": 4,
+    "answers": [
+      "Déséquilibres commerciaux et commerce de l'opium",
+      "Conflits fonciers",
+      "Questions diplomatiques",
+      "Expansion coloniale",
+      "Conquête territoriale",
+      "Conflits religieux"
+    ]
+  },
+  {
+    "question": "Quel traité marqua la fin de la guerre de Trente Ans en 1648 ?",
+    "answer": "Traité de Westphalie",
+    "level": 4,
+    "answers": [
+      "Traité de Westphalie",
+      "Traité de Paris",
+      "Traité d'Utrecht",
+      "Traité de Versailles",
+      "Traité de Tordesillas",
+      "Traité de Gand"
+    ]
+  },
+  {
+    "question": "Quel était le nom de l’opération militaire lancée par l’Allemagne nazie pour envahir l’Union soviétique en 1941 ?",
+    "answer": "Opération Barberousse",
+    "level": 4,
+    "answers": [
+      "Opération Barberousse",
+      "Opération Lion de Mer",
+      "Opération Overlord",
+      "Opération Torche",
+      "Opération Maraîcher",
+      "Opération Typhon"
+    ]
+  },
+  {
+    "question": "Quel conflit est souvent appelé « le grand jeu » entre les empires britannique et russe ?",
+    "answer": "Conflits territoriaux en Asie centrale",
+    "level": 4,
+    "answers": [
+      "Conflits territoriaux en Asie centrale",
+      "Guerre de Crimée",
+      "Guerre anglo-russe",
+      "Guerre russo-turque",
+      "Guerre des Boers",
+      "Guerre russo-japonaise"
+    ]
+  },
+  {
+    "question": "Quel événement est souvent considéré comme le début de la Réforme protestante ?",
+    "answer": "Les 95 thèses de Martin Luther",
+    "level": 4,
+    "answers": [
+      "Les 95 thèses de Martin Luther",
+      "Concile de Trente",
+      "La paix d'Augsbourg",
+      "Le régime des vers",
+      "L'acte de suprématie d'Henri VIII",
+      "L'Inquisition espagnole"
+    ]
+  },
+  {
+    "question": "Quel traité a mis fin à la guerre de Succession d'Espagne en 1713 ?",
+    "answer": "Traité d'Utrecht",
+    "level": 4,
+    "answers": [
+      "Traité d'Utrecht",
+      "Traité de Versailles",
+      "Traité de Westphalie",
+      "Traité de Gand",
+      "Traité de Tordesillas",
+      "Traité de Paris"
+    ]
+  },
+  {
+    "question": "Qui fut le dernier empereur d'Éthiopie, destitué en 1974 ?",
+    "answer": "Haïlé Sélassié",
+    "level": 4,
+    "answers": [
+      "Haïlé Sélassié",
+      "Ménélik II",
+      "Téwodros II",
+      "Yohann IV",
+      "Amda Seyon I",
+      "Zara Yaqob"
+    ]
+  },
+  {
+    "question": "Quel pays a été le premier à accorder le droit de vote aux femmes en 1893 ?",
+    "answer": "Nouvelle-Zélande",
+    "level": 4,
+    "answers": [
+      "Nouvelle-Zélande",
+      "Australie",
+      "Royaume-Uni",
+      "Finlande",
+      "Norvège",
+      "États-Unis"
+    ]
+  },
+  {
+    "question": "Quel était le nom du projet secret pour développer la bombe atomique pendant la Seconde Guerre mondiale?",
+    "answer": "Projet Manhattan",
+    "level": 4,
+    "answers": [
+      "Projet Manhattan",
+      "Projet Trinité",
+      "Projet Enigme",
+      "Opération Trombone",
+      "Projet Livre Bleu",
+      "Programme Apollon"
+    ]
+  },
+  {
+    "question": "Quel empire était le plus grand de l'histoire en termes de superficie ?",
+    "answer": "Empire mongol",
+    "level": 4,
+    "answers": [
+      "Empire mongol",
+      "Empire britannique",
+      "Empire russe",
+      "Empire romain",
+      "Empire ottoman",
+      "Empire espagnol"
+    ]
+  },
+  {
+    "question": "Quelle dynastie chinoise était la dernière dynastie impériale avant la création de la République de Chine ?",
+    "answer": "Dynastie Qing",
+    "level": 4,
+    "answers": [
+      "Dynastie Qing",
+      "Dynastie Ming",
+      "Dynastie Tang",
+      "Dynastie Han",
+      "Dynastie Song",
+      "Dynastie Yuan"
+    ]
+  },
+  {
+    "question": "Quel fut le résultat du Congrès de Vienne (1814-1815) ?",
+    "answer": "Redessiner l'Europe après les guerres napoléoniennes",
+    "level": 4,
+    "answers": [
+      "Redessiner l'Europe après les guerres napoléoniennes",
+      "Accord de paix après la guerre de Trente Ans",
+      "Fin de la Révolution française",
+      "Création du Saint Empire romain germanique",
+      "Déclaration de la Société des Nations",
+      "Division coloniale de l'Afrique"
+    ]
+  },
+  {
+    "question": "Quel était le nom de la famille royale russe renversée lors de la révolution de 1917 ?",
+    "answer": "Romanov",
+    "level": 4,
+    "answers": [
+      "Romanov",
+      "Habsbourg",
+      "Bourbon",
+      "Tudor",
+      "Windsor",
+      "Stuart"
+    ]
+  },
+  {
+    "question": "Qui était le général militaire qui a dirigé la révolution haïtienne ?",
+    "answer": "Toussaint Louverture",
+    "level": 4,
+    "answers": [
+      "Toussaint Louverture",
+      "Jean-Jacques Dessalines",
+      "Henri Christophe",
+      "Simon Bolivar",
+      "Antonio Maceo",
+      "Che Guevara"
+    ]
+  },
+  {
+    "question": "Quelle période historique a suivi la chute de l’Empire romain d’Occident ?",
+    "answer": "Moyen-âge",
+    "level": 4,
+    "answers": [
+      "Moyen-âge",
+      "Renaissance",
+      "Éclaircissement",
+      "Révolution industrielle",
+      "Ère antique",
+      "Réformation"
+    ]
+  },
+  {
+    "question": "Quel pays a été formé après la dissolution de la Yougoslavie en 1991 ?",
+    "answer": "Slovénie",
+    "level": 4,
+    "answers": [
+      "Slovénie",
+      "Croatie",
+      "Serbie",
+      "Bosnie-Herzégovine",
+      "Monténégro",
+      "Macédoine du Nord"
+    ]
+  },
+  {
+    "question": "Quelle était la capitale de l'Empire Inca ?",
+    "answer": "Cuzco",
+    "level": 4,
+    "answers": [
+      "Cuzco",
+      "Lima",
+      "Quito",
+      "Tenochtitlán",
+      "La Paz",
+      "Saint-Jacques"
+    ]
+  },
+  {
+    "question": "Quel traité a marqué la fin de la guerre russo-japonaise en 1905 ?",
+    "answer": "Traité de Portsmouth",
+    "level": 4,
+    "answers": [
+      "Traité de Portsmouth",
+      "Traité de Brest-Litovsk",
+      "Traité de Versailles",
+      "Traité de Paris",
+      "Traité d'Utrecht",
+      "Traité de Gand"
+    ]
+  },
+  {
+    "question": "Qui était le dernier pharaon de l’Egypte ancienne ?",
+    "answer": "Cléopâtre VII",
+    "level": 4,
+    "answers": [
+      "Cléopâtre VII",
+      "Néfertiti",
+      "Toutankhamon",
+      "Ramsès II",
+      "Thoutmosis III",
+      "Aménophis III"
+    ]
+  }
+]

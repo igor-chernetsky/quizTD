@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quiz_defence/models/fame_model.dart';
 import 'package:quiz_defence/models/question_model.dart';
 import 'package:quiz_defence/utils/geography.dart';
+import 'package:quiz_defence/utils/history.dart';
 import 'package:quiz_defence/utils/math.dart';
 import 'package:flutter_vibrate/flutter_vibrate.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -28,6 +29,9 @@ class QuestionCubit extends Cubit<QuestionsModel> {
         break;
       case 4:
         questions = await getGeoQuestions(epoch, true, local);
+        break;
+      case 5:
+        questions = await getHistoryQuestions(epoch, local);
         break;
     }
     emit(QuestionsModel(

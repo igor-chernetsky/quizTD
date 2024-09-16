@@ -92,7 +92,9 @@ class MainWidget extends StatelessWidget {
                                                       .nextEpoch(false);
                                                   context
                                                       .read<QuestionCubit>()
-                                                      .setQuestions(epoch, 0);
+                                                      .setQuestions(epoch, 0,
+                                                          local: AppLocalizations
+                                                              .of(context)!);
                                                 },
                                           icon: Icon(
                                             Icons.upgrade,

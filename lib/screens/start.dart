@@ -9,6 +9,7 @@ import 'package:quiz_defence/models/stats_model.dart';
 import 'package:quiz_defence/screens/game.dart';
 import 'package:quiz_defence/utils/colors.dart';
 import 'package:quiz_defence/widget/infoWidgets/rotatedImg.dart';
+import 'package:quiz_defence/widget/menus/languageSelector.dart';
 import 'package:quiz_defence/widget/menus/themeSelector.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -76,10 +77,14 @@ class _StartScreenState extends State<StartScreen> {
   @override
   Widget build(BuildContext context) {
     context.read<StatsCubit>().resetState();
+
     var availableHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       body: BlocBuilder<StatsCubit, StatsModel>(builder: (context, sm) {
-        context.read<StatsCubit>().initFame(null);
+        if (Localizations.localeOf(context).toString() !=
+            sm.locale.languageCode) {
+          context.read<StatsCubit>().initFame(null, sm.locale);
+        }
         return Stack(
           clipBehavior: Clip.none,
           children: [
@@ -154,9 +159,9 @@ class _StartScreenState extends State<StartScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  ThemeSelector(
-                    parentContext: context,
-                  )
+                  const ThemeSelector(),
+                  const Positioned(
+                      bottom: 10, right: 10, child: LanguageSelector())
                 ],
               ),
             ),
